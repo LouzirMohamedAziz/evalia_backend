@@ -1,0 +1,44 @@
+version: '3'
+services:
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USERNAME}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_RANDOM_ROOT_PASSWORD: 'true'
+      #MYSQL_ROOT_PASSWORD: ''
+    expose:
+      - '3306'
+    volumes:
+      - mysqlVolume:/var/lib/mysql
+      - ./scripts/:/docker-entrypoint-initdb.d/
+    networks:
+      - Sesame
+    healthcheck:
+      test: "test -f /tmp/sqlend"
+      interval: 30s
+      retries: 10
+
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USERNAME: ${MYSQL_USERNAME}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    depends_on:
+      - mysql
+    ports:
+      - "${APP_PORT}:8080"
+    networks:
+      - Sesame
+
+volumes:
+  mysqlVolume:
+
+networks:
+  Sesame:
+     driver: bridge

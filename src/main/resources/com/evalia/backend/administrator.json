@@ -1,0 +1,15 @@
+{
+	"name":"evalia",
+	"surname":"administrator",
+	"email":"administrator@evalia.com",
+	"account":{
+		"login":"evalia_admin",
+		"password":"evalia@2023",
+		"verified": true,
+		"roles":[
+			{
+				"name":"ROLE_ADMIN"
+			}
+		]
+	}
+}
