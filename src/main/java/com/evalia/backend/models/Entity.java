@@ -24,7 +24,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @EqualsAndHashCode
-
+@Setter
 @javax.persistence.Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "entity_type")
