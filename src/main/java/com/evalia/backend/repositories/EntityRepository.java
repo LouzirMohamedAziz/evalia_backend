@@ -1,14 +1,11 @@
 package com.evalia.backend.repositories;
 
-import java.util.Optional;
-
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.evalia.backend.models.Entity;
 
 @Repository
-public interface EntityRepository extends CrudRepository<Entity, Long> {
+public interface EntityRepository extends JpaRepository<Entity, Long> {
 
-	Optional<Entity> findByAccount_Login(String login);
 }

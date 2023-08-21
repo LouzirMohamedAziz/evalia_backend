@@ -10,8 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -33,8 +31,6 @@ public class Governorate {
 	private Long id;
 
 	@Column(nullable = false)
-	@NotBlank
-	@Size(max = 90)
 	@Setter
 	@NonNull
 	private String name;

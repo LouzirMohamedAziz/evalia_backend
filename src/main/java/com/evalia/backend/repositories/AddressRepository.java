@@ -3,9 +3,9 @@ package com.evalia.backend.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.evalia.backend.models.Governorate;
+import com.evalia.backend.models.Address;
 
 @Repository
-public interface GovernorateRepository extends JpaRepository<Governorate, Long> {
+public interface AddressRepository extends JpaRepository<Address, Long> {
 
 }

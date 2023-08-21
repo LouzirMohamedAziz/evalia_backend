@@ -22,5 +22,6 @@ public class Indicator {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long indicatorId;
     private String indicatorName;
+
     private Performance performance;
 }

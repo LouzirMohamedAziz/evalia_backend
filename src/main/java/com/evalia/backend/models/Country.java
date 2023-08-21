@@ -10,8 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -31,18 +29,14 @@ public class Country {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long countryId;
 	
 	@Column(unique = true, nullable = false)
-	@NotBlank
-	@Size(max = 3)
 	@NonNull
 	@Setter
 	private String isoCode;
 	
 	@Column(unique = true, nullable = false)
-	@NotBlank
-	@Size(max = 50)
 	@NonNull
 	@Setter
 	private String name;

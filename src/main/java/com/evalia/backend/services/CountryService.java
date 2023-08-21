@@ -4,13 +4,18 @@ import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.evalia.backend.models.Country;
 import com.evalia.backend.repositories.CountryRepository;
 
+@Service
 public class CountryService {
 
     private final CountryRepository countryRepository;
 
+    @Autowired
     public CountryService(CountryRepository countryRepository) {
         this.countryRepository = countryRepository;
     }
