@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.evalia.backend.models.Address;
 
-@Repository
+@Repository 
 public interface AddressRepository extends JpaRepository<Address, Long> {
 
 }

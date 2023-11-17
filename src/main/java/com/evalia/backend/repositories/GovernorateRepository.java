@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.evalia.backend.models.Governorate;
 
-@Repository
+@Repository 
 public interface GovernorateRepository extends JpaRepository<Governorate, Long> {
 
 }

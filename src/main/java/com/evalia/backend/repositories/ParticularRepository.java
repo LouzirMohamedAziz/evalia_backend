@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.evalia.backend.models.Particular;
 
-@Repository
+@Repository 
 public interface ParticularRepository extends  JpaRepository<Particular, Long> {
 
 }

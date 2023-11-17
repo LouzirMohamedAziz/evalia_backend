@@ -1,35 +1,59 @@
 package com.evalia.backend.models;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import java.util.Objects;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-@RequiredArgsConstructor
-@NoArgsConstructor
-@Getter
-@DiscriminatorValue("moderator")
 @Entity
-public class Moderator extends com.evalia.backend.models.Entity{
+@Table(name="moderator")
+public class Moderator{
 
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long moderatorId;
-	
-	@Column(unique = true, nullable = false)
-	@NonNull
-	@Setter
-    @OneToOne
-	private Account account;
+
+
+	public Moderator() {
+	}
+
+	public Moderator(Long moderatorId) {
+		this.moderatorId = moderatorId;
+	}
+
+	public Long getModeratorId() {
+		return this.moderatorId;
+	}
+
+	public void setModeratorId(Long moderatorId) {
+		this.moderatorId = moderatorId;
+	}
+
+	public Moderator moderatorId(Long moderatorId) {
+		setModeratorId(moderatorId);
+		return this;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == this)
+			return true;
+		if (!(o instanceof Moderator)) {
+			return false;
+		}
+		Moderator moderator = (Moderator) o;
+		return Objects.equals(moderatorId, moderator.moderatorId);
+	}
+
+	@Override
+	public String toString() {
+		return "{" +
+			" moderatorId='" + getModeratorId() + "'" +
+			"}";
+	}
 	
 }

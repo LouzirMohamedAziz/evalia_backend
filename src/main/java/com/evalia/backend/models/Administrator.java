@@ -1,35 +1,60 @@
 package com.evalia.backend.models;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import java.util.Objects;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.Setter;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@DiscriminatorValue("administrator")
+
+@Table(name="administrator")
 @Entity
-public class Administrator extends com.evalia.backend.models.Entity{
+public class Administrator{
 
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long administratorId;
 	
-	@Column(unique = true, nullable = false)
-	@NonNull
-	@Setter
-    @OneToOne
-	private Account account;
+
+	public Administrator() {
+	}
+
+	public Administrator(Long administratorId) {
+		this.administratorId = administratorId;
+	}
+
+	public Long getAdministratorId() {
+		return this.administratorId;
+	}
+
+	public void setAdministratorId(Long administratorId) {
+		this.administratorId = administratorId;
+	}
+
+	public Administrator administratorId(Long administratorId) {
+		setAdministratorId(administratorId);
+		return this;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == this)
+			return true;
+		if (!(o instanceof Administrator)) {
+			return false;
+		}
+		Administrator administrator = (Administrator) o;
+		return Objects.equals(administratorId, administrator.administratorId);
+	}
+
+	@Override
+	public String toString() {
+		return "{" +
+			" administratorId='" + getAdministratorId() + "'" +
+			"}";
+	}
 	
 }

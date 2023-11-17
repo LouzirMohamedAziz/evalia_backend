@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.evalia.backend.models.Professional;
 
-@Repository
+@Repository 
 public interface ProfessionalRepository extends JpaRepository<Professional, Long> {
 
 }

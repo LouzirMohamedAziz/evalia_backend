@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.evalia.backend.models.Administrator;
 
-@Repository
+@Repository 
 public interface AdministratorRepository extends JpaRepository<Administrator, Long> {
 
 }

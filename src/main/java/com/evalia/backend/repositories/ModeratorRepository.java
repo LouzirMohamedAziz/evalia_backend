@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.evalia.backend.models.Moderator;
 
-@Repository
+@Repository 
 public interface ModeratorRepository extends JpaRepository<Moderator, Long> {
 
 }

@@ -18,15 +18,15 @@ import com.evalia.backend.services.AddressService;
 public class AddressController {
 
     private final AddressService addressService;
-
+    
     @Autowired
     public AddressController(AddressService addressService) {
         this.addressService = addressService;
     }
 
     @PostMapping
-    public Address createAddress(@RequestBody Address country) {
-        return addressService.createAddress(country);
+    public Address createAddress(@RequestBody Address address) {
+        return addressService.createAddress(address);
     }
 
     @GetMapping

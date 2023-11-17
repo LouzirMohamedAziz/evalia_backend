@@ -1,29 +1,80 @@
 package com.evalia.backend.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import java.util.Objects;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Table
 public class SubSector {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private String subSectorId;
+    
     private String subSectorName;
 
-    @OneToMany
-    private SubSector subSector;
 
+    public SubSector() {
+    }
+
+    public SubSector(String subSectorId, String subSectorName) {
+        this.subSectorId = subSectorId;
+        this.subSectorName = subSectorName;
+    }
+
+    public String getSubSectorId() {
+        return this.subSectorId;
+    }
+
+    public void setSubSectorId(String subSectorId) {
+        this.subSectorId = subSectorId;
+    }
+
+    public String getSubSectorName() {
+        return this.subSectorName;
+    }
+
+    public void setSubSectorName(String subSectorName) {
+        this.subSectorName = subSectorName;
+    }
+
+    public SubSector subSectorId(String subSectorId) {
+        setSubSectorId(subSectorId);
+        return this;
+    }
+
+    public SubSector subSectorName(String subSectorName) {
+        setSubSectorName(subSectorName);
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof SubSector)) {
+            return false;
+        }
+        SubSector subSector = (SubSector) o;
+        return Objects.equals(subSectorId, subSector.subSectorId) && Objects.equals(subSectorName, subSector.subSectorName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(subSectorId, subSectorName);
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " subSectorId='" + getSubSectorId() + "'" +
+            ", subSectorName='" + getSubSectorName() + "'" +
+            "}";
+    }
+    
 }

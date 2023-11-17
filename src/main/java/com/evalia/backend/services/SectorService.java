@@ -3,9 +3,8 @@ package com.evalia.backend.services;
 
 import java.util.List;
 
-import javax.persistence.EntityNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.evalia.backend.models.Sector;
@@ -16,7 +15,6 @@ public class SectorService {
 
     private final SectorRepository sectorRepository;
 
-    @Autowired
     public SectorService(SectorRepository sectorRepository) {
         this.sectorRepository = sectorRepository;
     }

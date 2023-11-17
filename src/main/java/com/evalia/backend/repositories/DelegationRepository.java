@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.evalia.backend.models.Delegation;
 
-@Repository
+@Repository 
 public interface DelegationRepository extends JpaRepository<Delegation, Long> {
 
 }

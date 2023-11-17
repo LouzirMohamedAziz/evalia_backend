@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.evalia.backend.models.Indicator;
 
-@Repository
+@Repository 
 public interface IndicatorRepository extends JpaRepository<Indicator, Long> {
 
 }

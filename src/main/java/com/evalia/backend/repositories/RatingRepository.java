@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.evalia.backend.models.Rating;
 
-@Repository
+@Repository 
 public interface RatingRepository extends JpaRepository<Rating, Long> {
 
 }
