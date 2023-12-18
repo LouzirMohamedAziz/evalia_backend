@@ -1,15 +1,17 @@
 package com.evalia.backend.models;
 
-import javax.persistence.CascadeType;
+import java.util.Date;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 
 /**
@@ -22,11 +24,18 @@ import lombok.Setter;
 @Setter
 
 @Entity
-@DiscriminatorValue("professional")
-public class Professional extends Actor {
+@DiscriminatorValue("civil")
+public class Civil extends Actor {
 
 	@NotBlank
-	private String name;
+	private String firstName;
+	
+	@NotBlank
+	private String lastName;
+
+	@NonNull
+	@Temporal(TemporalType.DATE)
+	private Date birthDate;
 	
 	@NotBlank
 	private String phone;
@@ -34,9 +43,4 @@ public class Professional extends Actor {
 	
 	private String mail;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private BusinessGroup ownedGroup;
-	
-	@ManyToOne
-	private BusinessGroup businessGroup;
 }

@@ -1,45 +1,43 @@
 package com.evalia.backend.models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
-@RequiredArgsConstructor
-@Getter
+/**
+ * @author Hamdi Jandoubi
+ *
+ */
 @EqualsAndHashCode
+@NoArgsConstructor
+@Getter
+@Setter
 
 @Entity
-public class Governorate {
+public class BusinessGroup {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	@Column(nullable = false)
+	private long id;
+	
 	@NotBlank
-	@Size(max = 90)
-	@Setter
-	@NonNull
 	private String name;
-
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@EqualsAndHashCode.Exclude
-	private List<Delegation> delegations = new ArrayList<>();
+	
+	@OneToOne(optional = false)
+	private Professional owner;
+	
+	@OneToMany(mappedBy = "businessGroup")
+	private List<Professional> members;
 }

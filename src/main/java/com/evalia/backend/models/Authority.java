@@ -5,32 +5,40 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+
+import org.springframework.security.core.GrantedAuthority;
+
+import com.evalia.backend.metadata.Role;
+import com.sun.istack.NotNull;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
-@RequiredArgsConstructor
-@Getter
+/**
+ * @author Hamdi Jandoubi
+ *
+ */
 @EqualsAndHashCode
+@NoArgsConstructor
+@Getter
+@Setter
 
 @Entity
-public class Delegation {
+public class Authority implements GrantedAuthority{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	@Column(nullable = false)
-	@NotBlank
-	@Size(max = 90)
-	@Setter
-	@NonNull
-	private String name;
+	private long id;
+	
+	@NotNull
+	@Column(unique = true)
+	private Role role;
+	
+	
+	@Override
+	public String getAuthority() {
+		return this.role.getAlias();
+	} 
 }
