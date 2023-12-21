@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
@@ -44,7 +45,9 @@ public abstract class Actor {
 	
 	@OneToOne(cascade = CascadeType.ALL, optional = false)
 	private Account account;
-	
+
+	@OneToOne(cascade = CascadeType.ALL)
+	private Address address;
 	
 	public void setAccount(Account account) {
 		if(Objects.nonNull(this.account)) {
