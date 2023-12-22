@@ -1,11 +1,8 @@
 package com.evalia.backend.exceptions;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
 import com.evalia.backend.util.ResourceUtils;
 
-@ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Initializer failure")
+
 public class InitializationException extends RuntimeException {
 
 	/**
@@ -25,11 +22,11 @@ public class InitializationException extends RuntimeException {
 	
 	public static InitializationException build(String entityName) {
 		return new InitializationException(
-				ResourceUtils.buildMessage(MSG_PRELOADING, entityName));
+				ResourceUtils.format(MSG_PRELOADING, entityName));
 	}
 	
 	public static InitializationException build(String entityName, Exception e) {
 		return new InitializationException(
-				ResourceUtils.buildMessage(MSG_PRELOADING, entityName), e);
+				ResourceUtils.format(MSG_PRELOADING, entityName), e);
 	}
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,53 +12,48 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+/**
+ * @author Mohamed Ben Hamouda
+ *
+ */
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@RequiredArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 
 @Entity
 public class Governorate {
-	@JsonIgnore
+
+	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@EqualsAndHashCode.Include
-	private Long id;
+	private long id;
 
-	@Column(nullable = false)
 	@NotBlank
-	@Size(max = 90)
-	@NonNull
 	private String name;
 
-	
 	@NonNull
-	@ManyToOne(fetch = FetchType.LAZY,optional=false)
+	@ManyToOne(optional = false)
 	private Country country;
-	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "governorate")
+
+	@OneToMany(mappedBy = "governorate", cascade = CascadeType.ALL,
+			fetch = FetchType.LAZY, orphanRemoval = true)
 	private List<Delegation> delegations = new ArrayList<>();
-	
+
 	
 	public void addDelegation(Delegation delegation) {
-		delegations.add(delegation);
 		delegation.setGovernorate(this);
+		delegations.add(delegation);
 	}
-	
-	public void removeDelegation(Delegation delegation) {
-		delegations.remove(delegation);
-		delegation.setGovernorate(null);
+
+	public void setDelegations(List<Delegation> delegations) {
+		delegations.forEach(this::addDelegation);
 	}
 }

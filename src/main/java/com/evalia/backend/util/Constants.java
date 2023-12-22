@@ -1,6 +1,9 @@
 package com.evalia.backend.util;
 
 public class Constants {
+	
+	//Resource Names
+	public static final String COUNTRIES = "countries";
     
     //prefixes
     public static final String ROLE_PREFIX = "ROLE_";

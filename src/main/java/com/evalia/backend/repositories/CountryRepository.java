@@ -2,13 +2,15 @@ package com.evalia.backend.repositories;
 
 import java.util.Optional;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.evalia.backend.models.Country;
 
-@RepositoryRestResource
-public interface CountryRepository extends CrudRepository<Country, String> {
+/**
+ * @author Mohamed Ben Hamouda
+ *
+ */
+public interface CountryRepository extends PagingAndSortingRepository<Country, String> {
 
 	Optional<Country> findByName(String name);
 }

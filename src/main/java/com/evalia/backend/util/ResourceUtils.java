@@ -10,7 +10,9 @@ import java.nio.charset.StandardCharsets;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.text.MessageFormat;
+import java.util.Locale;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 import org.springframework.security.converter.RsaKeyConverters;
 
@@ -23,8 +25,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ResourceUtils {
 	
-	public static String buildMessage(String template, String... params) {
+	public static String format(String template, String... params) {
 		return MessageFormat.format(template, params);
+	}
+	
+	public static String getMessage(String bundle, String variable, String... params) {
+		ResourceBundle resourceBundle = ResourceBundle
+				.getBundle(bundle, Locale.getDefault());
+		String template = resourceBundle.getString(variable);
+		return format(template, params);
 	}
 	
 	public static InputStream loadResource(String path) throws ResourceNotFoundException{
