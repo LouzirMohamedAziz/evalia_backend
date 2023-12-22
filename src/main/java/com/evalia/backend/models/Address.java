@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import com.evalia.backend.rest.deserializers.AddressDeserializer;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import lombok.EqualsAndHashCode;
@@ -17,21 +16,28 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+/**
+ * @author Mohamed Ben Hamouda
+ *
+ */
 @JsonDeserialize(using = AddressDeserializer.class)
-
+@EqualsAndHashCode
 @RequiredArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode
 
 @Entity
 public class Address {
-	@JsonIgnore
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NonNull
+	@OneToOne(optional = false)
+	private Actor actor;
+	
 	@NonNull
 	@OneToOne(optional = false)
 	private Country country;
@@ -40,16 +46,10 @@ public class Address {
 	@OneToOne(optional = false)
 	private Governorate governorate;
 
-	@NonNull
-	@OneToOne(optional = false)
+	@OneToOne
 	private Delegation delegation;
 
-	@Setter
 	private String street;
 
-	@Setter
-	private Integer postalCode;
-
-	@OneToOne(optional=false)
-	private Actor actor;
+	private String postalCode;
 }

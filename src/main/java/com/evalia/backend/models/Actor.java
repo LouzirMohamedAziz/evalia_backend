@@ -43,11 +43,12 @@ public abstract class Actor {
 	@Enumerated(EnumType.STRING)
 	private ActorType actoryType;
 	
-	@OneToOne(cascade = CascadeType.ALL, optional = false)
+	@OneToOne(cascade = CascadeType.ALL, optional = false, orphanRemoval = true)
 	private Account account;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, optional = false, orphanRemoval = true)
 	private Address address;
+	
 	
 	public void setAccount(Account account) {
 		if(Objects.nonNull(this.account)) {

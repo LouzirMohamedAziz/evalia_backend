@@ -13,8 +13,6 @@ import org.springframework.stereotype.Component;
 
 import com.evalia.backend.exceptions.InitializationException;
 import com.evalia.backend.models.Country;
-import com.evalia.backend.models.Delegation;
-import com.evalia.backend.models.Governorate;
 import com.evalia.backend.repositories.CountryRepository;
 import com.evalia.backend.util.InitializersUtils;
 import com.evalia.backend.util.ResourceUtils;
@@ -30,17 +28,6 @@ public class CountriesInitilizer extends Initializer<Country>{
 	
 	@Autowired
 	private CountryRepository repository;
-
-	private void createRelation(List<Country> countries) {
-		for(Country country: countries) {
-			for(Governorate governorate: country.getGovernorates()) {
-				for(Delegation delegation: governorate.getDelegations()) {
-					delegation.setGovernorate(governorate);
-				}
-				governorate.setCountry(country);
-			}
-		}
-	}
 	
 	@Override
 	void preLoad(Class<Country> clazz, String filePath) {
@@ -48,7 +35,6 @@ public class CountriesInitilizer extends Initializer<Country>{
 			ObjectMapper mapper = new ObjectMapper();
 			TypeReference<List<Country>> recordTypes = new TypeReference<List<Country>>() {};
 			List<Country> countries = mapper.readValue(stream, recordTypes);
-			createRelation(countries);
 			repository.saveAll(countries);
 		} catch (IOException | ConstraintViolationException e) {
 			InitializationException ex = InitializationException.build(clazz.getName(), e);

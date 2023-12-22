@@ -46,12 +46,12 @@ public final class ResourceUtils {
 	}
 	
 	public static RSAPublicKey loadPublicKey(String path) throws ResourceNotFoundException, IOException {
-		return RsaKeyConverters.x509()
-				.convert(new ByteArrayInputStream(loadAsText(path).getBytes(StandardCharsets.UTF_8)));
+	return RsaKeyConverters.x509()
+	.convert(new ByteArrayInputStream(loadAsText(path).getBytes(StandardCharsets.UTF_8)));
 	}
 	
 	public static RSAPrivateKey loadPrivateKey(String path) throws ResourceNotFoundException, IOException {
-		return RsaKeyConverters.pkcs8()
-				.convert(new ByteArrayInputStream(loadResource(path).readAllBytes()));
+	return RsaKeyConverters.pkcs8()
+	.convert(new ByteArrayInputStream(loadResource(path).readAllBytes()));
 	}
 }

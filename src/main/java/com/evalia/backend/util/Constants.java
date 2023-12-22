@@ -1,6 +1,10 @@
 package com.evalia.backend.util;
 
-public class Constants {
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class Constants {
     
     //prefixes
     public static final String ROLE_PREFIX = "ROLE_";

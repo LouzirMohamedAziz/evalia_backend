@@ -17,6 +17,10 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 
+/**
+ * @author Mohamed Ben Hamouda
+ *
+ */
 public class AddressDeserializer extends JsonDeserializer<Address> {
 
     // Attributes
@@ -30,17 +34,18 @@ public class AddressDeserializer extends JsonDeserializer<Address> {
     @Autowired
     private CountryRepository countryRepository;
 
+    
     @Override
 	public Address deserialize(JsonParser parser, DeserializationContext ctxt) 
     throws IOException {
 
         JsonNode node = parser.getCodec().readTree(parser);
-        Address address = new Address();
+        
 		String countryCode = node.get(COUNTRY).textValue();
         String governorateCode = node.get(GOVERNORATE).textValue();
         String delegationCode = node.get(DELEGATION).textValue();
         String street = node.get(STREET).textValue();
-        Integer postalCode = Integer.parseInt(node.get(POSTAL_CODE).textValue());
+        String postalCode = node.get(POSTAL_CODE).textValue();
 
         Country country = countryRepository.findById(countryCode).orElseThrow(()->{
             return new NoSuchElementException(Constants.INVALID_ADDRESS);
@@ -69,6 +74,7 @@ public class AddressDeserializer extends JsonDeserializer<Address> {
             return new NoSuchElementException(Constants.INVALID_ADDRESS);
         });
 
+        Address address = new Address();
         address.setCountry(country);
         address.setGovernorate(governorate);
         address.setDelegation(delegations);
@@ -77,5 +83,4 @@ public class AddressDeserializer extends JsonDeserializer<Address> {
 
         return address;
 	}
-
 }

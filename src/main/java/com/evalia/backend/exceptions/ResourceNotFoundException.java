@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.evalia.backend.util.ResourceUtils;
 
-@ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Requested resource not found!")
+@ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Internal resource not found!")
 public class ResourceNotFoundException extends IOException {
 
 	/**
@@ -22,7 +22,7 @@ public class ResourceNotFoundException extends IOException {
 	}
 	
 	public ResourceNotFoundException(String message, Exception e) {
-		super(message);
+		super(message, e);
 	}
 
 	public static ResourceNotFoundException build(String resourceName) {

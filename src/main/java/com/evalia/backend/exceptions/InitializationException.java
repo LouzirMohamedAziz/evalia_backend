@@ -1,11 +1,8 @@
 package com.evalia.backend.exceptions;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
 import com.evalia.backend.util.ResourceUtils;
 
-@ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Initializer failure")
+
 public class InitializationException extends RuntimeException {
 
 	/**
