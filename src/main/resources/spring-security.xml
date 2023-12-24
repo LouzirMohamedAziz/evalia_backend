@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 	https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security 
+		https://www.springframework.org/schema/security/spring-security.xsd">
+
+
+	<!--<bean id="passwordEncoder"
+		class="org.springframework.security.crypto.password.MessageDigestPasswordEncoder">
+		<constructor-arg value="MD5" />
+	</bean>-->
+	
+	<security:http name="evaliaFilterChain" pattern="/**" security="none" />
+	
+	<!--<security:http name="defaultFilterChain" pattern="/**" security="none">
+		<security:csrf disabled="true" />
+		<security:intercept-url pattern="/**" access="permitAll" />
+	</security:http>-->
+
+</beans>
