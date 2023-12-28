@@ -2,6 +2,7 @@ package com.evalia.backend.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -54,6 +55,9 @@ public class Governorate {
 	}
 
 	public void setDelegations(List<Delegation> delegations) {
+		if(Objects.isNull(delegations))
+			return;
+		this.delegations.clear();
 		delegations.forEach(this::addDelegation);
 	}
 }

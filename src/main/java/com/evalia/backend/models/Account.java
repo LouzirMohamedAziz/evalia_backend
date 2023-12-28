@@ -1,8 +1,8 @@
 package com.evalia.backend.models;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.EqualsAndHashCode;
@@ -69,9 +68,10 @@ public class Account implements UserDetails{
 	@OneToMany(fetch = FetchType.EAGER)
 	private List<Authority> authorities = new ArrayList<>();
 
-	
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return authorities;
+	public void setAuthorities(List<Authority> authorities){
+		if(Objects.isNull(authorities))
+			return;
+		this.authorities.clear();
+		this.authorities.forEach(this.authorities::add);
 	}
 }
