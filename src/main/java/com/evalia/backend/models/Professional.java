@@ -3,9 +3,13 @@ package com.evalia.backend.models;
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
+
+import java.util.List;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -39,4 +43,8 @@ public class Professional extends Actor {
 	
 	@ManyToOne
 	private BusinessGroup businessGroup;
+
+	@OneToMany(mappedBy = "professional", cascade = CascadeType.ALL,
+			fetch = FetchType.LAZY, orphanRemoval = true)
+	private List<Rating> ratings;
 }
