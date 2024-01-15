@@ -1,7 +1,10 @@
 package com.evalia.backend.models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import lombok.EqualsAndHashCode;
@@ -13,7 +16,7 @@ import lombok.Setter;
  * @author Hamdi Jandoubi
  *
  */
-@EqualsAndHashCode
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @Getter
 @Setter
@@ -21,11 +24,13 @@ import lombok.Setter;
 @Entity
 public class SubSector {
 
+	@EqualsAndHashCode.Include
 	@Id
-	private String subSector;
+	private String name;
 	
-	@EqualsAndHashCode.Exclude
 	@ManyToOne(optional = false)
 	private Sector sector;
 	
+	@ManyToMany(mappedBy = "subSectors")
+	private List<Indicator> indicators;
 }

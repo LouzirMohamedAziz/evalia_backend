@@ -10,6 +10,7 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
 import java.util.List;
+import java.util.Objects;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -47,4 +48,16 @@ public class Professional extends Actor {
 	@OneToMany(mappedBy = "professional", cascade = CascadeType.ALL,
 			fetch = FetchType.LAZY, orphanRemoval = true)
 	private List<Rating> ratings;
+
+	public void addRating(Rating rating) {
+		rating.setProfessional(this);
+		ratings.add(rating);
+	}
+
+	public void setRating(List<Rating> ratings) {
+		if(Objects.isNull(ratings))
+			return;
+		this.ratings.clear();
+		ratings.forEach(this::addRating);
+	}
 }

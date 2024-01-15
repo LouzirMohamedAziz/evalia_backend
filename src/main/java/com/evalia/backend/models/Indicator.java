@@ -4,17 +4,17 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 import com.evalia.backend.metadata.Performance;
 
-import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 
@@ -22,14 +22,12 @@ import lombok.Setter;
 @Entity
 public class Indicator {
 
-
-    
+    @EqualsAndHashCode.Include
     @Id
     private String name;
     
     private Performance performance;
 
-    @OneToMany
-    private List<Rating> ratings; 
-    
+    @ManyToMany
+    private List<SubSector> subSectors;
 }

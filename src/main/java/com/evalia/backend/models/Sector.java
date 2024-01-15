@@ -16,7 +16,7 @@ import lombok.Setter;
  * @author Hamdi Jandoubi
  *
  */
-@EqualsAndHashCode
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @Getter
 @Setter
@@ -24,11 +24,10 @@ import lombok.Setter;
 @Entity
 public class Sector {
 	
+	@EqualsAndHashCode.Include
 	@Id
 	private String name;
 	
-	@EqualsAndHashCode.Exclude
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "sector")
 	private List<SubSector> subSectors;
-	
 }

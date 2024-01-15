@@ -15,6 +15,11 @@ public enum ActorType implements Enumeration{
 	 * A state-owned enterprise
 	 */
 	PUBLIC("Public"),
+
+	/**
+	 * A state-owned enterprise
+	 */
+	PARTNERSHIP("Partnership"),
 	
 	/**
 	 * A normal citizen

@@ -10,4 +10,6 @@ import com.evalia.backend.models.Actor;
  */
 public interface ActorRepository extends CrudRepository<Actor, String> {
 	
+    //TODO: getActorNameByType
+
 }

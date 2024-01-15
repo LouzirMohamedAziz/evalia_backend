@@ -7,19 +7,20 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 
 @Entity
 public class Rating {
 
+    @EqualsAndHashCode.Include
     @Id
     private Long id;
 
@@ -27,12 +28,11 @@ public class Rating {
 
     private Date date;
 
-    @ManyToOne
-    Professional professional;
-
-    
-    @OneToOne
+    @OneToOne(optional = false)
     private Post post;
+
+    @ManyToOne(optional = false)
+    Professional professional;
 
     @ManyToOne
     private Indicator indicator;
