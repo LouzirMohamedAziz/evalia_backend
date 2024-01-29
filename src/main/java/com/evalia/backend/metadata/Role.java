@@ -1,5 +1,9 @@
 package com.evalia.backend.metadata;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * @author Hamdi Jandoubi
  *
@@ -24,9 +28,11 @@ public enum Role implements Enumeration{
 	
 	private final String alias;
 	
+	
 	private Role(String alias) {
 		this.alias = alias;
 	}
+	
 
 	@Override
 	public String getAlias() {

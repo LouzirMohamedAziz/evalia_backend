@@ -1,10 +1,7 @@
 package com.evalia.backend.models;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 
 import com.evalia.backend.metadata.Performance;
 
@@ -27,7 +24,4 @@ public class Indicator {
     private String name;
     
     private Performance performance;
-
-    @ManyToMany
-    private List<SubSector> subSectors;
 }

@@ -5,17 +5,17 @@ public enum Performance implements Enumeration{
 	/**
 	 * The Economical Performance.
 	 */
-	PERFORMANCE_ECONOMICAL("Economical"),
+	ECONOMICAL("Economical"),
 	
 	/**
 	 * The Social Performance.
 	 */
-	PERFORMANCE_SOCIAL("Social"),
+	SOCIAL("Social"),
 
 	/**
 	 * The Social Performance.
 	 */
-	PERFORMANCE_ENVIRONMENTAL("Environmental");
+	ENVIRONMENTAL("Environmental");
 
 	
 	
@@ -29,6 +29,4 @@ public enum Performance implements Enumeration{
 	public String getAlias() {
 		return this.alias;
 	}
-
-    
 }

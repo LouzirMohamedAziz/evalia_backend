@@ -29,10 +29,13 @@ public enum ActorType implements Enumeration{
 	
 	private final String alias;
 	
+	
+	
 	private ActorType(String alias) {
 		this.alias = alias;
 	}
 
+	
 	@Override
 	public String getAlias() {
 		return this.alias;

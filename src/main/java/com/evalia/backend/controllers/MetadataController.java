@@ -1,27 +1,36 @@
 package com.evalia.backend.controllers;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+import java.util.Map;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 
+import com.evalia.backend.metadata.ActorType;
+import com.evalia.backend.metadata.Enumeration;
 import com.evalia.backend.metadata.Performance;
-import com.evalia.backend.models.Country;
-import com.evalia.backend.repositories.CountryRepository;
+import com.evalia.backend.models.Account;
 
 @Controller
 public class MetadataController {
+	
 
-  private CountryRepository countryRepository;
+	public Map<Enumeration, String> getRatableActors() {
 
-  // TODO: get searchable actor types by current user type
-  public List<String> getActorTypesByCurrentSession() {
-    return null;
-  }
+		Map<Enumeration, String> values = null;
+		Account currentAccount = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-  // TODO: get performance possible values
-  public List<Performance> getPerformancePossibelValues() {
-    return null;
-  }
+		if (currentAccount.getActor().getActoryType().equals(ActorType.CIVIL)) {
+			values = Enumeration.getValues(ActorType.PUBLIC, ActorType.PRIVATE);
+		} else {
+			values = Enumeration.getValues(ActorType.PUBLIC, ActorType.PRIVATE, ActorType.PARTNERSHIP);
+		}
+
+		return values;
+	}
+
+	
+	public Map<Enumeration, String> getPerformances() {
+		return Enumeration.getValues(Performance.values());
+	}
+
 }
