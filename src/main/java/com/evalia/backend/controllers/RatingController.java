@@ -17,11 +17,11 @@ public class RatingController {
     private RatingRepository ratingRepository;
 
     // Search Ratings by Professional ID and Date Range
-    @GetMapping("/findByProfessionalIdAndDateRange")
-    public List<Rating> findByProfessionalIdAndDateRange(@RequestParam Long professionalId,
+    @GetMapping("/findByProfessionalNameAndDateRange")
+    public List<Rating> findByProfessionalNameAndDateRange(@RequestParam String professionalName,
                                                          @RequestParam Date startDate,
                                                          @RequestParam Date endDate) {
-        return ratingRepository.findByProfessionalIdAndDateRange(professionalId, startDate, endDate);
+        return ratingRepository.findByProfessionalNameAndDateRange(professionalName, startDate, endDate);
     }
 
     // Search Ratings by Indicator Name
