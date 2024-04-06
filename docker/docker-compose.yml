@@ -2,6 +2,7 @@ version: '3'
 services:
 
   mysql:
+    container_name: Evalia_DB
     image: mysql:latest
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -9,8 +10,8 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_RANDOM_ROOT_PASSWORD: 'true'
       #MYSQL_ROOT_PASSWORD: ''
-    expose:
-      - '3306'
+    ports:
+      - "3306:3306"
     volumes:
       - mysqlVolume:/var/lib/mysql
       - ./scripts/:/docker-entrypoint-initdb.d/
@@ -22,6 +23,7 @@ services:
       retries: 10
 
   app:
+    container_name: Evalia
     build:
       context: ..
       dockerfile: docker/Dockerfile
