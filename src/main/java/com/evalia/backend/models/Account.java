@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,13 +33,8 @@ import lombok.Setter;
 
 @Entity
 public class Account implements UserDetails{
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
 	
-	@NotBlank
-	@Column(unique = true)
+	@Id
 	private String username;
 	
 	@NotBlank

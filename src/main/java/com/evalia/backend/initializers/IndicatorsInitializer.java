@@ -28,7 +28,6 @@ public class IndicatorsInitializer implements Initializer{
 	
 	private static final String JSON_FILE = "com/evalia/backend/indicators.json";
 	
-	
 	private IndicatorRepository indicatorRepository;
 	
 	
