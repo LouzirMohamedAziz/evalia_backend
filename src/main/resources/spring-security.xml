@@ -8,16 +8,57 @@
 		https://www.springframework.org/schema/security/spring-security.xsd">
 
 
-	<!--<bean id="passwordEncoder"
-		class="org.springframework.security.crypto.password.MessageDigestPasswordEncoder">
-		<constructor-arg value="MD5" />
-	</bean>-->
+	<!--<bean id="passwordEncoder" 
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />-->
+		
+	<bean name="publicKey" class="com.evalia.backend.util.SecurityUtils" 
+			factory-method="loadPublicKey">
+			<constructor-arg value="${rsa.public-key}"/>
+	</bean>
 	
-	<security:http name="evaliaFilterChain" pattern="/**" security="none" />
+	<bean name="privateKey" class="com.evalia.backend.util.SecurityUtils" 
+			factory-method="loadPrivateKey">
+			<constructor-arg value="${rsa.private-key}"/>
+	</bean>
+		
+	<bean name="jwtEncoder" class="com.evalia.backend.util.SecurityUtils"
+			factory-method="jwtEncoder">
+			<constructor-arg ref="publicKey"/>
+			<constructor-arg ref="privateKey"/>
+	</bean>
 	
-	<!--<security:http name="defaultFilterChain" pattern="/**" security="none">
+	<bean name="jwtDecoder" class="com.evalia.backend.util.SecurityUtils"
+			factory-method="jwtDecoder">
+			<constructor-arg ref="publicKey"/>
+	</bean>
+	
+	<security:authentication-manager id="authenticationManager">
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="admin" password="{noop}evalia_admin" 
+					authorities="ROLE_USER, ROLE_ADMIN" />
+				<security:user name="bob" password="{noop}evalia_user" 
+					authorities="ROLE_USER" />
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
+	<security:http name="services" pattern="/api/**"
+		create-session="stateless" use-expressions="true">
+		
 		<security:csrf disabled="true" />
-		<security:intercept-url pattern="/**" access="permitAll" />
-	</security:http>-->
+		<security:intercept-url pattern="/api/**" access="authenticated" />
+		<security:oauth2-resource-server>
+			<security:jwt decoder-ref="jwtDecoder"/>
+		</security:oauth2-resource-server>
+	</security:http>
+	
+	<security:http name="login" pattern="/token" authentication-manager-ref="authenticationManager"
+		create-session="stateless" use-expressions="true" >
+		
+		<security:csrf disabled="true" />
+		<security:intercept-url pattern="/token" access="authenticated" />
+		<security:http-basic/>
+	</security:http>
 
 </beans>

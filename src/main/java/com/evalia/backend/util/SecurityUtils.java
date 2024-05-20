@@ -2,7 +2,6 @@ package com.evalia.backend.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
@@ -29,15 +28,15 @@ public final class SecurityUtils {
 	public static RSAPublicKey loadPublicKey(String path) throws ResourceNotFoundException, IOException {
 		return RsaKeyConverters.x509()
 				.convert(new ByteArrayInputStream(
-						ResourceUtils.loadAsText(path)
-							.getBytes(StandardCharsets.UTF_8)));
+						ResourceUtils.loadResource(path).readAllBytes())
+				);
 	}
 
 	public static RSAPrivateKey loadPrivateKey(String path) throws ResourceNotFoundException, IOException {
 		return RsaKeyConverters.pkcs8()
 				.convert(new ByteArrayInputStream(
-						ResourceUtils.loadResource(path)
-							.readAllBytes()));
+						ResourceUtils.loadResource(path).readAllBytes())
+				);
 	}
 	
 	public static JwtEncoder jwtEncoder(RSAPublicKey publicKey, RSAPrivateKey privateKey) {

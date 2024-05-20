@@ -8,6 +8,6 @@ import com.evalia.backend.models.Account;
  * @author Hamdi Jandoubi
  *
  */
-public interface AccountRepository extends CrudRepository<Account, Long> {
+public interface AccountRepository extends CrudRepository<Account, String> {
 
 }

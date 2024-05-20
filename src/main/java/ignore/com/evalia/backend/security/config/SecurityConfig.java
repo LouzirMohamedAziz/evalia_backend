@@ -1,4 +1,4 @@
-package com.evalia.backend.security.config;
+package ignore.com.evalia.backend.security.config;
 
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
@@ -6,6 +6,7 @@ import java.security.interfaces.RSAPublicKey;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -29,8 +30,11 @@ import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity(debug = true)
 public class SecurityConfig {
+	
+	@Value("spring boot")
+	private String alia;
 	
 	@Value("${rsa.private-key}")
 	private RSAPrivateKey privateKey;
@@ -69,13 +73,33 @@ public class SecurityConfig {
 		return new NimbusJwtEncoder(jwks);
 	}
 	
+	@Order(1)
 	@Bean
-	public SecurityFilterChain entityFilterChain(HttpSecurity http) throws Exception {
+	public SecurityFilterChain apisEntryPoint(HttpSecurity http) throws Exception {
 		return http.csrf(AbstractHttpConfigurer::disable)
-			.authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
+			.antMatcher("/api/**")
+			.authorizeHttpRequests()
+			.anyRequest()
+			.authenticated()
+			.and()
 			.sessionManagement(configurer -> configurer
 					.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 			.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
+			.build();
+	}
+	
+	@Order(2)
+	@Bean
+	public SecurityFilterChain authenticationEntryPoint(HttpSecurity http, InMemoryUserDetailsManager userDetailsService) throws Exception {
+		return http.csrf(AbstractHttpConfigurer::disable)
+			.antMatcher("/token")
+			.authorizeHttpRequests()
+			.antMatchers("/token")
+			.authenticated()
+			.and()
+			.sessionManagement(configurer -> configurer
+					.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+			.userDetailsService(userDetailsService)
 			.httpBasic(Customizer.withDefaults())
 			.build();
 	}
