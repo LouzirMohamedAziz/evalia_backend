@@ -7,12 +7,11 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import org.springframework.security.core.userdetails.UserDetails;
@@ -61,7 +60,12 @@ public class Account implements UserDetails{
 	private Actor actor;
 	
 	@EqualsAndHashCode.Exclude
-	@OneToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(
+			name = "users_roles",
+			joinColumns = {@JoinColumn(name = "user_id")},
+			inverseJoinColumns = {@JoinColumn(name = "role_id")}
+		)
 	private List<Authority> authorities = new ArrayList<>();
 
 	public void setAuthorities(List<Authority> authorities){

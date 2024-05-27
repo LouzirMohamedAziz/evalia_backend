@@ -21,7 +21,6 @@ import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-import com.evalia.backend.repositories.ActorRepository;
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
@@ -42,13 +41,13 @@ public class SecurityConfig {
 	@Value("${rsa.public-key}")
 	private RSAPublicKey publicKey;
 	
-	private final ActorRepository actorRepository;
-	
-	
-	
-	public SecurityConfig(ActorRepository actorRepository) {
-		this.actorRepository = actorRepository;
-	}
+//	private final ActorRepository actorRepository;
+//	
+//	
+//	
+//	public SecurityConfig(ActorRepository actorRepository) {
+//		this.actorRepository = actorRepository;
+//	}
 	
 	@Bean
 	public InMemoryUserDetailsManager users() {
@@ -103,4 +102,5 @@ public class SecurityConfig {
 			.httpBasic(Customizer.withDefaults())
 			.build();
 	}
+	
 }

@@ -1,6 +1,7 @@
 package com.evalia.backend.util;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -10,25 +11,29 @@ import java.text.MessageFormat;
 import java.util.Optional;
 
 import com.evalia.backend.EvaliaApplication;
-import com.evalia.backend.exceptions.ResourceNotFoundException;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ResourceUtils {
+	
+	public static final String MSG_FILENOTFOUND = "The file {0} was not found on the classpath!";
 
 	public static String buildMessage(String template, Object... params) {
 		return MessageFormat.format(template, params);
 	}
 
-	public static InputStream loadResource(String path) throws ResourceNotFoundException {
+	public static InputStream loadResource(String path) throws FileNotFoundException {
 		InputStream stream = EvaliaApplication.class
 				.getClassLoader()
 				.getResourceAsStream(path);
 		
 		return Optional.ofNullable(stream)
-				.orElseThrow(() -> ResourceNotFoundException.build(path));
+				.orElseThrow(() -> {
+					String msg = buildMessage(MSG_FILENOTFOUND, path);
+					return new FileNotFoundException(msg);
+				});
 	}
 
 	public static String loadAsText(String path) throws IOException {

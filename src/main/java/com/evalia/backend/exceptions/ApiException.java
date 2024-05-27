@@ -1,6 +1,6 @@
 package com.evalia.backend.exceptions;
 
-public abstract class ApiException extends Exception {
+public abstract class ApiException extends RuntimeException {
 
 	/**
 	 * 

@@ -21,6 +21,7 @@ import lombok.Setter;
  * @author Mohamed Ben Hamouda
  *
  */
+
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @Setter
@@ -52,5 +53,9 @@ public class Country {
 			return;
 		this.governorates.clear();
 		governorates.forEach(this::addGovernorate);
+	}
+	
+	public String toString() {
+		return this.isoCode;
 	}
 }

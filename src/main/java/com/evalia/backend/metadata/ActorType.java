@@ -6,25 +6,30 @@ package com.evalia.backend.metadata;
  */
 public enum ActorType implements Enumeration{
 
-	/**
-	 * A privately owned enterprise
-	 */
-	PRIVATE("Private"),
-	
-	/**
-	 * A state-owned enterprise
-	 */
-	PUBLIC("Public"),
-
-	/**
-	 * A state-owned enterprise
-	 */
-	PARTNERSHIP("Partnership"),
+//	/**
+//	 * A privately owned enterprise
+//	 */
+//	PRIVATE("Private"),
+//	
+//	/**
+//	 * A state-owned enterprise
+//	 */
+//	PUBLIC("Public"),
+//
+//	/**
+//	 * A state-owned enterprise
+//	 */
+//	PARTNERSHIP("Partnership"),
 	
 	/**
 	 * A normal citizen
 	 */
-	CIVIL("Civil");
+	CIVIL("Personal"),
+	
+	/**
+	 * A professional Enterprise
+	 */
+	PROFESSIONAL("Professional");
 	
 	
 	private final String alias;

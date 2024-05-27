@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,11 +14,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
 
 /**
@@ -34,13 +35,14 @@ public class Governorate {
 
 	@EqualsAndHashCode.Include
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
 	@NotBlank
+	@Column(name = "governorate_name")
 	private String name;
-
-	@NonNull
+	
+	@NotNull
 	@ManyToOne(optional = false)
 	private Country country;
 
@@ -48,16 +50,26 @@ public class Governorate {
 			fetch = FetchType.LAZY, orphanRemoval = true)
 	private List<Delegation> delegations = new ArrayList<>();
 
-	
+
 	public void addDelegation(Delegation delegation) {
-		delegation.setGovernorate(this);
+		
+		Objects.requireNonNull(delegation)
+			.setGovernorate(this);
+		
 		delegations.add(delegation);
 	}
 
+	
 	public void setDelegations(List<Delegation> delegations) {
-		if(Objects.isNull(delegations))
-			return;
+		
+		Objects.requireNonNull(delegations);
+		
 		this.delegations.clear();
 		delegations.forEach(this::addDelegation);
+	}
+	
+	
+	public String toString() {
+		return String.valueOf(id);
 	}
 }
