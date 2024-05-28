@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import lombok.EqualsAndHashCode;
@@ -27,20 +27,16 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-//	@NotNull(message = "Actor in Address must not be null")
-//	@OneToOne(optional = false)
-//	private Actor actor;
 	
 	@NotNull
-	@OneToOne(optional = false)
+	@ManyToOne(optional = false)
 	private Country country;
 
 	@NotNull
-	@OneToOne(optional = false)
+	@ManyToOne(optional = false)
 	private Governorate governorate;
 
-	@OneToOne
+	@ManyToOne
 	private Delegation delegation;
 
 	private String street;
