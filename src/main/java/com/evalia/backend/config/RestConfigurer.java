@@ -1,70 +1,51 @@
 package com.evalia.backend.config;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
-import com.evalia.backend.models.Country;
-import com.evalia.backend.models.Delegation;
-import com.evalia.backend.models.Governorate;
 import com.evalia.backend.repositories.CountryRepository;
 import com.evalia.backend.repositories.DelegationRepository;
 import com.evalia.backend.repositories.GovernorateRepository;
 import com.evalia.backend.rest.deserializers.CountryDeserializer;
 import com.evalia.backend.rest.deserializers.DelegationDeserializer;
 import com.evalia.backend.rest.deserializers.GovernorateDeserializer;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 
 @Configuration
-public class RestConfigurer {
-	
+public class RestConfigurer implements Jackson2ObjectMapperBuilderCustomizer {
+
 	private final CountryRepository countryRepository;
 	private final GovernorateRepository governorateRepository;
 	private final DelegationRepository delegationRepository;
-	
-	public RestConfigurer(CountryRepository countryRepository,
+
+	public RestConfigurer(CountryRepository countryRepository, 
 			GovernorateRepository governorateRepository,
 			DelegationRepository delegationRepository) {
-		
+
 		this.countryRepository = countryRepository;
 		this.governorateRepository = governorateRepository;
 		this.delegationRepository = delegationRepository;
 	}
-	
-//	@Override
-//	public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-//        config.setDefaultMediaType(MediaType.APPLICATION_JSON);
-//		config.useHalAsDefaultJsonMediaType(false);
-//	}
-//
-//	@Override
-//	public void configureJacksonObjectMapper(ObjectMapper objectMapper) {
+
+//	@Bean
+//	public Jackson2ObjectMapperBuilder jackson2ObjectMapperBuilder() {
 //		SimpleModule simpleModule = new SimpleModule();
-//		
-//		simpleModule.addDeserializer(Country.class, 
-//				new CountryDeserializer(countryRepository));
-//		simpleModule.addDeserializer(Governorate.class, 
-//				new GovernorateDeserializer(governorateRepository));
-//		simpleModule.addDeserializer(Delegation.class, 
-//				new DelegationDeserializer(delegationRepository));
-//		
+//
+//		simpleModule.addDeserializer(Country.class, new CountryDeserializer(countryRepository));
+//		simpleModule.addDeserializer(Governorate.class, new GovernorateDeserializer(governorateRepository));
+//		simpleModule.addDeserializer(Delegation.class, new DelegationDeserializer(delegationRepository));
+//
 //		objectMapper.registerModule(simpleModule);
 //	}
-	
-	@Bean
-	public ObjectMapper objectMapper() {
-		ObjectMapper objectMapper = new ObjectMapper();
-		SimpleModule simpleModule = new SimpleModule();
-		
-		simpleModule.addDeserializer(Country.class, 
-				new CountryDeserializer(countryRepository));
-		simpleModule.addDeserializer(Governorate.class, 
-				new GovernorateDeserializer(governorateRepository));
-		simpleModule.addDeserializer(Delegation.class, 
-				new DelegationDeserializer(delegationRepository));
-		
-		objectMapper.registerModule(simpleModule);
-		return objectMapper;
+
+	@Override
+	public void customize(Jackson2ObjectMapperBuilder jacksonObjectMapperBuilder) {
+
+		jacksonObjectMapperBuilder.deserializers(
+				new CountryDeserializer(countryRepository),
+				new GovernorateDeserializer(governorateRepository),
+				new DelegationDeserializer(delegationRepository)
+		);
 	}
-	
+
 }

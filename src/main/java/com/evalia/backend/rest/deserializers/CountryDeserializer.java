@@ -32,6 +32,12 @@ public class CountryDeserializer extends StdDeserializer<Country> {
 
     
     @Override
+	public Class<?> handledType() {
+		return Country.class;
+	}
+
+
+	@Override
 	public Country deserialize(JsonParser parser, DeserializationContext ctxt) 
 			throws IOException, JacksonException {
 

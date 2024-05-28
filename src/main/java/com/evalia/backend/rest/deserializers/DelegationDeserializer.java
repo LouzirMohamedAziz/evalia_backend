@@ -26,6 +26,11 @@ public class DelegationDeserializer extends StdDeserializer<Delegation> {
 		super((Class<?>)null);
 		this.delegationRepository = delegationRepository;
 	}
+	
+	@Override
+	public Class<?> handledType() {
+		return Delegation.class;
+	}
 
 
 	@Override

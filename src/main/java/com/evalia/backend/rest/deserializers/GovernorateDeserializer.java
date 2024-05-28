@@ -27,6 +27,11 @@ public class GovernorateDeserializer extends StdDeserializer<Governorate> {
 		super((Class<?>)null);
 		this.governorateRepository = governorateRepository;
 	}
+	
+	@Override
+	public Class<?> handledType() {
+		return Governorate.class;
+	}
 
 	@Override
 	public Governorate deserialize(JsonParser parser, DeserializationContext ctxt) 
