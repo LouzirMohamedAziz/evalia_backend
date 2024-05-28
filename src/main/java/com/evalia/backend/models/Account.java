@@ -33,6 +33,11 @@ import lombok.Setter;
 @Entity
 public class Account implements UserDetails{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8211140625434787683L;
+
 	@Id
 	private String username;
 	
