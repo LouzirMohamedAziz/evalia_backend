@@ -12,4 +12,10 @@ public interface AuthenticationService {
 
 	public Boolean verifyPasswordResetToken(String token);
 
+	public void verifyPREmail(String email);
+
+	public void savePasswordResetTokenForUser(Account account, String token);
+
+	public void changeUserPassword(String email, String password);
+
 }

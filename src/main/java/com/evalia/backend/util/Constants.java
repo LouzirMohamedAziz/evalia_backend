@@ -32,4 +32,5 @@ public final class Constants {
 			"\t*Be 8 to 20 characters long.";
     public static final String INVALID_COUNTRY = "Invalid Country";
     public static final String INVALID_ID = "Id {0} in type {0} is malformed!";
+	public static final String RESET_TOKEN_MAIL_SUBJECT = "Password reset token";
 }

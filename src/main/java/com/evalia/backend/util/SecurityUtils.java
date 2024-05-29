@@ -4,6 +4,10 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Objects;
 
 import org.springframework.security.converter.RsaKeyConverters;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
@@ -48,6 +52,17 @@ public final class SecurityUtils {
 		return NimbusJwtDecoder.withPublicKey(publicKey).build();
 	}
 
-	
+	public static Date tokenExpirationDate(Integer intervalInMinutes){
+
+		Calendar c = Calendar.getInstance();
+		c.setTime(new Date());
+
+		if(Objects.nonNull(intervalInMinutes)){
+			intervalInMinutes += c.get(Calendar.MINUTE);
+			c.set(Calendar.MINUTE, intervalInMinutes);
+		}
+		
+		return c.getTime();
+	}
 
 }

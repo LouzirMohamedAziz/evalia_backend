@@ -9,11 +9,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -21,23 +26,13 @@ import lombok.Setter;
 @Entity
 public class PasswordResetToken {
 
-    public PasswordResetToken(Account account2, String token2) {
-        this.token = token2;
-        this.account = account2;
-    }
-
-    private static final int EXPIRATION = 60 * 24;
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     private String token;
 
-    @OneToOne(targetEntity = Account.class, fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false, name = "username")
-    private Account account;
-
+    @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
     private Date expiryDate;
 
+    @OneToOne(targetEntity = Account.class, fetch = FetchType.EAGER)
+    private Account account;
 }

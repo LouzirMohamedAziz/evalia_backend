@@ -46,7 +46,7 @@ public class Account implements UserDetails {
 	private String password;
 
 	@NotBlank
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String email;
 
 	@OneToOne(optional = true)

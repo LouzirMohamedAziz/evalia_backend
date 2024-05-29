@@ -8,6 +8,8 @@ services:
       MYSQL_USER: ${MYSQL_USERNAME}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - '3306:3306'
     volumes:
       - evalia_database:/var/lib/mysql
       - ./scripts:/docker-entrypoint-initdb.d
