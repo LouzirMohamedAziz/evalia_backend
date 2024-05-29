@@ -24,21 +24,19 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class SecurityUtils {
-	
+
 	public static RSAPublicKey loadPublicKey(String path) throws ResourceNotFoundException, IOException {
 		return RsaKeyConverters.x509()
 				.convert(new ByteArrayInputStream(
-						ResourceUtils.loadResource(path).readAllBytes())
-				);
+						ResourceUtils.loadResource(path).readAllBytes()));
 	}
 
 	public static RSAPrivateKey loadPrivateKey(String path) throws ResourceNotFoundException, IOException {
 		return RsaKeyConverters.pkcs8()
 				.convert(new ByteArrayInputStream(
-						ResourceUtils.loadResource(path).readAllBytes())
-				);
+						ResourceUtils.loadResource(path).readAllBytes()));
 	}
-	
+
 	public static JwtEncoder jwtEncoder(RSAPublicKey publicKey, RSAPrivateKey privateKey) {
 		JWK jwk = new RSAKey.Builder(publicKey)
 				.privateKey(privateKey).build();
@@ -49,5 +47,7 @@ public final class SecurityUtils {
 	public static JwtDecoder jwtDecoder(RSAPublicKey publicKey) {
 		return NimbusJwtDecoder.withPublicKey(publicKey).build();
 	}
+
+	
 
 }

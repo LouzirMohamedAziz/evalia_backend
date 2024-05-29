@@ -31,8 +31,8 @@ import lombok.Setter;
 @Setter
 
 @Entity
-public class Account implements UserDetails{
-	
+public class Account implements UserDetails {
+
 	/**
 	 * 
 	 */
@@ -40,41 +40,46 @@ public class Account implements UserDetails{
 
 	@Id
 	private String username;
-	
+
 	@NotBlank
 	@Column(nullable = false)
 	private String password;
-	
+
+	@NotBlank
+	@Column(nullable = false)
+	private String email;
+
+	@OneToOne(optional = true)
+	@Column(nullable = true)
+	private PasswordResetToken passwordResetToken;
+
 	@Column(nullable = false)
 	private boolean enabled = true;
-	
+
 	@Column(nullable = false)
 	private boolean accountNonExpired = true;
-	
+
 	@Column(nullable = false)
 	private boolean accountNonLocked = true;
-	
+
 	@Column(nullable = false)
 	private boolean credentialsNonExpired = true;
-	
+
 	@Column(nullable = false)
 	private boolean verified;
-	
+
 	@EqualsAndHashCode.Exclude
 	@OneToOne(optional = false)
 	private Actor actor;
-	
+
 	@EqualsAndHashCode.Exclude
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(
-			name = "users_roles",
-			joinColumns = {@JoinColumn(name = "user_id")},
-			inverseJoinColumns = {@JoinColumn(name = "role_id")}
-		)
+	@JoinTable(name = "users_roles", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "role_id") })
 	private List<Authority> authorities = new ArrayList<>();
 
-	public void setAuthorities(List<Authority> authorities){
-		if(Objects.isNull(authorities))
+	public void setAuthorities(List<Authority> authorities) {
+		if (Objects.isNull(authorities))
 			return;
 		this.authorities.clear();
 		this.authorities.forEach(this.authorities::add);

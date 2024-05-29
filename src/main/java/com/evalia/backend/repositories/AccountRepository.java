@@ -12,6 +12,10 @@ import com.evalia.backend.models.Account;
  */
 public interface AccountRepository extends CrudRepository<Account, String> {
 
-	Optional<Account> findByUsername(String username);
-	
+    Optional<Account> findByUsername(String username);
+
+    Account findByEmail(String email);
+
+    Optional<Account> findByPasswordResetToken(String token);
+
 }
