@@ -21,5 +21,5 @@ public interface AuthenticationService {
 
 	public void saveVerificationToken(Account account, String token, TokenType tokenType);
 
-	public boolean validateEmailToken(String token);d
+	public boolean validateEmailToken(String token);
 }
