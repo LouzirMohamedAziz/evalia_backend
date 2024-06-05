@@ -1,9 +1,5 @@
 package com.evalia.backend.metadata;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 /**
  * @author Hamdi Jandoubi
  *

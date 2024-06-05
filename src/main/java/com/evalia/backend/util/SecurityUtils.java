@@ -4,7 +4,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
@@ -16,6 +15,7 @@ import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 
 import com.evalia.backend.exceptions.ResourceNotFoundException;
+import com.evalia.backend.models.VerificationToken;
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
@@ -63,6 +63,11 @@ public final class SecurityUtils {
 		}
 		
 		return c.getTime();
+	}
+
+	public static boolean isTokenExpired(VerificationToken verificationToken) {
+		final Calendar cal = Calendar.getInstance();
+		return verificationToken.getExpiryDate().before(cal.getTime());
 	}
 
 }

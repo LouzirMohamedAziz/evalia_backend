@@ -6,15 +6,14 @@ import com.evalia.backend.exceptions.ResourceNotFoundException;
 import com.evalia.backend.models.Country;
 import com.evalia.backend.repositories.CountryRepository;
 
-public class CountryConverter implements Converter<String, Country>{
+public class CountryConverter implements Converter<String, Country> {
 
-	
 	private final CountryRepository countryRepository;
-	
+
 	public CountryConverter(CountryRepository countryRepository) {
 		this.countryRepository = countryRepository;
 	}
-	
+
 	@Override
 	public Country convert(String source) {
 		return countryRepository.findById(source)

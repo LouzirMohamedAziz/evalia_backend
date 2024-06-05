@@ -16,6 +16,4 @@ public interface AccountRepository extends CrudRepository<Account, String> {
 
     Account findByEmail(String email);
 
-    Optional<Account> findByPasswordResetToken(String token);
-
 }

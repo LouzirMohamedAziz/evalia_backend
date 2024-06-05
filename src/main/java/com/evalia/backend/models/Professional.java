@@ -35,9 +35,6 @@ public class Professional extends Actor {
 	
 	@NotBlank
 	private String phone;
-	
-	
-	private String mail;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private BusinessGroup ownedGroup;

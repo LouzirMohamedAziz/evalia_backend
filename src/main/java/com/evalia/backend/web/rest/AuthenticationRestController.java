@@ -28,7 +28,7 @@ public class AuthenticationRestController {
 
     @PostMapping("/token")
     public String token(Authentication authentication) {
-        return authController.getToken(authentication);
+        return authController.getJWTToken(authentication);
     }
 
     @PostMapping("/register")
@@ -46,9 +46,9 @@ public class AuthenticationRestController {
     }
 
     @PostMapping("/sendResetToken")
-    public void sendResetToken(@RequestParam("mail") String email) {
+    public void sendResetToken(@RequestParam("email") String email) {
         try {
-            authController.verifyPREmail(email);
+            authController.sendPasswordResetToken(email);
         } catch (UsernameNotFoundException e) {
             throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
@@ -56,20 +56,40 @@ public class AuthenticationRestController {
 
     @PostMapping("/verifyResetToken")
     public void verifyResetToken(@RequestParam String token) {
-        if (!authController.verifyPasswordResetToken(token)){
+        if (!authController.validatePRToken(token)) {
             throw new TokenInvalidException(token);
         }
     }
 
     @PostMapping("/updatePassword")
     public void savePassword(@RequestParam(name = "email") String email,
-            @RequestParam(name = "password") String password) {
+            @RequestParam(name = "password") String password,
+            @RequestParam(name = "token") String token) {
 
-       try {
-        authController.changeUserPassword(email, password);
-       } catch (AuthenticationException | IllegalArgumentException e) {
+        try {
+            verifyResetToken(token);
+            authController.changeUserPassword(email, password, token);
+
+        } catch (AuthenticationException | IllegalArgumentException e) {
             throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
-       }
+        }
+    }
+
+    @PostMapping("/verifyEmail")
+    public void verifyAccount(@RequestParam(name = "email") String email) {
+        try {
+            authController.sendEmailVerificationToken(email);
+        } catch (AuthenticationException e) {
+            throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+    }
+
+    @PostMapping("/validateEmail")
+    public void validateEmail(@RequestParam(name = "token") String token,
+            @RequestParam(name = "email") String email) {
+        if (!authController.validateEmailToken(token)) {
+            throw new TokenInvalidException(token);
+        }
     }
 
 }

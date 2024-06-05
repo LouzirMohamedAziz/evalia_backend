@@ -1,6 +1,7 @@
 package com.evalia.backend.ctrl;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -18,11 +19,14 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.evalia.backend.exceptions.EmailVerificationException;
+import com.evalia.backend.exceptions.TokenInvalidException;
 import com.evalia.backend.models.Account;
-import com.evalia.backend.models.PasswordResetToken;
+import com.evalia.backend.models.TokenType;
+import com.evalia.backend.models.VerificationToken;
 import com.evalia.backend.repositories.AccountRepository;
 import com.evalia.backend.repositories.ActorRepository;
-import com.evalia.backend.repositories.PasswordResetTokenRepository;
+import com.evalia.backend.repositories.VerificationTokenRepository;
 import com.evalia.backend.security.services.JwtTokenService;
 import com.evalia.backend.service.AuthenticationService;
 import com.evalia.backend.service.EmailService;
@@ -38,7 +42,7 @@ public class AuthenticationController implements AuthenticationService {
 	@Value("${evalia.security.passwordToken.expiration}")
 	private Integer tokenExpirationInMinutes;
 
-	private final PasswordResetTokenRepository passwordResetTokenRepository;
+	private final VerificationTokenRepository verificationTokenRepository;
 	private final JwtTokenService tokenService;
 	private final BCryptPasswordEncoder passwordEnocder;
 	private final AccountRepository accountRepository;
@@ -46,14 +50,13 @@ public class AuthenticationController implements AuthenticationService {
 	private final Pattern passwordPattern;
 	private final EmailService emailService;
 
-	public AuthenticationController(PasswordResetTokenRepository passwordResetTokenRepository,
+	public AuthenticationController(VerificationTokenRepository verificationTokenRepository,
 			JwtTokenService tokenService,
 			BCryptPasswordEncoder passwordEnocder,
 			AccountRepository accountRepository,
 			ActorRepository actorRepository,
 			EmailService emailService) {
-
-		this.passwordResetTokenRepository = passwordResetTokenRepository;
+		this.verificationTokenRepository = verificationTokenRepository;
 		this.tokenService = tokenService;
 		this.passwordEnocder = passwordEnocder;
 		this.accountRepository = accountRepository;
@@ -62,7 +65,7 @@ public class AuthenticationController implements AuthenticationService {
 		this.passwordPattern = Pattern.compile(Constants.PASSWORD_REGEX);
 	}
 
-	private Boolean validPassword(String password) {
+	private boolean validPassword(String password) {
 		return passwordPattern.matcher(password)
 				.matches();
 	}
@@ -92,7 +95,7 @@ public class AuthenticationController implements AuthenticationService {
 	}
 
 	@Override
-	public String getToken(Authentication authentication) {
+	public String getJWTToken(Authentication authentication) {
 		LOG.debug("Token requested for user: '{}'", authentication.getName());
 		String token = tokenService.generateToken(authentication);
 		LOG.debug("Token granted: {}", token);
@@ -100,22 +103,24 @@ public class AuthenticationController implements AuthenticationService {
 	}
 
 	@Override
-	public Boolean verifyPasswordResetToken(String token) {
+	public boolean validatePRToken(String token) {
 
-		final PasswordResetToken passToken = passwordResetTokenRepository.findByToken(token);
-		if (Objects.isNull(passToken) || isTokenExpired(passToken)) {
+		final VerificationToken verificationToken = verificationTokenRepository.findByTokenAndTokenType(token,
+				TokenType.PASSWORD_TOKEN);
+		if (Objects.isNull(verificationToken) || SecurityUtils.isTokenExpired(verificationToken)) {
 			return false;
 		}
+
 		return true;
 	}
 
 	@Override
-	public void verifyPREmail(String email) {
+	public void sendPasswordResetToken(String email) {
 
 		Account account = accountRepository.findByEmail(email);
 		if (Objects.nonNull(account)) {
 			String token = UUID.randomUUID().toString();
-			savePasswordResetTokenForUser(account, token);
+			saveVerificationToken(account, token, TokenType.PASSWORD_TOKEN);
 			emailService.sendEmail(account.getEmail(), Constants.RESET_TOKEN_MAIL_SUBJECT, token);
 			return;
 		}
@@ -124,42 +129,80 @@ public class AuthenticationController implements AuthenticationService {
 	}
 
 	@Override
-	public void savePasswordResetTokenForUser(Account account, String token) {
-		PasswordResetToken myToken = new PasswordResetToken(token,
-				SecurityUtils.tokenExpirationDate(tokenExpirationInMinutes), account);
-		passwordResetTokenRepository.save(myToken);
+	public void saveVerificationToken(Account account, String token, TokenType tokenType) {
+		VerificationToken myToken = new VerificationToken(token,
+				SecurityUtils.tokenExpirationDate(tokenExpirationInMinutes), account, tokenType);
+		verificationTokenRepository.save(myToken);
 	}
 
 	@Override
-	public void changeUserPassword(String email, String password) {
-		
-		if(Objects.isNull(email) || email.isBlank()){
+	@Transactional
+	public void changeUserPassword(String email, String password, String token) {
+		VerificationToken verificationToken = verificationTokenRepository.findByTokenAndTokenType(token,
+				TokenType.PASSWORD_TOKEN);
+		if (verificationToken.getAccount().getEmail().equals(email)) {
+			Account account = verifyUserByEmail(email);
+
+			if (!validPassword(password)) {
+				throw new ConstraintViolationException(Constants.INVALID_PASSWORD,
+						Set.of(ConstraintViolationImpl
+								.forParameterValidation(
+										Constants.INVALID_PASSWORD, null, null,
+										Constants.INVALID_PASSWORD, Account.class,
+										account, null, password, null, null, null, null)));
+			}
+
+			password = encodePassword(password);
+			account.setPassword(password);
+			accountRepository.save(account);
+			verificationTokenRepository.delete(verificationToken);
+			return;
+		}
+		throw TokenInvalidException.build(token);
+	}
+
+	@Override
+	public void sendEmailVerificationToken(String email) {
+		Account account = verifyUserByEmail(email);
+		VerificationToken verificationToken = verificationTokenRepository.findByAccount_Email(email);
+		if (Objects.nonNull(verificationToken))
+			verificationTokenRepository.delete(verificationToken);
+		if (!account.isEmailVerified()) {
+			String token = UUID.randomUUID().toString();
+			emailService.sendEmail(email, "Please verify your account by clicking on the linkin the email",
+					"Verification Code : " + token);
+			saveVerificationToken(account, token, TokenType.EMAIL_TOKEN);
+			return;
+		}
+		throw EmailVerificationException.build(email);
+	}
+
+	@Override
+	public boolean validateEmailToken(String token) {
+
+		final VerificationToken verificationToken = verificationTokenRepository.findByTokenAndTokenType(token,
+				TokenType.EMAIL_TOKEN);
+		if (Objects.isNull(verificationToken) || SecurityUtils.isTokenExpired(verificationToken)) {
+			return false;
+		}
+		verificationToken.getAccount().setEmailVerified(true);
+		verificationTokenRepository.delete(verificationToken);
+		return true;
+
+	}
+
+	private Account verifyUserByEmail(String email) {
+		if (Objects.isNull(email) || email.isBlank()) {
 			throw new IllegalArgumentException("Provided email is not valid!");
 		}
 
 		Account account = accountRepository.findByEmail(email);
 
-		if(Objects.isNull(account)){
+		if (Objects.isNull(account)) {
 			String msg = ResourceUtils.buildMessage("User with email {0} not found", email);
 			throw new UsernameNotFoundException(msg);
 		}
-
-		if (!validPassword(password)) {
-			throw new ConstraintViolationException(Constants.INVALID_PASSWORD,
-					Set.of(ConstraintViolationImpl
-							.forParameterValidation(
-									Constants.INVALID_PASSWORD, null, null,
-									Constants.INVALID_PASSWORD, Account.class,
-									account, null, password, null, null, null, null)));
-		}
-
-		password = encodePassword(password);
-		account.setPassword(password);
-		accountRepository.save(account);
+		return account;
 	}
 
-	private boolean isTokenExpired(PasswordResetToken passToken) {
-		final Calendar cal = Calendar.getInstance();
-		return passToken.getExpiryDate().before(cal.getTime());
-	}
 }

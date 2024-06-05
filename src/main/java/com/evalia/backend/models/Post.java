@@ -2,15 +2,12 @@ package com.evalia.backend.models;
 
 import java.util.List;
 
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
-import com.evalia.backend.converters.FilesConverter;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

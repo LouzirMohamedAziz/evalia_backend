@@ -48,11 +48,10 @@ public class Account implements UserDetails {
 	@NotBlank
 	@Column(nullable = false, unique = true)
 	private String email;
-
-	@OneToOne(optional = true)
-	@Column(nullable = true)
-	private PasswordResetToken passwordResetToken;
-
+	
+	@Column(nullable = false)
+	private boolean emailVerified;
+	
 	@Column(nullable = false)
 	private boolean enabled = true;
 

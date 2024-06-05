@@ -37,7 +37,7 @@ public class ActorDto {
 	@Email(message = "Email is not valid",
 			regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
 	@NotEmpty
-	private String mail;
+	private String email;
 	
 	@NotEmpty
 	private String username;

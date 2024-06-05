@@ -65,8 +65,17 @@
 		create-session="stateless" use-expressions="true" >
 		
 		<security:csrf disabled="true" />
-		<security:intercept-url pattern="/register" access="permitAll" />
+		
+		<security:intercept-url pattern="/validateEmail" access="authenticated" />
+		<security:intercept-url pattern="/verifyEmail" access="authenticated" />
 		<security:intercept-url pattern="/token" access="authenticated" />
+		
+		<security:intercept-url pattern="/updatePassword" access="permitAll" />
+		<security:intercept-url pattern="/register" access="permitAll" />
+		<security:intercept-url pattern="/sendResetToken" access="permitAll" />
+		<security:intercept-url pattern="/verifyResetToken" access="permitAll" />
+
+		
 		<security:http-basic/>
 	</security:http>
 

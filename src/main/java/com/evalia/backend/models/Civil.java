@@ -39,8 +39,5 @@ public class Civil extends Actor {
 	
 	@NotBlank
 	private String phone;
-	
-	@NotBlank
-	private String mail;
 
 }

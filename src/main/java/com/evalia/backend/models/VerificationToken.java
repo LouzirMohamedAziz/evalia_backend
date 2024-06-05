@@ -1,13 +1,11 @@
 package com.evalia.backend.models;
 
+
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,7 +22,8 @@ import lombok.Setter;
 @Setter
 
 @Entity
-public class PasswordResetToken {
+public class VerificationToken {
+    
 
     @Id
     private String token;
@@ -35,4 +34,8 @@ public class PasswordResetToken {
 
     @OneToOne(targetEntity = Account.class, fetch = FetchType.EAGER)
     private Account account;
+
+    
+    private TokenType tokenType;
+
 }
