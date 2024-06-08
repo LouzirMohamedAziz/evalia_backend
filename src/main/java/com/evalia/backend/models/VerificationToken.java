@@ -1,6 +1,5 @@
 package com.evalia.backend.models;
 
-
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -24,7 +23,6 @@ import lombok.Setter;
 @Entity
 public class VerificationToken {
     
-
     @Id
     private String token;
 
@@ -34,7 +32,6 @@ public class VerificationToken {
 
     @OneToOne(targetEntity = Account.class, fetch = FetchType.EAGER)
     private Account account;
-
     
     private TokenType tokenType;
 

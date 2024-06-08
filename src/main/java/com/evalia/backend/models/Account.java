@@ -16,6 +16,8 @@ import javax.validation.constraints.NotBlank;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,6 +43,7 @@ public class Account implements UserDetails {
 	@Id
 	private String username;
 
+	@JsonIgnore
 	@NotBlank
 	@Column(nullable = false)
 	private String password;
@@ -71,6 +74,7 @@ public class Account implements UserDetails {
 	@OneToOne(optional = false)
 	private Actor actor;
 
+	@JsonIgnore
 	@EqualsAndHashCode.Exclude
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "users_roles", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {

@@ -23,7 +23,7 @@ public class DelegationDeserializer extends StdDeserializer<Delegation> {
 	
 	
 	public DelegationDeserializer(DelegationRepository delegationRepository) {
-		super((Class<?>)null);
+		super(Delegation.class);
 		this.delegationRepository = delegationRepository;
 	}
 	

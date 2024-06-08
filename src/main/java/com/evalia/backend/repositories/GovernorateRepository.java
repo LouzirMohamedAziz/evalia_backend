@@ -1,6 +1,6 @@
 package com.evalia.backend.repositories;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.evalia.backend.models.Governorate;
 
@@ -8,6 +8,6 @@ import com.evalia.backend.models.Governorate;
  * @author Mohamed Ben Hamouda
  *
  */
-public interface GovernorateRepository extends PagingAndSortingRepository<Governorate, Long> {
+public interface GovernorateRepository extends JpaRepository<Governorate, Long> {
 
 }

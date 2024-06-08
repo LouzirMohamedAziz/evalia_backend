@@ -1,95 +1,99 @@
 package com.evalia.backend.web.rest;
 
-import java.text.MessageFormat;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
 import com.evalia.backend.ctrl.AuthenticationController;
-import com.evalia.backend.exceptions.TokenInvalidException;
-import com.evalia.backend.metadata.ActorType;
+import com.evalia.backend.exceptions.ApiException;
 import com.evalia.backend.models.Account;
+import com.evalia.backend.models.VerificationToken;
 
 @RestController
+@RequestMapping("/auth")
 public class AuthenticationRestController {
 
+	
     private final AuthenticationController authController;
 
+    
     public AuthenticationRestController(AuthenticationController authController) {
         this.authController = authController;
     }
 
+    
     @PostMapping("/token")
-    public String token(Authentication authentication) {
-        return authController.getJWTToken(authentication);
+    public String login(Authentication authentication) {
+        return authController.login(authentication);
     }
 
+    
     @PostMapping("/register")
-    public void register(@RequestParam("type") ActorType actorType,
-            @RequestBody Account account) {
-
-        if (ActorType.CIVIL.equals(actorType) ||
-                ActorType.PROFESSIONAL.equals(actorType)) {
-            authController.register(account);
-            return;
-        }
-        String message = "Actor type {0} is undefined!";
-        message = MessageFormat.format(message, actorType);
-        throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, message);
+    public void register(@RequestBody Account account) {
+    	try {
+    		authController.register(account);
+    	}catch(ApiException e) {
+    		throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, e.getMessage());
+    	}    
     }
-
-    @PostMapping("/sendResetToken")
-    public void sendResetToken(@RequestParam("email") String email) {
+    
+    
+    @PostMapping("/account/verification/send-token")
+    public void requestEmailVerification(Authentication authentication) {
         try {
-            authController.sendPasswordResetToken(email);
-        } catch (UsernameNotFoundException e) {
-            throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
-        }
-    }
-
-    @PostMapping("/verifyResetToken")
-    public void verifyResetToken(@RequestParam String token) {
-        if (!authController.validatePRToken(token)) {
-            throw new TokenInvalidException(token);
-        }
-    }
-
-    @PostMapping("/updatePassword")
-    public void savePassword(@RequestParam(name = "email") String email,
-            @RequestParam(name = "password") String password,
-            @RequestParam(name = "token") String token) {
-
-        try {
-            verifyResetToken(token);
-            authController.changeUserPassword(email, password, token);
-
-        } catch (AuthenticationException | IllegalArgumentException e) {
-            throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
-        }
-    }
-
-    @PostMapping("/verifyEmail")
-    public void verifyAccount(@RequestParam(name = "email") String email) {
-        try {
-            authController.sendEmailVerificationToken(email);
+        	String username = authentication.getName();
+            authController.requestEmailVerification(username);
         } catch (AuthenticationException e) {
-            throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
 
-    @PostMapping("/validateEmail")
-    public void validateEmail(@RequestParam(name = "token") String token,
-            @RequestParam(name = "email") String email) {
-        if (!authController.validateEmailToken(token)) {
-            throw new TokenInvalidException(token);
+    
+    @PostMapping("/account/verification")
+    public void verifyEmail(@RequestParam(name = "token") String token,
+    		Authentication authentication) {
+    	try {
+    		String username = authentication.getName();
+            authController.verifyEmail(token, username);
+        } catch (AuthenticationException e) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
 
+    
+    @PostMapping("/password/reset/send-token")
+    public void requestPasswordRecovery(@RequestParam("email") String email) {
+        try {
+            authController.requestPasswordRecovery(email);
+        } catch (ApiException e) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
+    
+    @PostMapping("/password/reset/validate-token")
+    public VerificationToken verifyPasswordRecoveryToken(@RequestParam("token") String token) {
+    	try {
+        	return authController.verifyPasswordRecoveryToken(token); 
+    	}catch(ApiException e){
+    		throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
+    
+    @PostMapping("/password/reset")
+    public void recoverPassword(@RequestParam(name = "token") String token,
+    		@RequestParam(name = "password") String password) {
+        try {
+            authController.recoverPassword(token, password);
+        } catch (ApiException e) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
 }

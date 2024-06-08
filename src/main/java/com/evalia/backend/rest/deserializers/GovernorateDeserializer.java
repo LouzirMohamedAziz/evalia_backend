@@ -24,7 +24,7 @@ public class GovernorateDeserializer extends StdDeserializer<Governorate> {
 
 	
 	public GovernorateDeserializer(GovernorateRepository governorateRepository) {
-		super((Class<?>)null);
+		super(Governorate.class);
 		this.governorateRepository = governorateRepository;
 	}
 	

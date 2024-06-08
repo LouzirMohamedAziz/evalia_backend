@@ -26,7 +26,7 @@ public class CountryDeserializer extends StdDeserializer<Country> {
 	
     
     public CountryDeserializer(CountryRepository countryRepository) {
-		super((Class<?>)null);
+		super(Country.class);
 		this.countryRepository = countryRepository;
 	}
 

@@ -51,32 +51,32 @@
 		</security:authentication-provider>
 	</security:authentication-manager>
 	
-	<security:http name="services" pattern="/api/**"
-		create-session="stateless" use-expressions="true">
-		
-		<security:csrf disabled="true" />
-		<security:intercept-url pattern="/api/**" access="authenticated" />
-		<security:oauth2-resource-server>
-			<security:jwt decoder-ref="jwtDecoder"/>
-		</security:oauth2-resource-server>
-	</security:http>
 	
-	<security:http name="login" pattern="/token" authentication-manager-ref="authenticationManager"
+	<security:http name="login" pattern="/auth/token" authentication-manager-ref="authenticationManager"
 		create-session="stateless" use-expressions="true" >
 		
 		<security:csrf disabled="true" />
 		
-		<security:intercept-url pattern="/validateEmail" access="authenticated" />
-		<security:intercept-url pattern="/verifyEmail" access="authenticated" />
-		<security:intercept-url pattern="/token" access="authenticated" />
-		
-		<security:intercept-url pattern="/updatePassword" access="permitAll" />
-		<security:intercept-url pattern="/register" access="permitAll" />
-		<security:intercept-url pattern="/sendResetToken" access="permitAll" />
-		<security:intercept-url pattern="/verifyResetToken" access="permitAll" />
-
+		<security:intercept-url pattern="/auth/token" access="authenticated" />
 		
 		<security:http-basic/>
+		
+	</security:http>
+	
+	
+	<security:http name="services" pattern="/**"
+		create-session="stateless" use-expressions="true">
+		
+		<security:csrf disabled="true" />
+		
+		<security:intercept-url pattern="/auth/account/verification/**" access="authenticated" />
+		<security:intercept-url pattern="/api/**" access="authenticated" />
+		<security:intercept-url pattern="/auth/**" access="permitAll" />
+		
+		<security:oauth2-resource-server>
+			<security:jwt decoder-ref="jwtDecoder"/>
+		</security:oauth2-resource-server>
+		
 	</security:http>
 
 </beans>
