@@ -17,6 +17,7 @@ import javax.validation.constraints.NotBlank;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -43,7 +44,7 @@ public class Account implements UserDetails {
 	@Id
 	private String username;
 
-	@JsonIgnore
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@NotBlank
 	@Column(nullable = false)
 	private String password;

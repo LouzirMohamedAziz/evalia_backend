@@ -9,6 +9,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
+import com.querydsl.core.annotations.QueryInit;
+
 import java.util.List;
 import java.util.Objects;
 

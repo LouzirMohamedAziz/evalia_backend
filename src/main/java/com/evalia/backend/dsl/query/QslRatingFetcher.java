@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import com.evalia.backend.exceptions.ValueConversionException;
 import com.evalia.backend.metadata.Performance;
 import com.evalia.backend.models.QRating;
+import com.evalia.backend.models.QSector;
 import com.evalia.backend.models.Rating;
 import com.evalia.backend.util.Constants;
 import com.querydsl.core.types.dsl.BooleanExpression;

@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
+import com.querydsl.core.annotations.QueryInit;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,6 +45,7 @@ public class Rating {
     @OneToOne
     private Civil evaluater;
     
+    @QueryInit({"subSector.*", "address.*"})
     @ManyToOne(optional = false)
     private Professional evaluatee;
 
