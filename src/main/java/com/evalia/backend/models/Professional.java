@@ -42,12 +42,15 @@ public class Professional extends Actor {
 	@ManyToOne
 	private BusinessGroup businessGroup;
 
-	@OneToMany(mappedBy = "professional", cascade = CascadeType.ALL,
+	@OneToMany(mappedBy = "evaluatee", cascade = CascadeType.ALL,
 			fetch = FetchType.LAZY, orphanRemoval = true)
 	private List<Rating> ratings;
+	
+	@ManyToOne
+	private SubSector subSector;
 
 	public void addRating(Rating rating) {
-		rating.setProfessional(this);
+		rating.setEvaluatee(this);
 		ratings.add(rating);
 	}
 

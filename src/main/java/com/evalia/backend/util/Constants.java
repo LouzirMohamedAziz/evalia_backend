@@ -33,4 +33,5 @@ public final class Constants {
     public static final String INVALID_COUNTRY = "Invalid Country";
     public static final String INVALID_ID = "Id {0} in type {0} is malformed!";
 	public static final String RESET_TOKEN_MAIL_SUBJECT = "Password reset token";
+	public static final String FIELD_NOT_RECOGNIZED = "the field {0} is not recognized in the type Rating!";
 }

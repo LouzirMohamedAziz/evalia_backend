@@ -18,6 +18,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.evalia.backend.ctrl.services.AuthenticationService;
 import com.evalia.backend.exceptions.TokenExpiredException;
 import com.evalia.backend.exceptions.TokenInvalidException;
 import com.evalia.backend.models.Account;
@@ -27,7 +28,6 @@ import com.evalia.backend.repositories.AccountRepository;
 import com.evalia.backend.repositories.ActorRepository;
 import com.evalia.backend.repositories.VerificationTokenRepository;
 import com.evalia.backend.security.services.JwtTokenService;
-import com.evalia.backend.service.AuthenticationService;
 import com.evalia.backend.service.EmailService;
 import com.evalia.backend.util.Constants;
 import com.evalia.backend.util.ResourceUtils;
