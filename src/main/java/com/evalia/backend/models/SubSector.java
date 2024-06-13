@@ -5,6 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.querydsl.core.annotations.QueryInit;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -26,7 +27,7 @@ public class SubSector {
 	@EqualsAndHashCode.Include
 	@Id
 	private String name;
-
+	
 	@JsonBackReference
 	@ManyToOne(optional = false)
 	private Sector sector;
