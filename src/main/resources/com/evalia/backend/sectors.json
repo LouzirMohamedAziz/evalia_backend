@@ -1,0 +1,163 @@
+[
+    {
+        "name": "Governance",
+        "subSectors": [
+            {
+                "name": "Development"
+            },
+            {
+                "name": "Deplomacy"
+            },
+            {
+                "name": "Decentralization"
+            },
+            {
+                "name": "Childhood_Youth_Women_Seniors_CSO"
+            },
+            {
+                "name": "Employment"
+            },
+            {
+                "name": "Justice"
+            }
+        ]
+    },
+    {
+        "name": "Security/Defence",
+        "subSectors": [
+            {
+                "name": "Police"
+            },
+            {
+                "name": "Gards"
+            },
+            {
+                "name": "Civil_Protection"
+            },
+            {
+                "name": "Ground_Infantry"
+            },
+            {
+                "name": "Navy"
+            },
+            {
+                "name": "Air_Force"
+            }
+        ]
+    },
+    {
+        "name": "Health/Hygene",
+        "subSectors": [
+            {
+                "name": "Medecine"
+            },
+            {
+                "name": "Pharmacy"
+            },
+            {
+                "name": "Biology"
+            },
+            {
+                "name": "Waste"
+            },
+            {
+                "name": "Sanitation"
+            },
+            {
+                "name": "Infrastructure"
+            }
+        ]
+    },
+    {
+        "name": "Instruction/Culture",
+        "subSectors": [
+            {
+                "name": "Education"
+            },
+            {
+                "name": "Higher Education"
+            },
+            {
+                "name": "Training"
+            },
+            {
+                "name": "Arts"
+            },
+            {
+                "name": "Sports"
+            },
+            {
+                "name": "Religions"
+            }
+        ]
+    },
+    {
+        "name": "Food/Finance",
+        "subSectors": [
+            {
+                "name": "Agriculture"
+            },
+            {
+                "name": "Industry"
+            },
+            {
+                "name": "Trade"
+            },
+            {
+                "name": "Banking"
+            },
+            {
+                "name": "Stock Exchange"
+            },
+            {
+                "name": "Insurance"
+            }
+        ]
+    },
+    {
+        "name": "Housing/Tourism",
+        "subSectors": [
+            {
+                "name": "Equipment"
+            },
+            {
+                "name": "Real Estate"
+            },
+            {
+                "name": "Construction"
+            },
+            {
+                "name": "Sea Side"
+            },
+            {
+                "name": "Mountain Side"
+            },
+            {
+                "name": "Desert Side"
+            }
+        ]
+    },
+    {
+        "name": "Transport/Telecoms",
+        "subSectors": [
+            {
+                "name": "Internet"
+            },
+            {
+                "name": "Telephone"
+            },
+            {
+                "name": "Postal"
+            },
+            {
+                "name": "Aerial"
+            },
+            {
+                "name": "Maritime"
+            },
+            {
+                "name": "Land"
+            }
+        ]
+    }
+]
