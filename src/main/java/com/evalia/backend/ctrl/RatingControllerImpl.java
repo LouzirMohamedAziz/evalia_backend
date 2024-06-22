@@ -49,6 +49,9 @@ public class RatingControllerImpl implements RatingController {
 		}
 		rating.setDate(new Date());
 		rating.setEvaluater((Civil)evaluater);
+		if (rating.getRate() == null) {
+            throw new IllegalArgumentException("Rate must not be null");
+        }
 		ratingRepository.save(rating);
 	}
 

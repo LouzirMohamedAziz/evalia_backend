@@ -3,6 +3,8 @@ package com.evalia.backend.web.rest;
 import java.util.List;
 import java.util.Map;
 
+import javax.transaction.Transactional;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,8 +31,8 @@ public class RatingRestController {
 		return ratingController.search(criterions);
 	}
 	
-	@PostMapping
-	public void add(Rating rating) {
+	@PostMapping("/add")
+	public void add(@RequestBody Rating rating) {
 		ratingController.add(rating);
 	}
 }

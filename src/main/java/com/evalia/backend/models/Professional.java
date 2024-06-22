@@ -1,5 +1,8 @@
 package com.evalia.backend.models;
 
+import java.util.List;
+import java.util.Objects;
+
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -8,11 +11,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
-
-import com.querydsl.core.annotations.QueryInit;
-
-import java.util.List;
-import java.util.Objects;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -61,5 +59,5 @@ public class Professional extends Actor {
 			return;
 		this.ratings.clear();
 		ratings.forEach(this::addRating);
-	}
+	}   
 }

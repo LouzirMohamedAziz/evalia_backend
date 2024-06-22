@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 import com.evalia.backend.exceptions.ValueConversionException;
 import com.evalia.backend.metadata.Performance;
 import com.evalia.backend.models.QRating;
-import com.evalia.backend.models.QSector;
 import com.evalia.backend.models.Rating;
 import com.evalia.backend.util.Constants;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -60,7 +59,6 @@ public class QslRatingFetcher {
 	@PersistenceContext
 	private EntityManager em;
 
-	
 	private static Map<String, String> purgeCriterions(Map<String, String> criterions) {
 		Iterator<Entry<String, String>> iterator = criterions.entrySet().iterator();
 		while (iterator.hasNext()) {
@@ -73,7 +71,6 @@ public class QslRatingFetcher {
 		return criterions;
 	}
 
-	
 	private static Date convertToDate(String value) throws ParseException {
 		try {
 			return FORMATTER_1.parse(value);
@@ -82,16 +79,15 @@ public class QslRatingFetcher {
 		}
 	}
 
-	
 	private static Entry<String, Object> parseValue(String field, String value) {
 		try {
 			switch (field) {
-			case RATING_DATE:
-				return Map.entry(field, convertToDate(value));
-			case PERFORMANCE:
-				return Map.entry(field, Performance.valueOf(value.toUpperCase()));
-			default:
-				return Map.entry(field, value);
+				case RATING_DATE:
+					return Map.entry(field, convertToDate(value));
+				case PERFORMANCE:
+					return Map.entry(field, Performance.valueOf(value.toUpperCase()));
+				default:
+					return Map.entry(field, value);
 			}
 		} catch (ParseException | IllegalArgumentException e) {
 			String type = e instanceof ParseException ? Date.class.getTypeName() : Performance.class.getTypeName();
@@ -99,38 +95,36 @@ public class QslRatingFetcher {
 		}
 	}
 
-	
 	private static Map<String, Object> parseCriterions(Map<String, String> criterions) {
 		criterions = purgeCriterions(criterions);
 		int i = 0;
-		Entry<String, Object>[] parsedCriterions = 
-				(Entry<String, Object>[]) new Entry[criterions.size()];
-		for(Entry<String, String> entry: criterions.entrySet()) {
+		Entry<String, Object>[] parsedCriterions = (Entry<String, Object>[]) new Entry[criterions.size()];
+		for (Entry<String, String> entry : criterions.entrySet()) {
 			parsedCriterions[i++] = parseValue(entry.getKey(), entry.getValue());
 		}
 		return Map.ofEntries(parsedCriterions);
 	}
 
-	
 	public List<Rating> fetch(Map<String, String> criterions) {
-		
+
 		Map<String, Object> parsedCriterions = parseCriterions(criterions);
-		
+
 		BooleanExpression exp = null;
-		
-		for(Entry<String, Object> entry: parsedCriterions.entrySet()) {
+
+		for (Entry<String, Object> entry : parsedCriterions.entrySet()) {
 			SimpleExpression ex = bindings.get(entry.getKey());
-			if(Objects.isNull(ex)) {
+			if (Objects.isNull(ex)) {
 				String msg = MessageFormat.format(Constants.FIELD_NOT_RECOGNIZED, entry.getKey());
 				throw new IllegalArgumentException(msg);
 			}
-			//each boolean experssion requires .and(Nullable property) to append another condition 
+			// each boolean experssion requires .and(Nullable property) to append another
+			// condition
 			exp = ex.eq(entry.getValue()).and(exp);
 		}
-		
+
 		JPAQueryFactory queryFactory = new JPAQueryFactory(JPQLTemplates.DEFAULT, em);
 		return queryFactory.select(rating)
-			.where(exp)
-			.fetch();
+				.where(exp)
+				.fetch();
 	}
 }
