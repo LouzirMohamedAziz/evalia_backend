@@ -54,7 +54,7 @@ public class Account implements UserDetails {
 	private String email;
 	
 	@Column(nullable = false)
-	private boolean emailVerified;
+	private boolean emailVerified = false;
 	
 	@Column(nullable = false)
 	private boolean enabled = true;
@@ -69,7 +69,7 @@ public class Account implements UserDetails {
 	private boolean credentialsNonExpired = true;
 
 	@Column(nullable = false)
-	private boolean verified;
+	private boolean verified = false;
 
 	@EqualsAndHashCode.Exclude
 	@OneToOne(optional = false)
