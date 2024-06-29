@@ -20,6 +20,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build with Maven
-      run: mvn -B package --file pom.xml -DoutputDirectory=/opt/deployments -DskipTests
+      run: mvn -B package --file pom.xml -DoutputDirectory=/opt/deployments
     - name: Run Evalia
       run: cd /opt/deployments && mvn spring-boot:run -Dspring-boot.run.profiles=test
+      env:
+          DATABASE_HOST: ${DATABASE_HOST}
+          DATABASE_NAME: ${DATABASE_NAME}
+          DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
