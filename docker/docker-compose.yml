@@ -3,20 +3,20 @@ services:
   postgres:
     image: postgres:16
     environment:
-      POSTGRES_DB: ${PGSQL_DATABASE}
-      POSTGRES_USER: ${PGSQL_USERNAME}
-      POSTGRES_PASSWORD: ${PGSQL_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USERNAME: ${POSTGRES_USERNAME}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - '5432:5432'
     volumes:
       - evalia_database:/var/lib/postgresql/data
-      - ./scripts:/docker-entrypoint-initdb.d
     networks:
       - EVALIA
     healthcheck:
-      test: "pg_isready -U ${PGSQL_USERNAME}"
-      interval: 10s
-      retries: 10
+      test: [ "CMD-SHELL", "pg_isready -d postgres" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
   evalia:
     image: evalia

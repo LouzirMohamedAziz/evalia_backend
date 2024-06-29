@@ -50,5 +50,8 @@ public abstract class Actor {
 	@AddressConstraint
 	@OneToOne(cascade = CascadeType.ALL, optional = false, orphanRemoval = true)
 	private Address address;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	private Image image;
 	
 }
