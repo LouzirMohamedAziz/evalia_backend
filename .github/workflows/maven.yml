@@ -19,7 +19,7 @@ jobs:
 
     steps:
     - name: echo test
-    - run: echo ${{ github.repository }}
+      run: echo ${{ github.repository }}
     # - uses: actions/checkout@v4
     # - name: Build with Maven
     #   run: mvn -B package --file pom.xml -DoutputDirectory=/opt/deployments
