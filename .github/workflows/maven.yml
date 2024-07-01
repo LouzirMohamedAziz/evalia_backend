@@ -26,7 +26,7 @@ jobs:
     - name: Run Evalia
       run: echo "host $DATABASE_HOST , name $DATABASE_NAME , user $DATABASE_USERNAME , pass $DATABASE_PASSWORD"
       env:
-          DATABASE_HOST: ${{ env.DATABASE_HOST }}
-          DATABASE_NAME: ${{ env.DATABASE_NAME }}
+          DATABASE_HOST: ${{ vars.DATABASE_HOST }}
+          DATABASE_NAME: ${{ vars.DATABASE_NAME }}
           DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
           DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
