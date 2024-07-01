@@ -20,7 +20,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Stop the previous running instance
-      run: jps | grep -i evalia | awk '{print $1}' | kill
+      run: kill $(jps | grep -i evalia | awk '{print $1}')
     - name: Build with Maven
       run: mvn -B package
     - name: Pre-deploy
