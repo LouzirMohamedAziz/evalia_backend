@@ -24,7 +24,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package
     - name: Run Evalia
-      run: echo "$DATABASE_HOST|$DATABASE_NAME|$DATABASE_USERNAME|$DATABASE_PASSWORD" && mvn spring-boot:start -Dspring-boot.run.profiles=test
+      run: echo ${{ secrets.DATABASE_USERNAME }} && mvn spring-boot:start -Dspring-boot.run.profiles=test
       env:
           DATABASE_HOST: ${DATABASE_HOST}
           DATABASE_NAME: ${DATABASE_NAME}
