@@ -32,3 +32,4 @@ jobs:
           DATABASE_NAME: ${{ vars.DATABASE_NAME }}
           DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
           DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          LOG_PATH: ${{ vars.LOG_PATH }}
