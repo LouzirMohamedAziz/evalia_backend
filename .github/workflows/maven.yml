@@ -20,13 +20,14 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Stop the previous running instance
-      run: sudo systemctl stop evalia.service
+      run: jps | grep -i evalia | awk '{print $1}' | kill
     - name: Build with Maven
       run: mvn -B package
     - name: Pre-deploy
-      run: cp target/evalia-1.0-SNAPSHOT.war /opt/deployments/evalia
+      run: cp target/evalia-1.0-SNAPSHOT.war /opt/deployments/evalia/evalia.war
     - name: Run Evalia
-      run: sudo systemctl start evalia.service
+      working-directory: /opt/deployments/evalia
+      run: java -jar evalia.war --spring.profiles.active=test
       env:
           DATABASE_HOST: ${{ vars.DATABASE_HOST }}
           DATABASE_NAME: ${{ vars.DATABASE_NAME }}
