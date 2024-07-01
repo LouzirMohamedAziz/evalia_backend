@@ -125,5 +125,5 @@ target/
 /.vscode/launch.json
 /.vscode/settings.json
 
-# ### profiled application.properties
-# application-*.properties
+### profiled application.properties
+application-*.properties
