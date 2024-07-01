@@ -20,11 +20,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Stop the previous running instance
-      run: mvn spring-boot:stop
+      run: sudo systemctl stop evalia.service
     - name: Build with Maven
       run: mvn -B package
     - name: Run Evalia
-      run: mvn spring-boot:start -Dspring-boot.run.profiles=test
+      run: sudo systemctl start evalia.service
       env:
           DATABASE_HOST: ${{ vars.DATABASE_HOST }}
           DATABASE_NAME: ${{ vars.DATABASE_NAME }}
