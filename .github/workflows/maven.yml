@@ -27,7 +27,7 @@ jobs:
       run: cp target/evalia-1.0-SNAPSHOT.war /opt/deployments/evalia/evalia.war
     - name: Run Evalia
       working-directory: /opt/deployments/evalia
-      run: java -jar evalia.war --spring.profiles.active=test
+      run: nohup java -jar evalia.war --spring.profiles.active=test
       env:
           DATABASE_HOST: ${{ vars.DATABASE_HOST }}
           DATABASE_NAME: ${{ vars.DATABASE_NAME }}
