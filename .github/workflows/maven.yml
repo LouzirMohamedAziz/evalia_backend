@@ -31,6 +31,7 @@ jobs:
       working-directory: /opt/deployments/evalia
       run: nohup java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000 -jar evalia.war --spring.profiles.active=test > /dev/null &
       env:
+          PORT: ${{ vars.PORT }}
           DATABASE_HOST: ${{ vars.DATABASE_HOST }}
           DATABASE_NAME: ${{ vars.DATABASE_NAME }}
           DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
