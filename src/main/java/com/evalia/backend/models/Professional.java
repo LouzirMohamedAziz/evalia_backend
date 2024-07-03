@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,6 +44,7 @@ public class Professional extends Actor {
 	@ManyToOne
 	private BusinessGroup businessGroup;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "evaluatee", cascade = CascadeType.ALL,
 			fetch = FetchType.LAZY, orphanRemoval = true)
 	private List<Rating> ratings;

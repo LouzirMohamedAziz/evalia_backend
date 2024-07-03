@@ -3,6 +3,7 @@ package com.evalia.backend.dsl.query;
 import java.text.MessageFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -22,6 +23,7 @@ import com.evalia.backend.models.Rating;
 import com.evalia.backend.util.Constants;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.SimpleExpression;
+import com.querydsl.core.types.dsl.TemporalExpression;
 import com.querydsl.jpa.JPQLTemplates;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
@@ -56,8 +58,10 @@ public class QslRatingFetcher {
 		);
 	}
 
+	
 	@PersistenceContext
 	private EntityManager em;
+	
 
 	private static Map<String, String> purgeCriterions(Map<String, String> criterions) {
 		Iterator<Entry<String, String>> iterator = criterions.entrySet().iterator();
@@ -70,6 +74,7 @@ public class QslRatingFetcher {
 		}
 		return criterions;
 	}
+	
 
 	private static Date convertToDate(String value) throws ParseException {
 		try {
@@ -78,6 +83,7 @@ public class QslRatingFetcher {
 			return FORMATTER_2.parse(value);
 		}
 	}
+	
 
 	private static Entry<String, Object> parseValue(String field, String value) {
 		try {
@@ -94,6 +100,7 @@ public class QslRatingFetcher {
 			throw ValueConversionException.build(value, type);
 		}
 	}
+	
 
 	private static Map<String, Object> parseCriterions(Map<String, String> criterions) {
 		criterions = purgeCriterions(criterions);
@@ -104,11 +111,25 @@ public class QslRatingFetcher {
 		}
 		return Map.ofEntries(parsedCriterions);
 	}
+	
+
+	private <T> BooleanExpression buildExpression(SimpleExpression<T> exp, T value) {
+		Calendar calendar = Calendar.getInstance();
+		if(value instanceof Date) {
+			Date val = (Date) value;
+			calendar.setTime(val);
+			calendar.add(Calendar.DAY_OF_MONTH, 1);
+			calendar.add(Calendar.SECOND, -1);
+			Date from = val;
+			Date to = calendar.getTime();
+			return ((TemporalExpression)exp).between(from, to);
+		}
+		return exp.eq(value);
+	}
+	
 
 	public List<Rating> fetch(Map<String, String> criterions) {
-
 		Map<String, Object> parsedCriterions = parseCriterions(criterions);
-
 		BooleanExpression exp = null;
 
 		for (Entry<String, Object> entry : parsedCriterions.entrySet()) {
@@ -119,11 +140,13 @@ public class QslRatingFetcher {
 			}
 			// each boolean experssion requires .and(Nullable property) to append another
 			// condition
-			exp = ex.eq(entry.getValue()).and(exp);
+			
+			exp = buildExpression(ex, entry.getValue()).and(exp);
 		}
 
 		JPAQueryFactory queryFactory = new JPAQueryFactory(JPQLTemplates.DEFAULT, em);
-		return queryFactory.select(rating)
+		return queryFactory
+				.selectFrom(rating)
 				.where(exp)
 				.fetch();
 	}

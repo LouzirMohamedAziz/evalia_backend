@@ -2,9 +2,10 @@ package com.evalia.backend.web.rest;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-import javax.transaction.Transactional;
-
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,12 +27,22 @@ public class RatingRestController {
 	}
 	
 	
-	@GetMapping
-	public List<Rating> search(@RequestBody Map<String, String> criterions){
-		return ratingController.search(criterions);
+	public static Map<String, String> multiToSingleValuedMap(MultiValueMap<String, String> map){
+		return map.entrySet().stream()
+				.collect(Collectors.groupingBy(Entry::getKey,
+						Collectors.flatMapping(entry -> entry.getValue().stream(), 
+								Collectors.joining())));
 	}
 	
-	@PostMapping("/add")
+	
+	@GetMapping
+	public List<Rating> search(@RequestBody MultiValueMap<String, String> parameters){
+		Map<String, String> params = multiToSingleValuedMap(parameters);
+		return ratingController.search(params);
+	}
+	
+	
+	@PostMapping
 	public void add(@RequestBody Rating rating) {
 		ratingController.add(rating);
 	}
