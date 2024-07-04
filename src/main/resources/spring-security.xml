@@ -71,7 +71,9 @@
 		
 		<security:intercept-url pattern="/auth/account/verification/**" access="authenticated" />
 		<security:intercept-url pattern="/auth/**" access="permitAll" />
-		<security:intercept-url pattern="/api/countries|governorates/**" access="permitAll" method="GET"/>
+		<security:intercept-url pattern="/api/countries/**" access="permitAll" method="GET"/>
+		<security:intercept-url pattern="/api/governorates/**" access="permitAll" method="GET"/>
+		
 		<security:intercept-url pattern="/api/**" access="authenticated" />
 		
 		<security:oauth2-resource-server>
