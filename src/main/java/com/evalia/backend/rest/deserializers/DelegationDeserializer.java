@@ -43,6 +43,6 @@ public class DelegationDeserializer extends StdDeserializer<Delegation> {
 
 		return delegationRepository.findById(delegationCode)
 				.orElseThrow(() -> ResourceNotFoundException
-						.build(Country.class.getName(), String.valueOf(delegationCode)));
+						.build(Delegation.class.getName(), String.valueOf(delegationCode)));
 	}
 }
