@@ -81,5 +81,4 @@
 		</security:oauth2-resource-server>
 		
 	</security:http>
-
 </beans>

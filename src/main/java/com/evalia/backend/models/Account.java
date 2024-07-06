@@ -52,10 +52,10 @@ public class Account implements UserDetails {
 	@NotBlank
 	@Column(nullable = false, unique = true)
 	private String email;
-	
+
 	@Column(nullable = false)
 	private boolean emailVerified = false;
-	
+
 	@Column(nullable = false)
 	private boolean enabled = true;
 
@@ -74,6 +74,10 @@ public class Account implements UserDetails {
 	@EqualsAndHashCode.Exclude
 	@OneToOne(optional = false)
 	private Actor actor;
+
+	private boolean isUsingMfa = false;
+
+	private String secret;
 
 	@JsonIgnore
 	@EqualsAndHashCode.Exclude

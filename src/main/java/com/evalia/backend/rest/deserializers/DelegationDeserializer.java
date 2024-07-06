@@ -3,7 +3,6 @@ package com.evalia.backend.rest.deserializers;
 import java.io.IOException;
 
 import com.evalia.backend.exceptions.ResourceNotFoundException;
-import com.evalia.backend.models.Country;
 import com.evalia.backend.models.Delegation;
 import com.evalia.backend.repositories.DelegationRepository;
 import com.fasterxml.jackson.core.JacksonException;
