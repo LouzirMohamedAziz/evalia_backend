@@ -8,7 +8,6 @@ import javax.validation.ConstraintViolationException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.evalia.backend.exceptions.InitializationException;
@@ -22,25 +21,24 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author: Hamdi Jandoubi
  */
 @Component
-public class IndicatorsInitializer implements Initializer{
+public class IndicatorsInitializer implements Initializer {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(IndicatorsInitializer.class);
-	
+
 	private static final String JSON_FILE = "com/evalia/backend/indicators.json";
-	
+
 	private IndicatorRepository indicatorRepository;
-	
-	
-	@Autowired
+
 	public IndicatorsInitializer(IndicatorRepository indicatorRepository) {
 		this.indicatorRepository = indicatorRepository;
 	}
-	
+
 	@Override
 	public void initialize() throws InitializationException {
 		try (InputStream stream = ResourceUtils.loadResource(JSON_FILE)) {
 			ObjectMapper mapper = new ObjectMapper();
-			TypeReference<List<Indicator>> recordTypes = new TypeReference<List<Indicator>>() {};
+			TypeReference<List<Indicator>> recordTypes = new TypeReference<List<Indicator>>() {
+			};
 			List<Indicator> indicators = mapper.readValue(stream, recordTypes);
 			indicatorRepository.saveAll(indicators);
 		} catch (IOException | ConstraintViolationException e) {
@@ -54,5 +52,5 @@ public class IndicatorsInitializer implements Initializer{
 	public boolean isInitialized() throws InitializationException {
 		return indicatorRepository.count() > 0;
 	}
-    
+
 }

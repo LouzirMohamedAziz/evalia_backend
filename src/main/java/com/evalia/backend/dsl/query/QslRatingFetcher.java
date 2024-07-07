@@ -105,7 +105,7 @@ public class QslRatingFetcher {
 	private static Map<String, Object> parseCriterions(Map<String, String> criterions) {
 		criterions = purgeCriterions(criterions);
 		int i = 0;
-		Entry<String, Object>[] parsedCriterions = (Entry<String, Object>[]) new Entry[criterions.size()];
+		Entry<String, Object>[] parsedCriterions = new Entry[criterions.size()];
 		for (Entry<String, String> entry : criterions.entrySet()) {
 			parsedCriterions[i++] = parseValue(entry.getKey(), entry.getValue());
 		}

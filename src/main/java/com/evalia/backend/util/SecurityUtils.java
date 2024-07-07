@@ -76,4 +76,6 @@ public final class SecurityUtils {
 		return verificationToken.getExpiryDate().before(cal.getTime());
 	}
 
+	
+
 }

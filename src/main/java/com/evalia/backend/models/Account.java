@@ -19,6 +19,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,9 +31,9 @@ import lombok.Setter;
  *
  */
 @EqualsAndHashCode
-@NoArgsConstructor
 @Getter
 @Setter
+@Builder
 
 @Entity
 public class Account implements UserDetails {
@@ -68,21 +70,23 @@ public class Account implements UserDetails {
 	@Column(nullable = false)
 	private boolean credentialsNonExpired = true;
 
+	private boolean mfaEnabled =false;
+	
+    private String secret;
+
 	@Column(nullable = false)
 	private boolean verified = false;
 
 	@EqualsAndHashCode.Exclude
 	@OneToOne(optional = false)
 	private Actor actor;
+	
 
-	private boolean isUsingMfa = false;
-
-	private String secret;
 
 	@JsonIgnore
 	@EqualsAndHashCode.Exclude
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "users_roles", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+	@JoinTable(name = "users_roles", joinColumns = { @JoinColumn(name = "username") }, inverseJoinColumns = {
 			@JoinColumn(name = "role_id") })
 	private List<Authority> authorities = new ArrayList<>();
 

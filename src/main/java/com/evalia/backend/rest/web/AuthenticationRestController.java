@@ -1,4 +1,4 @@
-package com.evalia.backend.web.rest;
+package com.evalia.backend.rest.web;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
-import com.evalia.backend.ctrl.AuthenticationController;
+import com.evalia.backend.security.auth.AuthenticationRequest;
+import com.evalia.backend.security.auth.AuthenticationResponse;
+import com.evalia.backend.security.auth.RegisterRequest;
+import com.evalia.backend.security.controller.AuthenticationController;
 import com.evalia.backend.exceptions.ApiException;
 import com.evalia.backend.models.Account;
 import com.evalia.backend.models.VerificationToken;
@@ -26,14 +29,14 @@ public class AuthenticationRestController {
     }
 
     @PostMapping("/token")
-    public String login(Authentication authentication) {
-        return authController.login(authentication);
+    public AuthenticationResponse login(AuthenticationRequest authenticationRequest) {
+        return authController.login(authenticationRequest);
     }
 
     @PostMapping("/register")
-    public void register(@RequestBody Account account) {
+    public AuthenticationResponse register(@RequestBody RegisterRequest registerRequest) {
         try {
-            authController.register(account);
+            return authController.register(registerRequest);
         } catch (ApiException e) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
@@ -87,4 +90,11 @@ public class AuthenticationRestController {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
+
+    @PostMapping("/logout")
+    public void logout(@RequestBody String entity) {
+        //TODO: process POST request
+        
+    }
+    
 }

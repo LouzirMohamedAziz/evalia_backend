@@ -1,9 +1,12 @@
-package com.evalia.backend.ctrl.services;
+package com.evalia.backend.security.services;
 
 import org.springframework.security.core.Authentication;
 
 import com.evalia.backend.models.Account;
 import com.evalia.backend.models.VerificationToken;
+import com.evalia.backend.security.auth.AuthenticationRequest;
+import com.evalia.backend.security.auth.AuthenticationResponse;
+import com.evalia.backend.security.auth.RegisterRequest;
 
 public interface AuthenticationService {
 
@@ -14,7 +17,7 @@ public interface AuthenticationService {
 	 * @param authentication
 	 * @return a jwt token
 	 */
-	public String login(Authentication authentication);
+	public AuthenticationResponse login(AuthenticationRequest authenticationRequest);
 	
 	
 	/**
@@ -22,7 +25,7 @@ public interface AuthenticationService {
 	 * 
 	 * @param account
 	 */
-	public void register(Account account);
+	public AuthenticationResponse register(RegisterRequest registerRequest);
 
 	
 	/**

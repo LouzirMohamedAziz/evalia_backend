@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import com.evalia.backend.models.Token;
 import com.evalia.backend.models.TokenType;
 import com.evalia.backend.models.VerificationToken;
 
@@ -17,5 +18,7 @@ public interface VerificationTokenRepository extends CrudRepository<Verification
     Optional<VerificationToken> findByAccount_Email(String email);
     
     Long deleteByAccount_Email(String email);
+
+    Optional<Token> findByToken(String token);
 
 }
