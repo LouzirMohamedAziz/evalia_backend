@@ -35,6 +35,9 @@ local.properties
 # sbteclipse plugin
 .target
 
+# ignore idea workscpace folder
+.idea
+
 # Tern plugin
 .tern-project
 
@@ -119,3 +122,8 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+/.vscode/launch.json
+/.vscode/settings.json
+
+### profiled application.properties
+application-*.properties

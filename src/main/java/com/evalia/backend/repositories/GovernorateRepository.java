@@ -1,11 +1,13 @@
 package com.evalia.backend.repositories;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.evalia.backend.models.Governorate;
 
-@Repository
-public interface GovernorateRepository extends CrudRepository<Governorate, Long> {
+/**
+ * @author Mohamed Ben Hamouda
+ *
+ */
+public interface GovernorateRepository extends JpaRepository<Governorate, Long> {
 
 }

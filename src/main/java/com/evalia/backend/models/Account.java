@@ -2,68 +2,94 @@ package com.evalia.backend.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@RequiredArgsConstructor
+/**
+ * @author Hamdi Jandoubi
+ *
+ */
+@EqualsAndHashCode
 @NoArgsConstructor
 @Getter
-@EqualsAndHashCode
+@Setter
 
-@javax.persistence.Entity
-public class Account {
+@Entity
+public class Account implements UserDetails {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8211140625434787683L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@Column(unique = true, nullable = false, length = 90)
+	private String username;
+
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@NotBlank
-	@Size(max = 90)
-	@NonNull
-	@Setter
-	private String login;
-	
 	@Column(nullable = false)
-	@NotBlank
-	@NonNull
-	@Setter
 	private String password;
-	
+
+	@NotBlank
+	@Column(nullable = false, unique = true)
+	private String email;
+
 	@Column(nullable = false)
-	@Setter
-	private boolean active = true;
-	
+	private boolean emailVerified = false;
+
 	@Column(nullable = false)
-	@Setter
-	private Boolean verified;
-	
-	@OneToOne
-	@Setter
+	private boolean enabled = true;
+
+	@Column(nullable = false)
+	private boolean accountNonExpired = true;
+
+	@Column(nullable = false)
+	private boolean accountNonLocked = true;
+
+	@Column(nullable = false)
+	private boolean credentialsNonExpired = true;
+
+	@Column(nullable = false)
+	private boolean verified = false;
+
 	@EqualsAndHashCode.Exclude
-	private Administrative administrative;
-	
-	@OneToOne
-	@Setter
+	@OneToOne(optional = false)
+	private Actor actor;
+
+	private boolean isUsingMfa = false;
+
+	private String secret;
+
+	@JsonIgnore
 	@EqualsAndHashCode.Exclude
-	private Entity entity;
-	
-	@OneToMany(fetch = FetchType.EAGER)
-	@EqualsAndHashCode.Exclude
-	private List<Role> roles = new ArrayList<>();
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "users_roles", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "role_id") })
+	private List<Authority> authorities = new ArrayList<>();
+
+	public void setAuthorities(List<Authority> authorities) {
+		if (Objects.isNull(authorities))
+			return;
+		this.authorities.clear();
+		this.authorities.forEach(this.authorities::add);
+	}
 }

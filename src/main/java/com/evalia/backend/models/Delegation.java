@@ -5,32 +5,45 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+/**
+ * @author Mohamed Ben Hamouda
+ *
+ */
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@RequiredArgsConstructor
 @Getter
-@EqualsAndHashCode
+@Setter
 
 @Entity
 public class Delegation {
 
+	@EqualsAndHashCode.Include
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
-	@Column(nullable = false)
+	
 	@NotBlank
-	@Size(max = 90)
-	@Setter
-	@NonNull
+	@Column(name = "delegation_name")
 	private String name;
+
+	@JsonBackReference
+	@NotNull
+	@ManyToOne(optional = false)
+	private Governorate governorate;
+
+	
+	public String toString() {
+		return String.valueOf(id);
+	}
 }

@@ -8,9 +8,11 @@
 
 name: Java CI with Maven
 
-on: [workflow_dispatch]
-  # pull_request:
-  #   branches: [ "main" ]
+
+on: 
+  workflow_dispatch:
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -19,15 +21,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Stop the previous running instance
+      run: jps -ml | grep -i evalia.war | awk '{print $1}' | xargs -r kill
     - name: Build with Maven
-      run: mvn -B package --file pom.xml -DoutputDirectory=/opt/deployments
+      run: mvn -B package
+    - name: Pre-deploy
+      run: cp target/evalia-1.0-SNAPSHOT.war /opt/deployments/evalia/evalia.war
     - name: Run Evalia
-      run: cd /opt/deployments && mvn spring-boot:run -Dspring-boot.run.profiles=test
+      working-directory: /opt/deployments/evalia
+      run: nohup java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000 -jar evalia.war --spring.profiles.active=test > /dev/null &
       env:
-          DATABASE_HOST: ${DATABASE_HOST}
-          DATABASE_NAME: ${DATABASE_NAME}
+          PORT: ${{ vars.PORT }}
+          DATABASE_HOST: ${{ vars.DATABASE_HOST }}
+          DATABASE_NAME: ${{ vars.DATABASE_NAME }}
           DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
           DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-          
-          
-          
+          LOG_PATH: ${{ vars.LOG_PATH }}
+          RUNNER_TRACKING_ID: 0

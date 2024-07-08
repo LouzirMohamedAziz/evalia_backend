@@ -1,33 +1,39 @@
 package com.evalia.backend.exceptions;
 
-import java.io.FileNotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.evalia.backend.util.ResourceUtils;
 
-public class ResourceNotFoundException extends FileNotFoundException {
+@ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Internal resource not found!")
+public class ResourceNotFoundException extends ApiException {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -8712264906553594113L;
 
-	private static final String MSG_FILENOTFOUND = "The file {0} was not found on the classpath!";
+	private static final String MSG_RESOURCENOTFOUND = "The requested resource {0}:{1} was not found!";
 
+	
 	public ResourceNotFoundException(String message) {
 		super(message);
 	}
 	
+	
 	public ResourceNotFoundException(String message, Exception e) {
-		super(message);
+		super(message, e);
 	}
 
-	public static ResourceNotFoundException build(String resourceName) {
+	
+	public static ResourceNotFoundException build(String resourceType, String resourceId) {
 		return new ResourceNotFoundException(
-				ResourceUtils.buildMessage(MSG_FILENOTFOUND, resourceName));
+				ResourceUtils.buildMessage(MSG_RESOURCENOTFOUND, resourceType, resourceId));
 	}
 	
-	public static ResourceNotFoundException build(String resourceName, Exception e) {
+	
+	public static ResourceNotFoundException build(String resourceType, String resourceId, Exception e) {
 		return new ResourceNotFoundException(
-				ResourceUtils.buildMessage(MSG_FILENOTFOUND, resourceName), e);
+				ResourceUtils.buildMessage(MSG_RESOURCENOTFOUND, resourceType, resourceId), e);
 	}
 }

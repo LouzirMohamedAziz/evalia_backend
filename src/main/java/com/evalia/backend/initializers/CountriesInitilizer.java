@@ -14,40 +14,41 @@ import org.springframework.stereotype.Component;
 import com.evalia.backend.exceptions.InitializationException;
 import com.evalia.backend.models.Country;
 import com.evalia.backend.repositories.CountryRepository;
-import com.evalia.backend.util.InitializersUtils;
 import com.evalia.backend.util.ResourceUtils;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
-public class CountriesInitilizer extends Initializer<Country>{
+public class CountriesInitilizer implements Initializer{
 
-	private static final Logger logger = LoggerFactory.getLogger(CountriesInitilizer.class);
-	
+	private static final Logger LOGGER = LoggerFactory.getLogger(CountriesInitilizer.class);
 	private static final String JSON_FILE = "com/evalia/backend/countries.json";
 	
+	private CountryRepository countryRepository;
+	
+	
 	@Autowired
-	CountryRepository repository;
-
+	public CountriesInitilizer(CountryRepository countryRepository) {
+		this.countryRepository = countryRepository;
+	}
+	
 	@Override
-	void preLoad(Class<Country> clazz, String filePath) {
-		try (InputStream stream = ResourceUtils.loadResource(filePath)) {
+	public void initialize() throws InitializationException{
+		try (InputStream stream = ResourceUtils.loadResource(JSON_FILE)) {
 			ObjectMapper mapper = new ObjectMapper();
 			TypeReference<List<Country>> recordTypes = new TypeReference<List<Country>>() {};
 			List<Country> countries = mapper.readValue(stream, recordTypes);
-			repository.saveAll(countries);
+			countryRepository.saveAll(countries);
 		} catch (IOException | ConstraintViolationException e) {
-			InitializationException ex = InitializationException.build(clazz.getName(), e);
-			logger.error("Could not pre-load entity!", ex);
+			InitializationException ex = InitializationException.build(Country.class.getName(), e);
+			LOGGER.error("Could not pre-load entity!", ex);
 			throw ex;
 		}
 	}
 	
+
 	@Override
-	public void run(String... args) throws Exception {
-		
-		if (!InitializersUtils.isLoaded(repository)) {
-			preLoad(Country.class, JSON_FILE);
-		}
+	public boolean isInitialized() throws InitializationException {
+		return countryRepository.count() > 0;
 	}
 }
