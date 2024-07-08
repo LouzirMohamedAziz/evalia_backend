@@ -1,7 +1,9 @@
 package com.evalia.backend.web.rest;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
@@ -28,6 +30,9 @@ public class RatingRestController {
 	
 	
 	public static Map<String, String> multiToSingleValuedMap(MultiValueMap<String, String> map){
+		if(Objects.isNull(map)) {
+			return Collections.emptyMap();
+		}
 		return map.entrySet().stream()
 				.collect(Collectors.groupingBy(Entry::getKey,
 						Collectors.flatMapping(entry -> entry.getValue().stream(), 
@@ -36,7 +41,7 @@ public class RatingRestController {
 	
 	
 	@GetMapping
-	public List<Rating> search(@RequestBody MultiValueMap<String, String> parameters){
+	public List<Rating> search(@RequestBody(required = false) MultiValueMap<String, String> parameters){
 		Map<String, String> params = multiToSingleValuedMap(parameters);
 		return ratingController.search(params);
 	}
