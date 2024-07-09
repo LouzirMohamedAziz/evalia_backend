@@ -1,11 +1,15 @@
 package com.evalia.backend.security.controller;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
+import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import javax.validation.ConstraintViolationException;
 
@@ -13,7 +17,10 @@ import org.hibernate.validator.internal.engine.ConstraintViolationImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
+import org.springframework.http.HttpHeaders;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -30,11 +37,13 @@ import com.evalia.backend.repositories.VerificationTokenRepository;
 import com.evalia.backend.security.auth.AuthenticationRequest;
 import com.evalia.backend.security.auth.AuthenticationResponse;
 import com.evalia.backend.security.auth.RegisterRequest;
+import com.evalia.backend.security.auth.VerificationRequest;
 import com.evalia.backend.security.services.AuthenticationService;
 import com.evalia.backend.security.services.JwtTokenService;
 import com.evalia.backend.util.Constants;
 import com.evalia.backend.util.ResourceUtils;
 import com.evalia.backend.util.SecurityUtils;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class AuthenticationController implements AuthenticationService {
@@ -45,30 +54,32 @@ public class AuthenticationController implements AuthenticationService {
 	private Integer tokenExpirationInMinutes;
 
 	private final VerificationTokenRepository verificationTokenRepository;
-	private final JwtTokenService tokenService;
+	private final JwtTokenService jwtTokenService;
 	private final BCryptPasswordEncoder passwordEnocder;
 	private final AccountRepository accountRepository;
 	private final ActorRepository actorRepository;
 	private final Pattern passwordPattern;
 	private final EmailService emailService;
 	private final TwoFactorAuthenticationController tfaController;
+    private final AuthenticationManager authenticationManager;
 
 	public AuthenticationController(VerificationTokenRepository verificationTokenRepository,
-			JwtTokenService tokenService,
+			JwtTokenService jwtTokenService,
 			BCryptPasswordEncoder passwordEnocder,
 			AccountRepository accountRepository,
 			ActorRepository actorRepository,
 			EmailService emailService,
-			TwoFactorAuthenticationController tfaController
-			) {
+			TwoFactorAuthenticationController tfaController,
+			AuthenticationManager authenticationManager) {
 		this.verificationTokenRepository = verificationTokenRepository;
-		this.tokenService = tokenService;
+		this.jwtTokenService = jwtTokenService;
 		this.passwordEnocder = passwordEnocder;
 		this.accountRepository = accountRepository;
 		this.actorRepository = actorRepository;
 		this.emailService = emailService;
 		this.passwordPattern = Pattern.compile(Constants.PASSWORD_REGEX);
 		this.tfaController = tfaController;
+		this.authenticationManager= authenticationManager;
 	}
 
 	private boolean isPasswordValid(String password) {
@@ -126,52 +137,64 @@ public class AuthenticationController implements AuthenticationService {
 
 	@Override
 	public AuthenticationResponse login(AuthenticationRequest authenticationRequest) {
-		String authName = authenticationRequest.getUsernme();
-		LOG.debug("Token requested for user: '{}'", authName);
+		authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+					authenticationRequest.getUsername(),
+					authenticationRequest.getPassword()
+                )
+        );
+		String authName = authenticationRequest.getUsername();
 		Account account = getAccountFromUsername(authName);
-		
-		
-		String jwtToken = tokenService.generateToken(account);
-		LOG.debug("Token granted: {}", jwtToken);
-		String refreshToken = tokenService.generateRefreshToken(account);
+        if (account.isMfaEnabled()) {
+            return AuthenticationResponse.builder()
+                    .accessToken("")
+                    .refreshToken("")
+                    .mfaEnabled(true)
+                    .build();
+        }
+		String jwtToken = jwtTokenService.generateToken(account);
+		LOG.debug("jwtToken granted: {}", jwtToken);
+		String refreshToken = jwtTokenService.generateRefreshToken(account);
 		LOG.debug("Refresh Token granted: {}", refreshToken);
-		return AuthenticationResponse.builder()
-		.secretImageUri(tfaController.generateQrCodeImageUri(account.getSecret()))
-		.accessToken(jwtToken)
-		.refreshToken(refreshToken)
-		.mfaEnabled(account.isMfaEnabled())
-		.build();
+        return AuthenticationResponse.builder()
+				.secretImageUri(tfaController.generateQrCodeImageUri(account.getSecret()))
+				.accessToken(jwtToken)
+				.refreshToken(refreshToken)
+				.mfaEnabled(account.isMfaEnabled())
+				.build();
 	}
 
-	/*TO-DO return authentication response in cas mfa  enabled to send the secret generated */
+	/*
+	 * TO-DO return authentication response in cas mfa enabled to send the secret
+	 * generated
+	 */
 	@Override
 	@Transactional
 	public AuthenticationResponse register(RegisterRequest registerRequest) {
 		String password = registerRequest.getPassword();
 		password = encodePassword(password);
 		registerRequest.setPassword(password);
-		var account = Account.builder()
-		.username(registerRequest.getUsername())
-		.email(registerRequest.getEmail())
-		.password(password)
-		.actor(registerRequest.getActor())
-		.mfaEnabled(registerRequest.isMfaEnabled())
-		.build();
-		if(account.isMfaEnabled()){
+		Account account = new Account();
+				account.setUsername(registerRequest.getUsername());
+				account.setEmail(registerRequest.getEmail());
+				account.setPassword(password);
+				account.setActor(registerRequest.getActor());
+				account.setMfaEnabled(registerRequest.isMfaEnabled());
+		if (account.isMfaEnabled()) {
 			account.setSecret(tfaController.generateNewSecret());
 		}
 		actorRepository.save(account.getActor());
 		accountRepository.save(account);
-		String jwtToken = tokenService.generateToken(account);
+		String jwtToken = jwtTokenService.generateToken(account);
 		LOG.debug("JWT Token generated");
-		String refreshToken = tokenService.generateRefreshToken(account);
+		String refreshToken = jwtTokenService.generateRefreshToken(account);
 		LOG.debug("Refresh Token Generated");
 		return AuthenticationResponse.builder()
-		.secretImageUri(tfaController.generateQrCodeImageUri(account.getSecret()))
-		.accessToken(jwtToken)
-		.refreshToken(refreshToken)
-		.mfaEnabled(account.isMfaEnabled())
-		.build();
+				.secretImageUri(tfaController.generateQrCodeImageUri(account.getSecret()))
+				.accessToken(jwtToken)
+				.refreshToken(refreshToken)
+				.mfaEnabled(account.isMfaEnabled())
+				.build();
 	}
 
 	@Override
@@ -263,5 +286,46 @@ public class AuthenticationController implements AuthenticationService {
 		password = encodePassword(password);
 		account.setPassword(password);
 		accountRepository.save(account);
+	}
+
+	@Override
+	public void refreshToken(HttpServletRequest request,HttpServletResponse response) throws IOException {
+		final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+		final String refreshToken;
+		final String username;
+		if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+			return;
+		}
+		refreshToken = authHeader.substring(7);
+		username = jwtTokenService.extractUsername(refreshToken);
+		if (username != null) {
+			Account account = accountRepository.findById(username)
+					.orElseThrow();
+			if (jwtTokenService.isTokenValid(refreshToken, account)) {
+				var accessToken = jwtTokenService.generateToken(account);
+				var authResponse = AuthenticationResponse.builder()
+						.accessToken(accessToken)
+						.refreshToken(refreshToken)
+						.mfaEnabled(false)
+						.build();
+				new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
+			}
+		}
+	}
+	@Override
+	public AuthenticationResponse verifyTotpCode(
+			VerificationRequest verificationRequest) {
+		var account = accountRepository.findById(verificationRequest.getUsername())
+				.orElseThrow(() -> new EntityNotFoundException(
+						String.format("No user found with %S", verificationRequest.getUsername())));		
+		if (tfaController.isOtpNotValid(account.getSecret(), verificationRequest.getCode())) {
+
+			throw new BadCredentialsException("Code is not correct");
+		}
+		var jwtToken = jwtTokenService.generateToken(account);
+		return AuthenticationResponse.builder()
+				.accessToken(jwtToken)
+				.mfaEnabled(account.isMfaEnabled())
+				.build();
 	}
 }

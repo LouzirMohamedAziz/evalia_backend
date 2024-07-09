@@ -18,6 +18,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 
 import com.evalia.backend.repositories.TokenRepository;
+import com.evalia.backend.security.services.AccountDetailsService;
 import com.evalia.backend.security.services.JwtTokenService;
 
 import lombok.RequiredArgsConstructor;
@@ -27,7 +28,7 @@ import lombok.RequiredArgsConstructor;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
   private final JwtTokenService jwtService;
-  private final UserDetailsService userDetailsService;
+  private final AccountDetailsService userDetailsService;
   private final TokenRepository tokenRepository;
 
   @Override

@@ -1,4 +1,4 @@
-package com.evalia.backend.rest.web;
+package com.evalia.backend.web.rest;
 
 import java.util.List;
 import java.util.Map;

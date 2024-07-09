@@ -19,8 +19,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,11 +31,9 @@ import lombok.Setter;
 @EqualsAndHashCode
 @Getter
 @Setter
-@Builder
-
+@NoArgsConstructor
 @Entity
 public class Account implements UserDetails {
-
 	/**
 	 * 
 	 */

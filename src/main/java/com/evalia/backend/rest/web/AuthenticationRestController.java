@@ -10,13 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
+import com.evalia.backend.exceptions.ApiException;
+import com.evalia.backend.models.VerificationToken;
 import com.evalia.backend.security.auth.AuthenticationRequest;
 import com.evalia.backend.security.auth.AuthenticationResponse;
 import com.evalia.backend.security.auth.RegisterRequest;
 import com.evalia.backend.security.controller.AuthenticationController;
-import com.evalia.backend.exceptions.ApiException;
-import com.evalia.backend.models.Account;
-import com.evalia.backend.models.VerificationToken;
 
 @RestController
 @RequestMapping("/auth")
