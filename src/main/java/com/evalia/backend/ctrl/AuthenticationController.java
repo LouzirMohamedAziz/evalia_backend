@@ -19,13 +19,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.evalia.backend.ctrl.services.AuthenticationService;
+import com.evalia.backend.exceptions.ResourceAlreadyExistsException;
 import com.evalia.backend.exceptions.TokenExpiredException;
 import com.evalia.backend.exceptions.TokenInvalidException;
 import com.evalia.backend.models.Account;
 import com.evalia.backend.models.TokenType;
 import com.evalia.backend.models.VerificationToken;
 import com.evalia.backend.repositories.AccountRepository;
-import com.evalia.backend.repositories.ActorRepository;
 import com.evalia.backend.repositories.VerificationTokenRepository;
 import com.evalia.backend.security.services.JwtTokenService;
 import com.evalia.backend.service.EmailService;
@@ -40,12 +40,11 @@ public class AuthenticationController implements AuthenticationService {
 
 	@Value("${evalia.security.passwordToken.expiration}")
 	private Integer tokenExpirationInMinutes;
-
+	
 	private final VerificationTokenRepository verificationTokenRepository;
 	private final JwtTokenService tokenService;
 	private final BCryptPasswordEncoder passwordEnocder;
 	private final AccountRepository accountRepository;
-	private final ActorRepository actorRepository;
 	private final Pattern passwordPattern;
 	private final EmailService emailService;
 
@@ -53,13 +52,11 @@ public class AuthenticationController implements AuthenticationService {
 			JwtTokenService tokenService,
 			BCryptPasswordEncoder passwordEnocder,
 			AccountRepository accountRepository,
-			ActorRepository actorRepository,
 			EmailService emailService) {
 		this.verificationTokenRepository = verificationTokenRepository;
 		this.tokenService = tokenService;
 		this.passwordEnocder = passwordEnocder;
 		this.accountRepository = accountRepository;
-		this.actorRepository = actorRepository;
 		this.emailService = emailService;
 		this.passwordPattern = Pattern.compile(Constants.PASSWORD_REGEX);
 	}
@@ -130,13 +127,22 @@ public class AuthenticationController implements AuthenticationService {
 	@Override
 	@Transactional
 	public void register(Account account) {
+		if(accountRepository.existsById(account.getUsername())) {
+			throw ResourceAlreadyExistsException
+				.build(Account.class.getName() + "." + "username"
+						, account.getUsername());
+		}
+		if(accountRepository.existsByEmail(account.getEmail())) {
+			throw ResourceAlreadyExistsException
+				.build(Account.class.getName() + "." + "email"
+						, account.getEmail());
+		}
 		String password = account.getPassword();
 		password = encodePassword(password);
 		account.setPassword(password);
 		if (account.isUsingMfa()) {
 			account.setSecret("");
 		}
-		actorRepository.save(account.getActor());
 		accountRepository.save(account);
 	}
 
