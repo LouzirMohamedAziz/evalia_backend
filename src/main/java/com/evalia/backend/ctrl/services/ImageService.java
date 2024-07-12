@@ -1,5 +1,7 @@
 package com.evalia.backend.ctrl.services;
 
+import java.io.IOException;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -7,11 +9,11 @@ import com.evalia.backend.models.Image;
 
 public interface ImageService {
 
-    default Image getImageDetails(String imageName) {
-        throw new UnsupportedOperationException();
-    }
+    public void uploadAvatar(String id, MultipartFile file) throws IOException;
+    
+    public void uploadCover(String id, MultipartFile file) throws IOException;
 
-    public void uplaodImage(String id, MultipartFile file);
-
-    public ResponseEntity<byte[]> getImage(String id);
+    public Image getAvatar(String id);
+    
+    public Image getCover(String id);
 }
