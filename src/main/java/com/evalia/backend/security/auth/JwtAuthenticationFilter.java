@@ -16,9 +16,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-
 import com.evalia.backend.repositories.TokenRepository;
-import com.evalia.backend.security.services.AccountDetailsService;
 import com.evalia.backend.security.services.JwtTokenService;
 
 import lombok.RequiredArgsConstructor;
@@ -28,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
   private final JwtTokenService jwtService;
-  private final AccountDetailsService userDetailsService;
+  private final UserDetailsService userDetailsService;
   private final TokenRepository tokenRepository;
 
   @Override

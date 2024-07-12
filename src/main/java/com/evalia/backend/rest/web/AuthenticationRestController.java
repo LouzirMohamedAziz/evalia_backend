@@ -28,7 +28,7 @@ public class AuthenticationRestController {
     }
 
     @PostMapping("/token")
-    public AuthenticationResponse login(AuthenticationRequest authenticationRequest) {
+    public AuthenticationResponse login(@RequestBody AuthenticationRequest authenticationRequest) {
         return authController.login(authenticationRequest);
     }
 

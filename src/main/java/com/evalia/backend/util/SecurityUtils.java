@@ -29,53 +29,38 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class SecurityUtils {
 
-	
-	public static RSAPublicKey loadPublicKey(String path) throws ResourceNotFoundException, IOException {
-		return RsaKeyConverters.x509()
-				.convert(new ByteArrayInputStream(
-						ResourceUtils.loadResource(path).readAllBytes()));
-	}
+    public static RSAPublicKey loadPublicKey(String path) throws ResourceNotFoundException, IOException {
+        return RsaKeyConverters.x509().convert(new ByteArrayInputStream(ResourceUtils.loadResource(path).readAllBytes()));
+    }
 
-	
-	public static RSAPrivateKey loadPrivateKey(String path) throws ResourceNotFoundException, IOException {
-		return RsaKeyConverters.pkcs8()
-				.convert(new ByteArrayInputStream(
-						ResourceUtils.loadResource(path).readAllBytes()));
-	}
+    public static RSAPrivateKey loadPrivateKey(String path) throws ResourceNotFoundException, IOException {
+        return RsaKeyConverters.pkcs8().convert(new ByteArrayInputStream(ResourceUtils.loadResource(path).readAllBytes()));
+    }
 
-	
-	public static JwtEncoder jwtEncoder(RSAPublicKey publicKey, RSAPrivateKey privateKey) {
-		JWK jwk = new RSAKey.Builder(publicKey)
-				.privateKey(privateKey).build();
-		JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
-		return new NimbusJwtEncoder(jwks);
-	}
+    public static JwtEncoder jwtEncoder(RSAPublicKey publicKey, RSAPrivateKey privateKey) {
+        JWK jwk = new RSAKey.Builder(publicKey).privateKey(privateKey).build();
+        JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
+        return new NimbusJwtEncoder(jwks);
+    }
 
-	
-	public static JwtDecoder jwtDecoder(RSAPublicKey publicKey) {
-		return NimbusJwtDecoder.withPublicKey(publicKey).build();
-	}
+    public static JwtDecoder jwtDecoder(RSAPublicKey publicKey) {
+        return NimbusJwtDecoder.withPublicKey(publicKey).build();
+    }
 
-	
-	public static Date generateExpirationDate(Integer intervalInMinutes){
+    public static Date generateExpirationDate(Integer intervalInMinutes) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
 
-		Calendar c = Calendar.getInstance();
-		c.setTime(new Date());
+        if (Objects.nonNull(intervalInMinutes)) {
+            intervalInMinutes += c.get(Calendar.MINUTE);
+            c.set(Calendar.MINUTE, intervalInMinutes);
+        }
 
-		if(Objects.nonNull(intervalInMinutes)){
-			intervalInMinutes += c.get(Calendar.MINUTE);
-			c.set(Calendar.MINUTE, intervalInMinutes);
-		}
-		
-		return c.getTime();
-	}
+        return c.getTime();
+    }
 
-	
-	public static boolean isTokenExpired(VerificationToken verificationToken) {
-		final Calendar cal = Calendar.getInstance();
-		return verificationToken.getExpiryDate().before(cal.getTime());
-	}
-
-	
-
+    public static boolean isTokenExpired(VerificationToken verificationToken) {
+        final Calendar cal = Calendar.getInstance();
+        return verificationToken.getExpiryDate().before(cal.getTime());
+    }
 }
