@@ -73,7 +73,7 @@ public class Account implements UserDetails {
 	private boolean verified = false;
 
 	@EqualsAndHashCode.Exclude
-	@OneToOne(cascade = CascadeType.PERSIST ,optional = false)
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE} ,optional = false)
 	private Actor actor;
 
 	private boolean isUsingMfa = false;
