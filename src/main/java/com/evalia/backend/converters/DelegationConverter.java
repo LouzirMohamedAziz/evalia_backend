@@ -1,11 +1,13 @@
 package com.evalia.backend.converters;
 
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 import com.evalia.backend.exceptions.ResourceNotFoundException;
 import com.evalia.backend.models.Delegation;
 import com.evalia.backend.repositories.DelegationRepository;
 
+@Component
 public class DelegationConverter implements Converter<Long, Delegation>{
 
 	

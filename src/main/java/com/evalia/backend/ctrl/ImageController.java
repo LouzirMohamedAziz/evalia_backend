@@ -46,7 +46,4 @@ public class ImageController {
         Image image = actor.getImage();
         return image;
     }
-
-    
-    
 }
