@@ -73,9 +73,9 @@ public class Account implements UserDetails {
 	private boolean verified = false;
 
 	@EqualsAndHashCode.Exclude
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE} ,optional = false)
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, optional = false)
 	private Actor actor;
-
+	@Column(name = "is_using_mfa")
 	private boolean mfaEnabled = false;
 
 	private String secret;
