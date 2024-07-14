@@ -1,6 +1,9 @@
 package com.evalia.backend.web.rest;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +16,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import com.evalia.backend.ctrl.AuthenticationController;
 import com.evalia.backend.exceptions.ApiException;
 import com.evalia.backend.models.Account;
+import com.evalia.backend.models.Image;
 import com.evalia.backend.models.VerificationToken;
 
 @RestController
@@ -87,4 +91,29 @@ public class AuthenticationRestController {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
+    
+    @PostMapping("/mfalogin")
+    public String mfaLogin(@RequestParam(name = "token") String token,
+            @RequestParam(name = "mfaCode") String mfaCode) {
+        try {
+            return authController.login(token, mfaCode);
+        } catch (ApiException e) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+    
+    @PostMapping("/enable2fa")
+    public ResponseEntity<byte[]> enable2FA(Authentication authentication) {
+    	Account account = authController.getAccountFromUsername(authentication.getName());
+    	try {
+			Image image = authController.enable2FA(account);
+			return ResponseEntity.ok()
+					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + image.getName())
+					.contentType(MediaType.valueOf(image.getType()))
+					.body(image.getContent());
+		} catch (SecurityException e) {
+			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+		}
+    }
+    
 }

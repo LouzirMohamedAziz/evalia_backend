@@ -126,4 +126,4 @@ target/
 /.vscode/settings.json
 
 ### profiled application.properties
-application-*.properties
+application-dev.properties

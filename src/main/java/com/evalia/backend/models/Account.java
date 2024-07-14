@@ -76,7 +76,7 @@ public class Account implements UserDetails {
 	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE} ,optional = false)
 	private Actor actor;
 
-	private boolean isUsingMfa = false;
+	private boolean mfaEnabled = false;
 
 	private String secret;
 

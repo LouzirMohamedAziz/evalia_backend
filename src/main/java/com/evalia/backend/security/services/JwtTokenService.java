@@ -13,6 +13,8 @@ import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
 import org.springframework.stereotype.Service;
 
+import com.evalia.backend.models.Account;
+
 
 @Service
 public class JwtTokenService {
@@ -30,16 +32,18 @@ public class JwtTokenService {
 		this.encoder = encoder;
 	}
 	
-	public String generateToken(Authentication authentication) {
+	
+	
+	public String generateToken(Account account) {
 		Instant now = Instant.now();
-		String scope = authentication.getAuthorities().stream()
+		String scope = account.getAuthorities().stream()
 				.map(GrantedAuthority::getAuthority)
 				.collect(Collectors.joining(" "));
 		JwtClaimsSet claims = JwtClaimsSet.builder()
 				.issuer(appName)
 				.issuedAt(now)
 				.expiresAt(now.plus(jwtExpiration, ChronoUnit.SECONDS))
-				.subject(authentication.getName())
+				.subject(account.getUsername())
 				.claim("scope", scope)
 				.build();
 		return encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
