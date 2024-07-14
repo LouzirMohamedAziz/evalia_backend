@@ -9,7 +9,7 @@ import com.evalia.backend.ctrl.AuthenticationController;
 import com.evalia.backend.models.Account;
 
 @RestController
-@RequestMapping("/accounts")
+@RequestMapping("/api/accounts")
 public class AccountRestController {
 
     AuthenticationController authController;

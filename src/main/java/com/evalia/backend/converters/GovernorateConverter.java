@@ -1,12 +1,14 @@
 package com.evalia.backend.converters;
 
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 import com.evalia.backend.exceptions.ResourceNotFoundException;
 import com.evalia.backend.models.Country;
 import com.evalia.backend.models.Governorate;
 import com.evalia.backend.repositories.GovernorateRepository;
 
+@Component
 public class GovernorateConverter implements Converter<Long, Governorate>{
 
 	
@@ -20,7 +22,7 @@ public class GovernorateConverter implements Converter<Long, Governorate>{
 	public Governorate convert(Long source) {
 		return governorateRepository.findById(source)
 				.orElseThrow(() -> ResourceNotFoundException
-						.build(Country.class.getName(), String.valueOf(source)));
+						.build(Governorate.class.getName(), String.valueOf(source)));
 	}
 
 }

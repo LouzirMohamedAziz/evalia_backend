@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -72,10 +73,10 @@ public class Account implements UserDetails {
 	private boolean verified = false;
 
 	@EqualsAndHashCode.Exclude
-	@OneToOne(optional = false)
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE} ,optional = false)
 	private Actor actor;
 
-	private boolean isUsingMfa = false;
+	private boolean mfaEnabled = false;
 
 	private String secret;
 

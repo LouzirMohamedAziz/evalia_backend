@@ -41,9 +41,7 @@ public class Rating {
     @Column(length = 500)
     private String feedback;
     
-    @Lob
-    @Column(length = 5_000_000)
-    private byte[] attachement;
+    private String attachement;
 
     @OneToOne
     private Civil evaluater;

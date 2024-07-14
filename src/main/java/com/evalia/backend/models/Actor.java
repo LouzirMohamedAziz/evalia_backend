@@ -52,6 +52,9 @@ public abstract class Actor {
 	private Address address;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	private Image image;
+	private Image avatar;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Image cover;
 	
 }

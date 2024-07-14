@@ -5,7 +5,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.querydsl.core.annotations.QueryInit;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

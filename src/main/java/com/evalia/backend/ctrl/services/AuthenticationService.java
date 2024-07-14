@@ -3,6 +3,8 @@ package com.evalia.backend.ctrl.services;
 import org.springframework.security.core.Authentication;
 
 import com.evalia.backend.models.Account;
+import com.evalia.backend.models.Image;
+import com.evalia.backend.models.TokenType;
 import com.evalia.backend.models.VerificationToken;
 
 public interface AuthenticationService {
@@ -12,9 +14,18 @@ public interface AuthenticationService {
 	 * generated a JWT token for the passed {@code authentication}.
 	 * 
 	 * @param authentication
-	 * @return a jwt token
+	 * @return either a jwt token or a validation token
 	 */
 	public String login(Authentication authentication);
+	
+	
+	/**
+	 * login using the 2 factor authentication code.
+	 * 
+	 * @param token
+	 * @return a jwt token
+	 */
+	public String login(String token, String mfCode);
 	
 	
 	/**
@@ -53,14 +64,7 @@ public interface AuthenticationService {
 	public void requestPasswordRecovery(String email);
 	
 	
-	/**
-	 * Verify the passed token is still valid to use.
-	 * 
-	 * @param token
-	 * @return {@code VerificationToken} instance of {@code token} if valid.
-	 */
-	public VerificationToken verifyPasswordRecoveryToken(String token);
-
+	
 	
 	/**
 	 *  if the {@code token} is valid then its associated {@code Account} 
@@ -79,4 +83,21 @@ public interface AuthenticationService {
 	 * @param password
 	 */
 	public void updatePassword(Account account, String password);
+	
+	/**
+	 * Enable 2 factor authentication for the passed account.
+	 * 
+	 * @param account
+	 * @return
+	 */
+	public Image enable2FA(Account account);
+	
+	/**
+	 * Verify Token for the passed TokenType.
+	 * 
+	 * @param Strin token
+	 * @param TokenType tokenType
+	 * @return
+	 */
+	public VerificationToken verifyToken(String token, TokenType tokenType);
 }

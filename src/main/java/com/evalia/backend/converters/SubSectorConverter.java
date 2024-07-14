@@ -3,12 +3,15 @@ package com.evalia.backend.converters;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
 import com.evalia.backend.exceptions.ResourceNotFoundException;
 import com.evalia.backend.models.SubSector;
 import com.evalia.backend.repositories.SubSectorRepository;
 
+@Component
 public class SubSectorConverter implements Converter<String,SubSector> {
+	
     private final SubSectorRepository subSectorRepository;
 
     public SubSectorConverter(SubSectorRepository subSectorRepository){
