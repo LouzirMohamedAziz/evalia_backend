@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -28,32 +28,30 @@ import lombok.Setter;
 @Entity
 public class Sector {
 
-	@EqualsAndHashCode.Include
-	@Id
-	private String name;
+    @EqualsAndHashCode.Include
+    @Id
+    private String name;
 
-	@JsonManagedReference
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "sector")
-	private List<SubSector> subSectors;
-	
-	public void addSubSector(SubSector subSector) {
-        if(Objects.nonNull(subSector.getSector())) {
+    @JsonBackReference
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sector")
+    private List<SubSector> subSectors;
+
+    public void addSubSector(SubSector subSector) {
+        if (Objects.nonNull(subSector.getSector())) {
             subSector.getSector().removeSubSector(subSector);
         }
         subSector.setSector(this);
         subSectors.add(subSector);
     }
 
-
     public void removeSubSector(SubSector subSector) {
-        if(Objects.nonNull(subSector)) {
+        if (Objects.nonNull(subSector)) {
             subSectors.remove(subSector);
         }
     }
 
-
     public void setSubSectors(List<SubSector> subSectors) {
-        if(Objects.isNull(this.subSectors)) {
+        if (Objects.isNull(this.subSectors)) {
             this.subSectors = new ArrayList<SubSector>();
         }
         this.subSectors.clear();

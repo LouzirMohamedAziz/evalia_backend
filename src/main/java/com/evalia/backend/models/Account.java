@@ -77,7 +77,7 @@ public class Account implements UserDetails {
 	private Actor actor;
 	@Column(name = "is_using_mfa")
 	private boolean mfaEnabled = false;
-
+	@JsonIgnore
 	private String secret;
 
 	@JsonIgnore
