@@ -17,6 +17,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.EqualsAndHashCode;
@@ -45,12 +46,12 @@ public class Governorate {
 	@Column(name = "governorate_name")
 	private String name;
 	
-	@JsonBackReference
 	@NotNull
 	@ManyToOne(optional = false)
+	@JsonIgnore
 	private Country country;
 
-	@JsonManagedReference
+	@JsonIgnore
 	@OneToMany(mappedBy = "governorate", cascade = CascadeType.ALL,
 			fetch = FetchType.LAZY, orphanRemoval = true)
 	private List<Delegation> delegations = new ArrayList<>();

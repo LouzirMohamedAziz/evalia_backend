@@ -10,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -37,9 +38,9 @@ public class Delegation {
 	@Column(name = "delegation_name")
 	private String name;
 
-	@JsonBackReference
 	@NotNull
 	@ManyToOne(optional = false)
+	@JsonIgnore
 	private Governorate governorate;
 
 	

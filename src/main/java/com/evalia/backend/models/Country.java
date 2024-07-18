@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.EqualsAndHashCode;
@@ -40,7 +41,7 @@ public class Country {
 	@Column(unique = true)
 	private String name;
 
-	@JsonManagedReference
+	@JsonIgnore
 	@OneToMany(mappedBy = "country", cascade = CascadeType.ALL,
 			fetch = FetchType.LAZY, orphanRemoval = true)
 	private List<Governorate> governorates = new ArrayList<>();
