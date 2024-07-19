@@ -53,7 +53,7 @@ public class RatingControllerImpl implements RatingController {
 
 
 	@Override
-	public void add(Rating rating) {
+	public Rating add(Rating rating) {
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		Actor evaluater = accountRepository.findById(username).orElseThrow().getActor();
 		if(evaluater instanceof Professional) {
@@ -64,7 +64,7 @@ public class RatingControllerImpl implements RatingController {
 		if (rating.getRate() == null) {
             throw new IllegalArgumentException("Rate must not be null");
         }
-		ratingRepository.save(rating);
+		return ratingRepository.save(rating);
 	}
 
 

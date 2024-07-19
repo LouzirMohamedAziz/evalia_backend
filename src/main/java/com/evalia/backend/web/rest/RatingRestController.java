@@ -55,8 +55,9 @@ public class RatingRestController {
 	
 	
 	@PostMapping
-	public void add(@RequestBody Rating rating) {
-		ratingController.add(rating);
+	public ResponseEntity<Rating> add(@RequestBody Rating rating) {
+		rating = ratingController.add(rating);
+		return ResponseEntity.ok(rating);
 	}
 	
 	@PutMapping
@@ -65,7 +66,7 @@ public class RatingRestController {
 	}
 	
 	@PostMapping("/{id}/attachment")
-	public void attach(@PathVariable("id") Long id, 
+	public void attach(@PathVariable("id") Long id,
 			@RequestParam("attachment") MultipartFile file) {
 		ratingController.attach(id, file);
 	}

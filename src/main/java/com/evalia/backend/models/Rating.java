@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.querydsl.core.annotations.QueryInit;
 
@@ -36,6 +37,7 @@ public class Rating {
     private Double rate;
 
     @NotNull
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
     private Date date;
 
     @Column(length = 500)

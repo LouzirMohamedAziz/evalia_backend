@@ -12,7 +12,7 @@ public interface RatingController {
 
 	public List<Rating> search(Map<String, String> criterions);
 	
-	public void add(Rating rating);
+	public Rating add(Rating rating);
 	
 	public void edit(Rating rating);
 	
