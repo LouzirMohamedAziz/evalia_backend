@@ -37,20 +37,14 @@ public class Address {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@JsonSerialize(using = CountrySerializer.class)
-	@JsonDeserialize(using = CountryDeserializer.class)
 	@NotNull
 	@ManyToOne(optional = false)
 	private Country country;
 
-	@JsonDeserialize(using = GovernorateDeserializer.class)
-	@JsonSerialize(using = GovernorateSerializer.class)
 	@NotNull
 	@ManyToOne(optional = false)
 	private Governorate governorate;
 
-	@JsonDeserialize(using = DelegationDeserializer.class)
-	@JsonSerialize(using = DelegationSerializer.class)
 	@ManyToOne
 	private Delegation delegation;
 
