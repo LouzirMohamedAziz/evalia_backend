@@ -9,6 +9,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Pattern;
 
+import org.springframework.lang.Nullable;
+
 import com.evalia.backend.validator.annotation.AddressConstraint;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -53,5 +55,7 @@ public abstract class Actor {
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private Image cover;
+	@Nullable
+	private String description;
 
 }
