@@ -49,12 +49,15 @@ public abstract class Actor {
 	@AddressConstraint
 	@OneToOne(cascade = CascadeType.ALL, optional = false, orphanRemoval = true)
 	private Address address;
+
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private Image avatar;
+
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private Image cover;
+	
 	@Nullable
 	private String description;
 
