@@ -30,6 +30,7 @@ public class Sector {
     @Id
     private String name;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sector")
     private List<SubSector> subSectors;
 

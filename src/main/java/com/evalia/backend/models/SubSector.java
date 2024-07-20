@@ -27,7 +27,6 @@ public class SubSector {
 	@Id
 	private String name;
 
-	@JsonIgnore
 	@ManyToOne(optional = false)
 	private Sector sector;
 }
