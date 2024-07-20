@@ -8,6 +8,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.springframework.core.io.Resource;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -48,9 +50,12 @@ public class RatingRestController {
 	}
 	
 	@GetMapping
-	public List<Rating> search(@RequestBody(required = false) MultiValueMap<String, String> parameters){
+	public List<Rating> search(@RequestParam(name = "size", defaultValue = "3") int size,
+			@RequestParam(name = "page", defaultValue = "0") int page,
+			@RequestBody(required = false) MultiValueMap<String, String> parameters){
+		Pageable pageable = PageRequest.of(page, size);
 		Map<String, String> params = multiToSingleValuedMap(parameters);
-		return ratingController.search(params);
+		return ratingController.search(pageable, params);
 	}
 	
 	

@@ -64,6 +64,11 @@ public class Rating {
     private Indicator indicator;
 
     public String getAttachmentName(){
+    	
+    	if(Objects.isNull(attachement)) {
+    		return null;
+    	}
+    	
         if(Objects.isNull(attachmentName) || attachmentName.isBlank()){
             this.attachmentName = new File(attachement).getName();
         }

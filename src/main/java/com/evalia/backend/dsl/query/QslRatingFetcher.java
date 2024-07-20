@@ -13,7 +13,9 @@ import java.util.Objects;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.evalia.backend.exceptions.ValueConversionException;
@@ -128,7 +130,7 @@ public class QslRatingFetcher {
 	}
 	
 
-	public List<Rating> fetch(Map<String, String> criterions) {
+	public List<Rating> fetch(Pageable pageable, Map<String, String> criterions) {
 		Map<String, Object> parsedCriterions = parseCriterions(criterions);
 		BooleanExpression exp = null;
 
@@ -145,9 +147,14 @@ public class QslRatingFetcher {
 		}
 
 		JPAQueryFactory queryFactory = new JPAQueryFactory(JPQLTemplates.DEFAULT, em);
-		return queryFactory
+		Query query = queryFactory
 				.selectFrom(rating)
 				.where(exp)
-				.fetch();
+				.createQuery();
+		if (pageable.isPaged()) {
+			query.setFirstResult((int) pageable.getOffset());
+			query.setMaxResults(pageable.getPageSize());
+		}
+		return query.getResultList();
 	}
 }
