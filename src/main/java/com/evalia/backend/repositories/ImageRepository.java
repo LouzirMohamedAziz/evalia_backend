@@ -8,7 +8,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 
 import com.evalia.backend.models.Image;
 
-@Transactional
+
 @RestResource(exported = false)
 public interface ImageRepository extends JpaRepository<Image,Long> {
 

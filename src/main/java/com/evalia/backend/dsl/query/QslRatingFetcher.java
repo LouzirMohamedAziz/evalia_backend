@@ -14,6 +14,7 @@ import java.util.Objects;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -129,7 +130,7 @@ public class QslRatingFetcher {
 		return exp.eq(value);
 	}
 	
-
+	@Transactional
 	public List<Rating> fetch(Pageable pageable, Map<String, String> criterions) {
 		Map<String, Object> parsedCriterions = parseCriterions(criterions);
 		BooleanExpression exp = null;
