@@ -11,7 +11,7 @@ import com.evalia.backend.models.Rating;
 
 public interface RatingController {
 
-	public List<Rating> search(Map<String, String> criterions);
+	public Double avg(Map<String, String> criterions);
 	
 	public List<Rating> search(Pageable pageable, Map<String, String> criterions);
 	

@@ -3,6 +3,8 @@ package com.evalia.backend.web.rest;
 import java.io.IOException;
 import java.util.Objects;
 
+import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -29,7 +31,7 @@ public class ImageRestController {
     private ImageController imageController;
 
     
-    private ImageRestController (ImageController imageController){
+    public ImageRestController (ImageController imageController){
         this.imageController = imageController;
     }
     
@@ -46,6 +48,7 @@ public class ImageRestController {
         }
     }
     
+    @Transactional
     @GetMapping("/avatar")
     public ResponseEntity<byte[]> getAvatar(@RequestParam("id") String id) {
         Image image = imageController.getAvatar(id);
@@ -70,6 +73,7 @@ public class ImageRestController {
         }
     }
     
+    @Transactional
     @GetMapping("/cover")
     public ResponseEntity<byte[]> getCover(@RequestParam("id") String id) {
         Image image = imageController.getCover(id);

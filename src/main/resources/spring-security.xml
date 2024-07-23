@@ -74,9 +74,11 @@
 		<security:intercept-url pattern="/auth/mfalogin" access="permitAll" />
 		<security:intercept-url pattern="/auth/**" access="permitAll" />
 		
+		<security:intercept-url pattern="/api/ratings" access="permitAll" method="GET"/>
 		<security:intercept-url pattern="/api/countries/**" access="permitAll" method="GET"/>
 		<security:intercept-url pattern="/api/governorates/**" access="permitAll" method="GET"/>
 		<security:intercept-url pattern="/api/delegations/**" access="permitAll" method="GET"/>
+		
 		<security:intercept-url pattern="/api/**" access="authenticated" />
 		
 		<security:oauth2-resource-server>

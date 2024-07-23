@@ -37,7 +37,8 @@ public class ImageController implements ImageService{
         actor.setAvatar(buildImage(file));
         actorRepository.save(actor);
     }
-
+    
+    @Override
     public Image getAvatar(String id){
         Actor actor = actorRepository.findById(id)
             .orElseThrow(() -> ResourceNotFoundException.build(Actor.class.getName(), id));
@@ -55,7 +56,7 @@ public class ImageController implements ImageService{
 		actorRepository.save(actor);
 	}
 
-	@Override
+    @Override
 	public Image getCover(String id) {
 		Actor actor = actorRepository.findById(id)
 	            .orElseThrow(() -> ResourceNotFoundException.build(Actor.class.getName(), id));

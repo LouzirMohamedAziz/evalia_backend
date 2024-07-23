@@ -14,7 +14,6 @@ import java.util.Objects;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.transaction.Transactional;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -25,6 +24,7 @@ import com.evalia.backend.models.QRating;
 import com.evalia.backend.models.Rating;
 import com.evalia.backend.util.Constants;
 import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.core.types.dsl.NumberExpression;
 import com.querydsl.core.types.dsl.SimpleExpression;
 import com.querydsl.core.types.dsl.TemporalExpression;
 import com.querydsl.jpa.JPQLTemplates;
@@ -130,8 +130,7 @@ public class QslRatingFetcher {
 		return exp.eq(value);
 	}
 	
-	@Transactional
-	public List<Rating> fetch(Pageable pageable, Map<String, String> criterions) {
+	private BooleanExpression buildExpression(Map<String, String> criterions) {
 		Map<String, Object> parsedCriterions = parseCriterions(criterions);
 		BooleanExpression exp = null;
 
@@ -146,16 +145,37 @@ public class QslRatingFetcher {
 			
 			exp = buildExpression(ex, entry.getValue()).and(exp);
 		}
+		return exp;
+	}
+	
+	
+	public List<Rating> fetch(Pageable pageable, Map<String, String> criterions) {
+		
+		BooleanExpression exp = buildExpression(criterions);
 
 		JPAQueryFactory queryFactory = new JPAQueryFactory(JPQLTemplates.DEFAULT, em);
 		Query query = queryFactory
 				.selectFrom(rating)
 				.where(exp)
 				.createQuery();
+		
 		if (pageable.isPaged()) {
 			query.setFirstResult((int) pageable.getOffset());
 			query.setMaxResults(pageable.getPageSize());
 		}
 		return query.getResultList();
+	}
+	
+	
+	public Double avg(Map<String, String> criterions) {
+		BooleanExpression exp = buildExpression(criterions);
+
+		JPAQueryFactory queryFactory = new JPAQueryFactory(JPQLTemplates.DEFAULT, em);
+		NumberExpression<Double> rateAvg = rating.rate.avg();
+		return queryFactory
+				.select(rateAvg)
+				.from(rating)
+				.where(exp)
+				.fetchOne();
 	}
 }

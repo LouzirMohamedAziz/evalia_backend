@@ -26,6 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.evalia.backend.ctrl.services.RatingController;
 import com.evalia.backend.models.Rating;
+import com.evalia.backend.util.Constants;
 
 @RestController
 @RequestMapping("/api/ratings")
@@ -50,12 +51,19 @@ public class RatingRestController {
 	}
 	
 	@GetMapping
-	public List<Rating> search(@RequestParam(name = "size", defaultValue = "3") int size,
+	public ResponseEntity<Object> search(@RequestParam(name = "size", defaultValue = "3") int size,
 			@RequestParam(name = "page", defaultValue = "0") int page,
+			@RequestParam(name = "avg", defaultValue = "false") boolean avg,
 			@RequestBody(required = false) MultiValueMap<String, String> parameters){
-		Pageable pageable = PageRequest.of(page, size);
+		
 		Map<String, String> params = multiToSingleValuedMap(parameters);
-		return ratingController.search(pageable, params);
+		if(avg) {
+			Double ratingAvg = ratingController.avg(params);
+			return ResponseEntity.ok(Map.entry(Constants.AVG_FIELD, ratingAvg));
+		}
+		Pageable pageable = PageRequest.of(page, size);
+		List<Rating> ratings = ratingController.search(pageable, params);
+		return ResponseEntity.ok(ratings);
 	}
 	
 	

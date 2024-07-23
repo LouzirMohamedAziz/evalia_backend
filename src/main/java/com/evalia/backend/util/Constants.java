@@ -16,6 +16,7 @@ public final class Constants {
 	public static final String COUNTRY = "country";
 	public static final String GOVERNORATE = "governorate";
 	public static final String DELEGATION = "delegation";
+	public static final String AVG_FIELD = "average";
     
     //prefixes
     public static final String ROLE_PREFIX = "ROLE_";

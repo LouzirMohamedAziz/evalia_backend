@@ -48,8 +48,8 @@ public class RatingControllerImpl implements RatingController {
 	
 
 	@Override
-	public List<Rating> search(Map<String, String> criterions) {
-		return ratingFetcher.fetch(Pageable.unpaged(), criterions);
+	public Double avg(Map<String, String> criterions) {
+		return ratingFetcher.avg(criterions);
 	}
 	
 	@Override
