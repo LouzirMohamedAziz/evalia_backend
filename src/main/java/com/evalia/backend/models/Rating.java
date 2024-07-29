@@ -76,7 +76,7 @@ public class Rating {
     }
 
     public void setAttachement(String attachment){
-        if(Objects.nonNull(attachement)){
+        if(Objects.nonNull(attachment)){
             this.attachement = attachment;
             this.attachmentName = new File(attachment).getName();
         }
