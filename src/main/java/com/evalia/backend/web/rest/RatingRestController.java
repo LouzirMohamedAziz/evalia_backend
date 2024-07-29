@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -53,6 +55,8 @@ public class RatingRestController {
 	@PostMapping("/search")
 	public ResponseEntity<Object> search(@RequestParam(name = "size", defaultValue = "3") int size,
 			@RequestParam(name = "page", defaultValue = "0") int page,
+			@RequestParam(name = "key", defaultValue = "date") String key,
+			@RequestParam(name = "direction", defaultValue = "DESC") Direction direction,
 			@RequestParam(name = "avg", defaultValue = "false") boolean avg,
 			@RequestBody(required = false) MultiValueMap<String, String> parameters){
 		
@@ -62,7 +66,8 @@ public class RatingRestController {
 			return ResponseEntity.ok(Map.entry(Constants.AVG_FIELD, ratingAvg));
 		}
 		Pageable pageable = PageRequest.of(page, size);
-		List<Rating> ratings = ratingController.search(pageable, params);
+		Order order = (Direction.DESC.equals(direction) ? Order.desc(key) : Order.asc(key));
+		List<Rating> ratings = ratingController.search(pageable, order, params);
 		return ResponseEntity.ok(ratings);
 	}
 	

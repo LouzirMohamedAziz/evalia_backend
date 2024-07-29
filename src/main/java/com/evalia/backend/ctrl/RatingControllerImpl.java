@@ -10,6 +10,7 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.multipart.MultipartFile;
@@ -53,8 +54,8 @@ public class RatingControllerImpl implements RatingController {
 	}
 	
 	@Override
-	public List<Rating> search(Pageable pageable, Map<String, String> criterions) {
-		return ratingFetcher.fetch(pageable, criterions);
+	public List<Rating> search(Pageable pageable, Order order, Map<String, String> criterions) {
+		return ratingFetcher.fetch(pageable, order, criterions);
 	}
 
 	@Override

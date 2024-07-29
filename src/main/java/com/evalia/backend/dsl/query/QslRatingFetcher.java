@@ -1,5 +1,7 @@
 package com.evalia.backend.dsl.query;
 
+import static com.querydsl.core.types.Order.*;
+
 import java.text.MessageFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,6 +18,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Service;
 
 import com.evalia.backend.exceptions.ValueConversionException;
@@ -23,6 +26,8 @@ import com.evalia.backend.metadata.Performance;
 import com.evalia.backend.models.QRating;
 import com.evalia.backend.models.Rating;
 import com.evalia.backend.util.Constants;
+import com.querydsl.core.types.Expression;
+import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.NumberExpression;
 import com.querydsl.core.types.dsl.SimpleExpression;
@@ -149,14 +154,18 @@ public class QslRatingFetcher {
 	}
 	
 	
-	public List<Rating> fetch(Pageable pageable, Map<String, String> criterions) {
+	public List<Rating> fetch(Pageable pageable, Order order, Map<String, String> criterions) {
 		
 		BooleanExpression exp = buildExpression(criterions);
+
+		Expression key = bindings.get(order.getProperty());
+		OrderSpecifier specifier = new OrderSpecifier<>(order.isDescending() ? DESC : ASC, key);
 
 		JPAQueryFactory queryFactory = new JPAQueryFactory(JPQLTemplates.DEFAULT, em);
 		Query query = queryFactory
 				.selectFrom(rating)
 				.where(exp)
+				.orderBy(specifier)
 				.createQuery();
 		
 		if (pageable.isPaged()) {
