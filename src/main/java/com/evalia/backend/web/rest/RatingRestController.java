@@ -50,7 +50,7 @@ public class RatingRestController {
 								Collectors.joining())));
 	}
 	
-	@PostMapping
+	@PostMapping("/search")
 	public ResponseEntity<Object> search(@RequestParam(name = "size", defaultValue = "3") int size,
 			@RequestParam(name = "page", defaultValue = "0") int page,
 			@RequestParam(name = "avg", defaultValue = "false") boolean avg,
