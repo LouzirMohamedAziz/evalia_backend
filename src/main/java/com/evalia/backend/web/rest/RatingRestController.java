@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.core.io.Resource;
@@ -46,6 +47,11 @@ public class RatingRestController {
 		if(Objects.isNull(map)) {
 			return Collections.emptyMap();
 		}
+
+		if(map.containsKey("avg")){
+			map.remove("avg");
+		}
+
 		return map.entrySet().stream()
 				.collect(Collectors.groupingBy(Entry::getKey,
 						Collectors.flatMapping(entry -> entry.getValue().stream(), 
@@ -60,10 +66,11 @@ public class RatingRestController {
 			@RequestParam(name = "avg", defaultValue = "false") boolean avg,
 			@RequestBody(required = false) MultiValueMap<String, String> parameters){
 		
+		
 		Map<String, String> params = multiToSingleValuedMap(parameters);
 		if(avg) {
-			Double ratingAvg = ratingController.avg(params);
-			return ResponseEntity.ok(Map.entry(Constants.AVG_FIELD, ratingAvg));
+			Optional<Double> ratingAvg = Optional.ofNullable(ratingController.avg(params));
+			return ResponseEntity.ok(Map.entry(Constants.AVG_FIELD, ratingAvg.orElse(0D)));
 		}
 		Pageable pageable = PageRequest.of(page, size);
 		Order order = (Direction.DESC.equals(direction) ? Order.desc(key) : Order.asc(key));
