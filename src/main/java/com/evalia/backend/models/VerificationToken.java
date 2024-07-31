@@ -10,6 +10,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,7 +32,8 @@ public class VerificationToken {
     @Temporal(TemporalType.TIMESTAMP)
     private Date expiryDate;
 
-    @OneToOne(targetEntity = Account.class, fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToOne(targetEntity = Account.class, fetch = FetchType.LAZY)
     private Account account;
     
     private TokenType tokenType;
