@@ -7,15 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-import com.evalia.backend.rest.deserializers.CountryDeserializer;
-import com.evalia.backend.rest.deserializers.DelegationDeserializer;
-import com.evalia.backend.rest.deserializers.GovernorateDeserializer;
-import com.evalia.backend.rest.serializers.CountrySerializer;
-import com.evalia.backend.rest.serializers.DelegationSerializer;
-import com.evalia.backend.rest.serializers.GovernorateSerializer;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

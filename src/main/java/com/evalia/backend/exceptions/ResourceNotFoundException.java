@@ -3,7 +3,7 @@ package com.evalia.backend.exceptions;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.evalia.backend.util.ResourceUtils;
+import com.evalia.backend.utils.ResourceUtils;
 
 @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Internal resource not found!")
 public class ResourceNotFoundException extends ApiException {

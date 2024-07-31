@@ -3,7 +3,7 @@ package com.evalia.backend.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import com.evalia.backend.metadata.Performance;
+import com.evalia.backend.utils.metadata.Performance;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

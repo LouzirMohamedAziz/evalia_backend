@@ -12,7 +12,7 @@ import javax.validation.constraints.Pattern;
 
 import org.springframework.lang.Nullable;
 
-import com.evalia.backend.validator.annotation.AddressConstraint;
+import com.evalia.backend.utils.validator.annotation.AddressConstraint;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
