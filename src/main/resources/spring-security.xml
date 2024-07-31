@@ -9,7 +9,7 @@
 
 	
 	<bean id="userDetailsService" 
-		class="com.evalia.backend.security.services.AccountDetailsService" />
+		class="com.evalia.backend.utils.security.services.AccountDetailsService" />
 
 	<bean id="passwordEncoder" 
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
