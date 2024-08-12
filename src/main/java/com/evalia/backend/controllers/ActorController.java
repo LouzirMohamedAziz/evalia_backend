@@ -9,6 +9,7 @@ import com.evalia.backend.repositories.ActorRepository;
 public class ActorController {
         private ActorRepository actorRepository;
 
+        // This is Actor Controller
     public ActorController(ActorRepository actorRepository){
         this.actorRepository = actorRepository;
     }
