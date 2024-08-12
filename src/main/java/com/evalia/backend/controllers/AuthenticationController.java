@@ -2,6 +2,7 @@ package com.evalia.backend.controllers;
 
 import java.util.Date;
 import java.util.Objects;
+import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 import java.util.regex.Pattern;
@@ -205,9 +206,11 @@ public class AuthenticationController implements AuthenticationService {
 			throw new SecurityException(msg);
 		}
 
-		String token = UUID.randomUUID().toString();
-		registerToken(account, token, TokenType.PASSWORD_TOKEN);
-		emailService.sendEmail(account.getEmail(), Constants.RESET_TOKEN_MAIL_SUBJECT, token);
+		Random rand = new Random();
+		String sixDigitToken = String.format("%06d", rand.nextInt(1000000));
+		registerToken(account, sixDigitToken, TokenType.PASSWORD_TOKEN);
+        // Generate random integers in range 0 to 999999
+		emailService.sendEmail(account.getEmail(), Constants.RESET_TOKEN_MAIL_SUBJECT, sixDigitToken);
 	}
 
 	public VerificationToken verifyPasswordRecoveryToken(String token) {
