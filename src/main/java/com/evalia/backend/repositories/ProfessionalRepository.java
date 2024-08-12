@@ -7,7 +7,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import com.evalia.backend.models.Professional;
 
 @RepositoryRestResource(exported=false)
-public interface ProfessionalRepository 
+public interface ProfessionalRepository
 	extends CrudRepository<Professional, String>, JpaSpecificationExecutor<Professional>{
 	
 }
