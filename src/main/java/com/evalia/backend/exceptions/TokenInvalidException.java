@@ -1,6 +1,6 @@
 package com.evalia.backend.exceptions;
 
-import com.evalia.backend.util.ResourceUtils;
+import com.evalia.backend.utils.ResourceUtils;
 
 public class TokenInvalidException extends ApiException{
 

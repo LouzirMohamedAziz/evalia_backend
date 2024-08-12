@@ -9,7 +9,6 @@ import com.evalia.backend.models.Actor;
  * @author Hamdi Jandoubi
  *
  */
-
 @RepositoryRestResource(exported = false)
 public interface ActorRepository extends CrudRepository<Actor, String> {
 	

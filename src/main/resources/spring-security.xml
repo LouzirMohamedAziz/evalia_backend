@@ -9,28 +9,28 @@
 
 	
 	<bean id="userDetailsService" 
-		class="com.evalia.backend.security.services.AccountDetailsService" />
+		class="com.evalia.backend.utils.security.services.AccountDetailsService" />
 
 	<bean id="passwordEncoder" 
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 		
-	<bean name="publicKey" class="com.evalia.backend.util.SecurityUtils" 
+	<bean name="publicKey" class="com.evalia.backend.utils.SecurityUtils" 
 			factory-method="loadPublicKey">
 			<constructor-arg value="${rsa.public-key}"/>
 	</bean>
 	
-	<bean name="privateKey" class="com.evalia.backend.util.SecurityUtils" 
+	<bean name="privateKey" class="com.evalia.backend.utils.SecurityUtils" 
 			factory-method="loadPrivateKey">
 			<constructor-arg value="${rsa.private-key}"/>
 	</bean>
 		
-	<bean name="jwtEncoder" class="com.evalia.backend.util.SecurityUtils"
+	<bean name="jwtEncoder" class="com.evalia.backend.utils.SecurityUtils"
 			factory-method="jwtEncoder">
 			<constructor-arg ref="publicKey"/>
 			<constructor-arg ref="privateKey"/>
 	</bean>
 	
-	<bean name="jwtDecoder" class="com.evalia.backend.util.SecurityUtils"
+	<bean name="jwtDecoder" class="com.evalia.backend.utils.SecurityUtils"
 			factory-method="jwtDecoder">
 			<constructor-arg ref="publicKey"/>
 	</bean>
@@ -74,8 +74,11 @@
 		<security:intercept-url pattern="/auth/mfalogin" access="permitAll" />
 		<security:intercept-url pattern="/auth/**" access="permitAll" />
 		
+		<security:intercept-url pattern="/api/ratings" access="permitAll" method="GET"/>
 		<security:intercept-url pattern="/api/countries/**" access="permitAll" method="GET"/>
 		<security:intercept-url pattern="/api/governorates/**" access="permitAll" method="GET"/>
+		<security:intercept-url pattern="/api/delegations/**" access="permitAll" method="GET"/>
+		
 		<security:intercept-url pattern="/api/**" access="authenticated" />
 		
 		<security:oauth2-resource-server>

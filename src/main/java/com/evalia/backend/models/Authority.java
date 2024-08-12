@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import com.evalia.backend.metadata.Role;
+import com.evalia.backend.utils.metadata.Role;
 import com.sun.istack.NotNull;
 
 import lombok.EqualsAndHashCode;
