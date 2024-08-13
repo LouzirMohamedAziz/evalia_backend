@@ -166,7 +166,8 @@ public class AuthenticationController implements AuthenticationService {
 			throw new SecurityException(msg);
 		}
 
-		String token = UUID.randomUUID().toString();
+		Random rand = new Random();
+		String token = String.format("%06d", rand.nextInt(1000000));
 		emailService.sendEmail(email, "Please verify your account by clicking on the lin in the email",
 				"Verification Code : " + token);
 		registerToken(account, token, TokenType.EMAIL_TOKEN);
@@ -207,10 +208,10 @@ public class AuthenticationController implements AuthenticationService {
 		}
 
 		Random rand = new Random();
-		String sixDigitToken = String.format("%06d", rand.nextInt(1000000));
-		registerToken(account, sixDigitToken, TokenType.PASSWORD_TOKEN);
+		String token = String.format("%06d", rand.nextInt(1000000));
+		registerToken(account, token, TokenType.PASSWORD_TOKEN);
         // Generate random integers in range 0 to 999999
-		emailService.sendEmail(account.getEmail(), Constants.RESET_TOKEN_MAIL_SUBJECT, sixDigitToken);
+		emailService.sendEmail(account.getEmail(), Constants.RESET_TOKEN_MAIL_SUBJECT, token);
 	}
 
 	public VerificationToken verifyPasswordRecoveryToken(String token) {

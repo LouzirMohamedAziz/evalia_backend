@@ -16,6 +16,7 @@ import org.springframework.data.domain.Sort.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -64,11 +65,12 @@ public class RatingRestController {
 			@RequestParam(name = "key", defaultValue = "date") String key,
 			@RequestParam(name = "direction", defaultValue = "DESC") Direction direction,
 			@RequestParam(name = "avg", defaultValue = "false") boolean avg,
-			@RequestBody(required = false) MultiValueMap<String, String> parameters){
+			@RequestBody(required = false) MultiValueMap<String, String> parameters,
+			Authentication authentication){
 		
 		
 		Map<String, String> params = multiToSingleValuedMap(parameters);
-		if(avg) {
+		if(Objects.nonNull(authentication) && avg) {
 			Optional<Double> ratingAvg = Optional.ofNullable(ratingController.avg(params));
 			return ResponseEntity.ok(Map.entry(Constants.AVG_FIELD, ratingAvg.orElse(0D)));
 		}
