@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import com.evalia.backend.controllers.services.AuthenticationService;
 import com.evalia.backend.controllers.services.TOTPService;
+import com.evalia.backend.dto.TotpResponse;
 import com.evalia.backend.exceptions.ResourceAlreadyExistsException;
 import com.evalia.backend.exceptions.TokenExpiredException;
 import com.evalia.backend.exceptions.TokenInvalidException;
@@ -239,21 +240,21 @@ public class AuthenticationController implements AuthenticationService {
 	}
 
 	@Override
-	public Image enable2FA(Account account) {
+	public TotpResponse enable2FA(Account account) {
 
 		if (account.isMfaEnabled()) {
 			throw new SecurityException("Account has already 2FA enabled!");
 		}
 
 		String secret = totpService.generateNewSecret();
-		Image image = totpService.generateQrCodeImageUri(secret);
+		TotpResponse totpResponse = totpService.generateQrCodeImageUri(secret);
 
 		account.setMfaEnabled(true);
 		account.setSecret(secret);
 		
 		accountRepository.save(account);
 
-		return image;
+		return totpResponse;
 	}
 
 	@Override

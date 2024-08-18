@@ -1,11 +1,13 @@
 package com.evalia.backend.controllers;
 
+import java.util.Base64;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.evalia.backend.controllers.services.TOTPService;
-import com.evalia.backend.models.Image;
+import com.evalia.backend.dto.TotpResponse;
 
 import dev.samstevens.totp.code.CodeVerifier;
 import dev.samstevens.totp.code.DefaultCodeGenerator;
@@ -46,7 +48,7 @@ public class TOTPServiceController implements TOTPService {
     }
 
     @Override
-    public Image generateQrCodeImageUri(String secret) {
+    public TotpResponse generateQrCodeImageUri(String secret) {
     	
         QrData data = new QrData.Builder()
                 .label("Evalia Account")
@@ -59,11 +61,11 @@ public class TOTPServiceController implements TOTPService {
 
         try {
         	byte[] imageData = qrGenerator.generate(data);
-            Image qr = new Image();
-            qr.setName(secret);
-            qr.setType(qrGenerator.getImageMimeType());
-            qr.setContent(imageData);
-            return qr;
+            TotpResponse totpResponse = new TotpResponse();
+            totpResponse.setSecret(secret);
+            totpResponse.setType(qrGenerator.getImageMimeType());
+            totpResponse.setQr(Base64.getEncoder().encodeToString(imageData));
+            return totpResponse;
         } catch (QrGenerationException e) {
             LOG.error("Error while generating QR-CODE", e);
             throw new SecurityException(e);

@@ -2,8 +2,8 @@ package com.evalia.backend.controllers.services;
 
 import org.springframework.security.core.Authentication;
 
+import com.evalia.backend.dto.TotpResponse;
 import com.evalia.backend.models.Account;
-import com.evalia.backend.models.Image;
 import com.evalia.backend.models.TokenType;
 import com.evalia.backend.models.VerificationToken;
 
@@ -90,7 +90,7 @@ public interface AuthenticationService {
 	 * @param account
 	 * @return
 	 */
-	public Image enable2FA(Account account);
+	public TotpResponse enable2FA(Account account);
 	
 	/**
 	 * Verify Token for the passed TokenType.

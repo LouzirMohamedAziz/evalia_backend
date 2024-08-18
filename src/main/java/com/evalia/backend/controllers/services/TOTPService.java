@@ -1,12 +1,12 @@
 package com.evalia.backend.controllers.services;
 
-import com.evalia.backend.models.Image;
+import com.evalia.backend.dto.TotpResponse;
 
 public interface TOTPService {
 
 	public String generateNewSecret();
 
-	public Image generateQrCodeImageUri(String secret);
+	public TotpResponse generateQrCodeImageUri(String secret);
 
 	public boolean isOtpValid(String secret, String code);
 

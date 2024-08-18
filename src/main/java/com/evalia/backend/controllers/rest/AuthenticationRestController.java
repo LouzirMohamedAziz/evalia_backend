@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
 import com.evalia.backend.controllers.AuthenticationController;
+import com.evalia.backend.dto.TotpResponse;
 import com.evalia.backend.exceptions.ApiException;
 import com.evalia.backend.models.Account;
 import com.evalia.backend.models.Image;
@@ -103,14 +104,12 @@ public class AuthenticationRestController {
     }
     
     @PostMapping("/enable2fa")
-    public ResponseEntity<byte[]> enable2FA(Authentication authentication) {
+    public  ResponseEntity<TotpResponse> enable2FA(Authentication authentication) {
     	Account account = authController.getAccountFromUsername(authentication.getName());
     	try {
-			Image image = authController.enable2FA(account);
+			TotpResponse totpResponse = authController.enable2FA(account);
 			return ResponseEntity.ok()
-					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + image.getName())
-					.contentType(MediaType.valueOf(image.getType()))
-					.body(image.getContent());
+					.body(totpResponse);
 		} catch (SecurityException e) {
 			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
 		}
