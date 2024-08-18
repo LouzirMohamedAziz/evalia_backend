@@ -41,7 +41,7 @@ public class QslRatingFetcher {
 	public static final String RATING_DATE = "date";
 	public static final String INDICATOR = "indicator";
 	public static final String PERFORMANCE = "performance";
-	public static final String EVALUATOR = "evaluator";
+	public static final String EVALUATER = "evaluater";
 	public static final String PROFESSIONAL = "professional";
 	public static final String SECTOR = "sector";
 	public static final String SUB_SECTOR = "subsector";
@@ -60,7 +60,7 @@ public class QslRatingFetcher {
 				INDICATOR, rating.indicator.name, // String
 				PERFORMANCE, rating.indicator.performance, // Enum
 				PROFESSIONAL, rating.evaluatee.identifier, // String
-				EVALUATOR, rating.evaluater.identifier, // String
+				EVALUATER, rating.evaluater.identifier, // String
 				SECTOR, rating.evaluatee.subSector.sector.name, // String
 				SUB_SECTOR, rating.evaluatee.subSector.name, // String
 				GOVERNORATE, rating.evaluatee.address.governorate.name, // String
