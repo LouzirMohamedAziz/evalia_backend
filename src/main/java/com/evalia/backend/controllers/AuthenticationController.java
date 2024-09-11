@@ -26,7 +26,9 @@ import com.evalia.backend.exceptions.ResourceAlreadyExistsException;
 import com.evalia.backend.exceptions.TokenExpiredException;
 import com.evalia.backend.exceptions.TokenInvalidException;
 import com.evalia.backend.models.Account;
-import com.evalia.backend.models.Image;
+import com.evalia.backend.models.Authority;
+import com.evalia.backend.models.Civil;
+import com.evalia.backend.models.Professional;
 import com.evalia.backend.models.TokenType;
 import com.evalia.backend.models.VerificationToken;
 import com.evalia.backend.repositories.AccountRepository;
@@ -34,6 +36,7 @@ import com.evalia.backend.repositories.VerificationTokenRepository;
 import com.evalia.backend.utils.Constants;
 import com.evalia.backend.utils.ResourceUtils;
 import com.evalia.backend.utils.SecurityUtils;
+import com.evalia.backend.utils.metadata.Role;
 import com.evalia.backend.utils.security.services.JwtTokenService;
 import com.evalia.backend.utils.services.EmailService;
 
@@ -143,6 +146,16 @@ public class AuthenticationController implements AuthenticationService {
 		}
 		if (accountRepository.existsByEmail(account.getEmail())) {
 			throw ResourceAlreadyExistsException.build(Account.class.getName() + "." + "email", account.getEmail());
+		}
+		if(account.getActor() instanceof Civil){
+			Authority authorityCivil = new Authority();
+			authorityCivil.setRole(Role.ROLE_CIVIL);
+			account.getAuthorities().add(authorityCivil);
+		}
+		if(account.getActor() instanceof Professional){
+			Authority authorityProfessional = new Authority();
+			authorityProfessional.setRole(Role.ROLE_PROFESSIONAL);
+			account.getAuthorities().add(authorityProfessional);
 		}
 		String password = account.getPassword();
 		password = encodePassword(password);

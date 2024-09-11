@@ -1,0 +1,11 @@
+[
+    {
+        "role":"ROLE_ADMIN"
+    },
+    {
+        "role":"ROLE_CIVIL"
+    },
+    {
+        "role":"ROLE_PROFESSIONAL"
+    }
+]
