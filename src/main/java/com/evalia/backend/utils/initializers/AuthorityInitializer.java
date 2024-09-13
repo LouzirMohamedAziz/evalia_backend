@@ -15,9 +15,7 @@ import org.springframework.stereotype.Component;
 
 import com.evalia.backend.exceptions.InitializationException;
 import com.evalia.backend.models.Authority;
-import com.evalia.backend.models.Country;
 import com.evalia.backend.repositories.AuthorityRepository;
-import com.evalia.backend.utils.InitializersUtils;
 import com.evalia.backend.utils.ResourceUtils;
 import com.evalia.backend.utils.metadata.Role;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -58,7 +56,6 @@ public class AuthorityInitializer implements Initializer{
 
 	@Override
 	public boolean isInitialized() throws InitializationException {
-		// TODO Auto-generated method stub
 		return authorityRepository.count() > 0;
 	}
 

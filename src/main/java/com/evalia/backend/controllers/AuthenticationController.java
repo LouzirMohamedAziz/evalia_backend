@@ -28,7 +28,6 @@ import com.evalia.backend.exceptions.TokenInvalidException;
 import com.evalia.backend.models.Account;
 import com.evalia.backend.models.Authority;
 import com.evalia.backend.models.Civil;
-import com.evalia.backend.models.Professional;
 import com.evalia.backend.models.TokenType;
 import com.evalia.backend.models.VerificationToken;
 import com.evalia.backend.repositories.AccountRepository;
@@ -147,16 +146,13 @@ public class AuthenticationController implements AuthenticationService {
 		if (accountRepository.existsByEmail(account.getEmail())) {
 			throw ResourceAlreadyExistsException.build(Account.class.getName() + "." + "email", account.getEmail());
 		}
+		Authority authority= new Authority();
 		if(account.getActor() instanceof Civil){
-			Authority authorityCivil = new Authority();
-			authorityCivil.setRole(Role.ROLE_CIVIL);
-			account.getAuthorities().add(authorityCivil);
+			authority.setRole(Role.ROLE_CIVIL);
+		}else{
+			authority.setRole(Role.ROLE_PROFESSIONAL);
 		}
-		if(account.getActor() instanceof Professional){
-			Authority authorityProfessional = new Authority();
-			authorityProfessional.setRole(Role.ROLE_PROFESSIONAL);
-			account.getAuthorities().add(authorityProfessional);
-		}
+		account.getAuthorities().add(authority);
 		String password = account.getPassword();
 		password = encodePassword(password);
 		account.setPassword(password);
