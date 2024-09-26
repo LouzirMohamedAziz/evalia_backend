@@ -124,6 +124,7 @@ public class AuthenticationController implements AuthenticationService {
 
 		if (account.isMfaEnabled()) {
 			LOG.debug("Account {} has 2 Factor authentication enabled.", authentication.getName());
+			clearTokens(account.getEmail());
 			String token = UUID.randomUUID().toString();
 			registerToken(account, token, TokenType.TOTP_TOKEN);
 			LOG.debug("Token of type TOTP was generated for user {}.", authentication.getName());
