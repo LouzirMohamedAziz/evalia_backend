@@ -1,23 +1,23 @@
 [
     {
         "name": "INVESTMENT",
-        "performance": "ENVIRONMENTAL"
+        "performance": "ECONOMICAL"
     },
     {
         "name": "EXPLOITATION",
-        "performance": "ENVIRONMENTAL"
+        "performance": "ECONOMICAL"
     },
     {
         "name": "DEBT RATE",
-        "performance": "ENVIRONMENTAL"
+        "performance": "ECONOMICAL"
     },
     {
         "name": "NET MARGIN",
-        "performance": "ENVIRONMENTAL"
+        "performance": "ECONOMICAL"
     },
     {
         "name": "SALES VALUE",
-        "performance": "ENVIRONMENTAL"
+        "performance": "ECONOMICAL"
     },
     {
         "name": "BRANDING",
