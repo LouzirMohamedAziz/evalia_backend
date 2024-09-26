@@ -116,6 +116,7 @@ public class AuthenticationController implements AuthenticationService {
 		return account;
 	}
 
+	@Transactional
 	@Override
 	public String login(Authentication authentication) {
 
