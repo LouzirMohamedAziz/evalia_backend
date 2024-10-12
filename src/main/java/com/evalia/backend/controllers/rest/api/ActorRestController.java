@@ -1,13 +1,14 @@
-package com.evalia.backend.controllers.rest;
+package com.evalia.backend.controllers.rest.api;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
-import com.evalia.backend.controllers.ActorController;
+import com.evalia.backend.controllers.impl.ActorController;
 import com.evalia.backend.models.Actor;
 
 @RestController
@@ -27,6 +28,12 @@ public class ActorRestController {
             System.out.println("Error when saving the image: "+e.getMessage());
             throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
-    
     }
+    @PatchMapping("editPrivacy")
+    public Actor editPrivacy(@RequestParam String actorId){
+        //TO-DO
+        return null;
+    }
+    
+
 }

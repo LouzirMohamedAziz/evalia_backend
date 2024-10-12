@@ -5,8 +5,8 @@ import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.evalia.backend.models.TokenType;
 import com.evalia.backend.models.VerificationToken;
+import com.evalia.backend.utils.metadata.TokenType;
 
 @RepositoryRestResource(exported = false)
 public interface VerificationTokenRepository extends CrudRepository<VerificationToken, String>{

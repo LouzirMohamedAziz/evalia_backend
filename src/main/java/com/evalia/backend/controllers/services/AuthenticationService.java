@@ -4,7 +4,7 @@ import org.springframework.security.core.Authentication;
 
 import com.evalia.backend.dto.TotpResponse;
 import com.evalia.backend.models.Account;
-import com.evalia.backend.models.TokenType;
+import com.evalia.backend.utils.metadata.TokenType;
 import com.evalia.backend.models.VerificationToken;
 
 public interface AuthenticationService {

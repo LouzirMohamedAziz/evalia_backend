@@ -1,4 +1,4 @@
-package com.evalia.backend.controllers.rest;
+package com.evalia.backend.controllers.rest.api;
 
 import java.util.Map;
 

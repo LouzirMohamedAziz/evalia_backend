@@ -1,4 +1,4 @@
-package com.evalia.backend.controllers.rest;
+package com.evalia.backend.controllers.rest.api;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.evalia.backend.controllers.ProfessionalController;
+import com.evalia.backend.controllers.impl.ProfessionalController;
 import com.evalia.backend.models.Professional;
 
 @RestController

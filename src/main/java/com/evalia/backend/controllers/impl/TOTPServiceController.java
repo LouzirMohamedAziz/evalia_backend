@@ -1,4 +1,4 @@
-package com.evalia.backend.controllers;
+package com.evalia.backend.controllers.impl;
 
 import java.util.Base64;
 

@@ -1,4 +1,4 @@
-package com.evalia.backend.controllers;
+package com.evalia.backend.controllers.impl;
 
 import org.springframework.stereotype.Controller;
 
@@ -14,10 +14,10 @@ public class ActorController {
         this.actorRepository = actorRepository;
     }
 
-    public Actor editDescription(String actorId, String Description) {
+    public Actor editDescription(String actorId, String description) {
         Actor actor = actorRepository.findById(actorId).orElse(null);
         if (actor != null) {
-            actor.setDescription(Description);
+            actor.setDescription(description);
             actorRepository.save(actor);
         }
         return actor;

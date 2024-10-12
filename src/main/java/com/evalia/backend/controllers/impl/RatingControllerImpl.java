@@ -1,4 +1,4 @@
-package com.evalia.backend.controllers;
+package com.evalia.backend.controllers.impl;
 
 import java.net.URI;
 import java.nio.file.Path;

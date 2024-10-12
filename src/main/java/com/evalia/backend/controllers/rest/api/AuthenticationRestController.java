@@ -1,4 +1,4 @@
-package com.evalia.backend.controllers.rest;
+package com.evalia.backend.controllers.rest.api;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
-import com.evalia.backend.controllers.AuthenticationController;
+import com.evalia.backend.controllers.impl.AuthenticationController;
 import com.evalia.backend.dto.TotpResponse;
 import com.evalia.backend.exceptions.ApiException;
 import com.evalia.backend.models.Account;

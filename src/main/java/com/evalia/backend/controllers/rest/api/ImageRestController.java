@@ -1,4 +1,4 @@
-package com.evalia.backend.controllers.rest;
+package com.evalia.backend.controllers.rest.api;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.evalia.backend.controllers.ImageController;
+import com.evalia.backend.controllers.impl.ImageController;
 import com.evalia.backend.models.Image;
 
 @RestController
