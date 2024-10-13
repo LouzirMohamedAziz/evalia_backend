@@ -75,6 +75,7 @@ public class Account implements UserDetails {
 	@EqualsAndHashCode.Exclude
 	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, optional = false)
 	private Actor actor;
+	
 	@Column(name = "is_using_mfa")
 	private boolean mfaEnabled = false;
 	@JsonIgnore

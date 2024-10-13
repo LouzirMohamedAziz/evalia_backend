@@ -30,7 +30,7 @@ import lombok.Setter;
 
 @Entity
 @DiscriminatorValue("professional")
-public class Professional extends Actor {
+public class Professional extends Ratable {
 
 	@NotBlank
 	private String name;
@@ -43,24 +43,4 @@ public class Professional extends Actor {
 	
 	@ManyToOne
 	private BusinessGroup businessGroup;
-
-	@JsonIgnore
-	@OneToMany(mappedBy = "evaluatee", cascade = CascadeType.ALL,
-			fetch = FetchType.LAZY, orphanRemoval = true)
-	private List<Rating> ratings;
-	
-	@ManyToOne
-	private SubSector subSector;
-
-	public void addRating(Rating rating) {
-		rating.setEvaluatee(this);
-		ratings.add(rating);
-	}
-
-	public void setRating(List<Rating> ratings) {
-		if(Objects.isNull(ratings))
-			return;
-		this.ratings.clear();
-		ratings.forEach(this::addRating);
-	}   
 }

@@ -4,10 +4,10 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.evalia.backend.models.Professional;
+import com.evalia.backend.models.Ratable;
 
 @RepositoryRestResource(exported=false)
-public interface ProfessionalRepository
-	extends CrudRepository<Professional, String>, JpaSpecificationExecutor<Professional>{
+public interface RatableRepository
+	extends CrudRepository<Ratable, String>, JpaSpecificationExecutor<Ratable>{
 	
 }

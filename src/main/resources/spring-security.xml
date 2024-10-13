@@ -71,7 +71,6 @@
 		
 		<security:intercept-url pattern="/auth/enable2fa" access="authenticated" />
 		<security:intercept-url pattern="/auth/account/verification/**" access="authenticated" />
-		<security:intercept-url pattern="/auth/mfalogin" access="permitAll" />
 		<security:intercept-url pattern="/auth/**" access="permitAll" />
 		
 		<security:intercept-url pattern="/api/sectors/**" access="permitAll" method="GET"/>

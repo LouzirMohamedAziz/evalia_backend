@@ -8,26 +8,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.evalia.backend.controllers.impl.ProfessionalController;
-import com.evalia.backend.models.Professional;
+import com.evalia.backend.controllers.impl.RatableController;
+import com.evalia.backend.models.Ratable;
 
 @RestController
 @RequestMapping("/api/professionals")
-public class ProfessionalRestController {
+public class RatableRestController {
 
-    private final ProfessionalController professionalController;
+    private final RatableController ratableController;
 
     @Autowired
-    public ProfessionalRestController(ProfessionalController professionalController) {
-        this.professionalController = professionalController;
+    public RatableRestController(RatableController professionalController) {
+        this.ratableController = professionalController;
     }
     
     @GetMapping("/search")
-    public List<Professional> search(@RequestParam(required = false) Long governorate,
+    public List<Ratable> search(@RequestParam(required = false) Long governorate,
                                      @RequestParam(required = false) Long delegation,
                                      @RequestParam(required = false) String sector,
                                      @RequestParam(required = false) String subSector) {
     	
-        return professionalController.search(governorate, delegation, sector, subSector);
+        return ratableController.search(governorate, delegation, sector, subSector);
     }
 }

@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.Pattern;
 
 import org.springframework.lang.Nullable;
 
@@ -35,6 +34,7 @@ import lombok.Setter;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
 		@Type(value = Civil.class, name = "Personal"),
+		@Type(value = LegalEntity.class, name = "LegalEntity"),
 		@Type(value = Professional.class, name = "Professional") })
 
 @Entity
@@ -43,7 +43,6 @@ import lombok.Setter;
 public abstract class Actor {
 
 	@Id
-	@Pattern(regexp = "^(\\d{8}|\\d{7}\\w{3}\\d{3})$", message = "Please verify your identifier!")
 	@EqualsAndHashCode.Include
 	private String identifier;
 

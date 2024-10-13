@@ -26,6 +26,7 @@ import com.evalia.backend.exceptions.ResourceAlreadyExistsException;
 import com.evalia.backend.exceptions.TokenExpiredException;
 import com.evalia.backend.exceptions.TokenInvalidException;
 import com.evalia.backend.models.Account;
+import com.evalia.backend.models.Actor;
 import com.evalia.backend.models.Authority;
 import com.evalia.backend.models.Civil;
 import com.evalia.backend.models.VerificationToken;
@@ -52,6 +53,7 @@ public class AuthenticationController implements AuthenticationService {
 	private final BCryptPasswordEncoder passwordEnocder;
 	private final AccountRepository accountRepository;
 	private final Pattern passwordPattern;
+	private final Pattern actorPattern;
 	private final EmailController emailService;
 	private Random random = new Random();
 
@@ -65,10 +67,15 @@ public class AuthenticationController implements AuthenticationService {
 		this.accountRepository = accountRepository;
 		this.emailService = emailService;
 		this.passwordPattern = Pattern.compile(Constants.PASSWORD_REGEX);
+		this.actorPattern = Pattern.compile(Constants.ACTOR_IDENTIFIER_REGEX);
 	}
 
 	private boolean isPasswordValid(String password) {
 		return passwordPattern.matcher(password).matches();
+	}
+	
+	private boolean isIdentifierValid(String identifier) {
+		return actorPattern.matcher(identifier).matches();
 	}
 
 	private String encodePassword(String password) {
@@ -150,6 +157,13 @@ public class AuthenticationController implements AuthenticationService {
 		if (accountRepository.existsByEmail(account.getEmail())) {
 			throw ResourceAlreadyExistsException.build(Account.class.getName() + "." + "email", account.getEmail());
 		}
+		if(!isIdentifierValid(account.getActor().getIdentifier())) {
+			throw new ConstraintViolationException(Constants.INVALID_IDENTIFIER,
+					Set.of(ConstraintViolationImpl.forParameterValidation(Constants.INVALID_IDENTIFIER, null, null,
+							Constants.INVALID_IDENTIFIER, Actor.class, null, null, account.getActor().getIdentifier(),
+								null, null, null, null)));
+		}
+		
 		Authority authority= new Authority();
 		if(account.getActor() instanceof Civil){
 			authority.setRole(Role.ROLE_CIVIL);

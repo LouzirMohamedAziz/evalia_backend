@@ -11,6 +11,7 @@ public final class Constants {
 	
 	//Regex patterns
 	public static final String PASSWORD_REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%&+=]).{8,20}$";
+	public static final String ACTOR_IDENTIFIER_REGEX= "\\d{8}|\\d{7}\\w{3}\\d{3}";
 	
 	//Properties
 	public static final String COUNTRY = "country";
@@ -24,6 +25,7 @@ public final class Constants {
     
     //Error messages 
     public static final String INVALID_ADDRESS = "Invalid Address";
+    public static final String INVALID_IDENTIFIER = "Please verify your identifier!";
     public static final String INVALID_PASSWORD = "Password does not meet the criteria!\n" + 
 			"The password must: \n" +
 			"\t*Contain at least one uppercase character,\n" +
