@@ -1,0 +1,4382 @@
+[
+    {
+        "name": "Assembly of People's Representatives",
+        "subSector": "Development",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": "23"
+            },
+            "delegation": {
+                "id": "252"
+            }
+        }
+    },
+    {
+        "name": "Presidency of the Republic",
+        "subSector": "Development",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Institute of Strategic Studies",
+        "subSector": "Development",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Presidency of the Government",
+        "subSector": "Development",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Economic Analysis Council",
+        "subSector": "Development",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "General Body for Public-Private Partnerships",
+        "subSector": "Development",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National School of Administration",
+        "subSector": "Development",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Academy of Sciences, Letters and Arts",
+        "subSector": "Development",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Foreign Affairs",
+        "subSector": "Diplomacy",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Diplomatic Academy",
+        "subSector": "Diplomacy",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Office of Tunisians Abroad",
+        "subSector": "Diplomacy",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "DG of Municipal Programs, Regional Councils and District Councils",
+        "subSector": "Decentralization",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Municipalities",
+        "subSector": "Decentralization",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "General Body for Prospective and Support of the Decentralization Process",
+        "subSector": "Decentralization",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Loan Fund and Support for Local Authorities",
+        "subSector": "Decentralization",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Training and Support Center for Decentralization",
+        "subSector": "Decentralization",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Families, Women, Children and Seniors",
+        "subSector": "Childhood_Youth_Women_Seniors_CSOs",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Youth",
+        "subSector": "Childhood_Youth_Women_Seniors_CSOs",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Center for Research, Studies, Documentation and Information on Women",
+        "subSector": "Childhood_Youth_Women_Seniors_CSOs",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Observatory of Information, Training, Documentation and Studies for the Protection of the Rights of the Child",
+        "subSector": "Childhood_Youth_Women_Seniors_CSOs",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Youth centers",
+        "subSector": "Childhood_Youth_Women_Seniors_CSOs",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Employment ",
+        "subSector": "Employment",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Agency for Employment and Self-Employment ",
+        "subSector": "Employment",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Justice",
+        "subSector": "Justice",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Courts",
+        "subSector": "Justice",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Prisons",
+        "subSector": "Justice",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of the Interior (DG of National Security)",
+        "subSector": "Police",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Police Station",
+        "subSector": "Police",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Rapid Intervention Brigade",
+        "subSector": "Police",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Anti-Terrorist Brigade",
+        "subSector": "Police",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Computer Center of the Ministry of the Interior",
+        "subSector": "Police",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Housing Office for Active Executives of the Ministry of the Interior",
+        "subSector": "Police",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of the Interior (DG of the National Guard)",
+        "subSector": "Gards",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Guard Post",
+        "subSector": "Gards",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "The national road safety observatory",
+        "subSector": "Gards",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Guard Special Unit",
+        "subSector": "Gards",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "K9 Brigade",
+        "subSector": "Gards",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Office of Civil Protection",
+        "subSector": "Civil_Protection",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Internal Security Forces Care Center",
+        "subSector": "Civil_Protection",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Higher school of internal security forces ",
+        "subSector": "Civil_Protection",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Fire station",
+        "subSector": "Civil_Protection",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Naval Academy",
+        "subSector": "Navy",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of National Defense",
+        "subSector": "Ground_Infantry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Barracks",
+        "subSector": "Ground_Infantry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "General Staff School",
+        "subSector": "Ground_Infantry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Higher War School",
+        "subSector": "Ground_Infantry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Defense Institute",
+        "subSector": "Ground_Infantry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Military Research Center",
+        "subSector": "Ground_Infantry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Military Academy",
+        "subSector": "Ground_Infantry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Military hospital",
+        "subSector": "Ground_Infantry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Center for Cartography and Remote Sensing",
+        "subSector": "Air_Force",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Defense Metrology Laboratory (Tunis)",
+        "subSector": "Air_Force",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Borj el Amri Aviation School",
+        "subSector": "Air_Force",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Mareth Defensive Line Military Museum",
+        "subSector": "Air_Force",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Museum of National Memory (Sijoumi)",
+        "subSector": "Air_Force",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": " National Military Museum (Palace of the Rose)",
+        "subSector": "Air_Force",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Public Health ",
+        "subSector": "Medicine",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Body for Evaluation and Accreditation in Health",
+        "subSector": "Medicine",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Office for Family and Population",
+        "subSector": "Medicine",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Salah Azaïez Institute",
+        "subSector": "Medicine",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Institute of Neurology Tunis ",
+        "subSector": "Medicine",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Mohamed Kassab Institute of Orthopedics in Ksar Saïd",
+        "subSector": "Medicine",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Hédi Raies Institute of Ophthalmology",
+        "subSector": "Medicine",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Maternity and Neonatology Center",
+        "subSector": "Medicine",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Trauma and Major Burns Center",
+        "subSector": "Medicine",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Faculty of Medicine",
+        "subSector": "Medicine",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Computer Center of the Ministry of Public Health",
+        "subSector": "Medicine",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "The Vocational Rehabilitation Center for the Physically Disabled and Life Accidents",
+        "subSector": "Medicine",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Agency for Health and Environmental Product Control",
+        "subSector": "Pharmacy",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Thermal Office",
+        "subSector": "Pharmacy",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Jebel El Oust Health Complex",
+        "subSector": "Pharmacy",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Central Pharmacy of Tunisia",
+        "subSector": "Pharmacy",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Society of Pharmaceutical Industries of Tunisia",
+        "subSector": "Pharmacy",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of the Environment",
+        "subSector": "Waste",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Waste Management Agency",
+        "subSector": "Waste",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Environmental Protection Agency",
+        "subSector": "Waste",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Coastal Protection and Development Agency",
+        "subSector": "Waste",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunis International Center for Environmental Technologies",
+        "subSector": "Waste",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Sanitation Office",
+        "subSector": "Sanitation",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Bank of Genes",
+        "subSector": "Sanitation",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "DG of Bridges and Roads",
+        "subSector": "Infrastructure",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisia Highways Company",
+        "subSector": "Infrastructure",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Education",
+        "subSector": "Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Educational Center",
+        "subSector": "Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Center for Technologies in Education",
+        "subSector": "Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "School Works Office",
+        "subSector": "Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Training and Development Center",
+        "subSector": "Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Staff Housing Office of the Ministry of Education",
+        "subSector": "Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Maintenance Center",
+        "subSector": "Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Regional Education Commission",
+        "subSector": "Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Regional training and development agencies",
+        "subSector": "Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Higher Education and Scientific Research",
+        "subSector": "Higher Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Agency for the Promotion of Scientific Research",
+        "subSector": "Higher Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Center for Economic and Social Studies and Research",
+        "subSector": "Higher Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Center for Nuclear Science and Technology",
+        "subSector": "Higher Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Institute of Research and Physico-Chemical Analysis",
+        "subSector": "Higher Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Center for Medicine and Sports Sciences",
+        "subSector": "Higher Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National University Center for Scientific and Technical Documentation",
+        "subSector": "Higher Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "City of Sciences in Tunis",
+        "subSector": "Higher Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Palace of Sciences of Monastir",
+        "subSector": "Higher Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Sfax Biotechnology Center",
+        "subSector": "Higher Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Borj Cédria Biotechnology Center",
+        "subSector": "Higher Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Research Center in Materials Sciences",
+        "subSector": "Higher Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Sousse Microelectronics and Nanotechnology Research Center",
+        "subSector": "Higher Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Sfax Computer Science, Multimedia and Digital Data Processing Research Center",
+        "subSector": "Higher Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Higher Institutes of Technological Studies",
+        "subSector": "Higher Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Institution of Agricultural Research and Higher Education",
+        "subSector": "Higher Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "University",
+        "subSector": "Higher Education",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Vocational Training",
+        "subSector": "Training",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Vocational Training Agency",
+        "subSector": "Training",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Center for Continuing Training and Professional Promotion",
+        "subSector": "Training",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Training Center for Trainers and Training Engineering",
+        "subSector": "Training",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Training center",
+        "subSector": "Training",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Cultural Affairs",
+        "subSector": "Arts",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Heritage Institute",
+        "subSector": "Arts",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Agency for Heritage Enhancement and Cultural Promotion",
+        "subSector": "Arts",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Author's Rights Protection Organization",
+        "subSector": "Arts",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Center for Cinema and Image",
+        "subSector": "Arts",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Center for Cultural Communication",
+        "subSector": "Arts",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Translation Center",
+        "subSector": "Arts",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Theater",
+        "subSector": "Arts",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Library",
+        "subSector": "Arts",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Living Art Center",
+        "subSector": "Arts",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Regional Commission for Cultural Action",
+        "subSector": "Arts",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Library",
+        "subSector": "Arts",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "House of Culture",
+        "subSector": "Arts",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Sports",
+        "subSector": "Sports",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Sports City",
+        "subSector": "Sports",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Company Promosport",
+        "subSector": "Sports",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Stadium",
+        "subSector": "Sports",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Sports hall",
+        "subSector": "Sports",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Pool",
+        "subSector": "Sports",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Religious Affairs",
+        "subSector": "Religion",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Agriculture, Fisheries and Hydraulic Resources ",
+        "subSector": "Agriculture",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Center for Agricultural Studies ",
+        "subSector": "Agriculture",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Arid Regions Institute ",
+        "subSector": "Agriculture",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Plant Protection Society ",
+        "subSector": "Agriculture",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Agricultural Investment Promotion Agency ",
+        "subSector": "Agriculture",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Agricultural Land Agency  ",
+        "subSector": "Agriculture",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Cereals Office ",
+        "subSector": "Agriculture",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Oil Office ",
+        "subSector": "Agriculture",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Livestock and Pasture Office ",
+        "subSector": "Agriculture",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Poultry Society ",
+        "subSector": "Agriculture",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Horse Breed Improvement Foundation ",
+        "subSector": "Agriculture",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Racing Society ",
+        "subSector": "Agriculture",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ports and Fisheries Facilities Agency  ",
+        "subSector": "Agriculture",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Water Exploitation and Distribution Company ",
+        "subSector": "Agriculture",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Sylvo Pastoral Development Office of the North-West ",
+        "subSector": "Agriculture",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": " Ministry of Commerce ",
+        "subSector": "Trade",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Trade Office ",
+        "subSector": "Trade",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Export Promotion Center ",
+        "subSector": "Trade",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Company of Wholesale Markets ",
+        "subSector": "Trade",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Nabeul Fair Company",
+        "subSector": "Trade",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Finance",
+        "subSector": "Stock exchange",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisia TradeNet",
+        "subSector": "Stock exchange",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunis Stock Exchange",
+        "subSector": "Stock exchange",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Al Karama Holding",
+        "subSector": "Stock exchange",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Finance",
+        "subSector": "Insurance",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Insurance and Reinsurance Company",
+        "subSector": "Insurance",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunis-Re",
+        "subSector": "Insurance",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Company for Foreign Trade Insurance",
+        "subSector": "Insurance",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "The Tunisian Guarantee Company",
+        "subSector": "Insurance",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Social Affairs",
+        "subSector": "Insurance",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Pension and Social Security Fund",
+        "subSector": "Insurance",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Social Security Fund",
+        "subSector": "Insurance",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Health Insurance Fund",
+        "subSector": "Insurance",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Center for Research and Social Studies",
+        "subSector": "Insurance",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Social Security Research and Study Center",
+        "subSector": "Insurance",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Institute of Health and Safety at Work",
+        "subSector": "Insurance",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Higher Institute of Specialized Education",
+        "subSector": "Insurance",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Institute for Child Protection",
+        "subSector": "Insurance",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Equipment",
+        "subSector": "Equipment",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Topography and Cadastre Office",
+        "subSector": "Equipment",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Housing",
+        "subSector": "Real Estate",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Housing Land Agency",
+        "subSector": "Real Estate",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Urban Rehabilitation and Renewal Agency",
+        "subSector": "Real Estate",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Urban Planning Agency of Greater Tunis",
+        "subSector": "Real Estate",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Social Housing Promotion Company",
+        "subSector": "Real Estate",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Real Estate Company of Tunisia",
+        "subSector": "Real Estate",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunis Lake Promotion Company ",
+        "subSector": "Real Estate",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Society of Studies and Promotion of Tunis South",
+        "subSector": "Real Estate",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Company for the Study and Development of the Northern Coasts of the City of Sfax ",
+        "subSector": "Real Estate",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "General Company of Equipment and Works",
+        "subSector": "Construction",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Center for Testing and Construction Techniques",
+        "subSector": "Construction",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Tourism",
+        "subSector": "Seaside",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tourist Land Agency",
+        "subSector": "Seaside",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": " Tunisian National Tourism Office",
+        "subSector": "Seaside",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Company Promogolf",
+        "subSector": "Mountainside",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tourist Leisure Company",
+        "subSector": "Desert Side",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Transport (DG Land Transport)",
+        "subSector": "land",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Land Transport Agency",
+        "subSector": "land",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Company for Inter-Urban Transport",
+        "subSector": "land",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Regional Transport Company",
+        "subSector": "land",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Company of Tunisian Railways",
+        "subSector": "land",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunis Rapid Rail Network Company",
+        "subSector": "land",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Railway Works Company",
+        "subSector": "land",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Center for Aeronautical Studies and Research",
+        "subSector": "land",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Transport (DG Maritime Transport)",
+        "subSector": "Maritime",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Merchant Marine and Ports Office",
+        "subSector": "Maritime",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Navigation Company",
+        "subSector": "Maritime",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Stevedoring and Handling Company",
+        "subSector": "Maritime",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Mediterranean Training Institute for Maritime Professions",
+        "subSector": "Maritime",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Transport (DG Air Transport)",
+        "subSector": "Air",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Office of Civil Aviation and Airports",
+        "subSector": "Air",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Air Company (Tunisair)",
+        "subSector": "Air",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Institute of Meteorology ",
+        "subSector": "Air",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Communication Technologies",
+        "subSector": "Postal",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Post Office",
+        "subSector": "Postal",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Frequency Agency",
+        "subSector": "Telephony",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Television Broadcasting Office",
+        "subSector": "Telephony",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Radio",
+        "subSector": "Telephony",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Sotetel",
+        "subSector": "Telephony",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisia Telecom ",
+        "subSector": "Internet",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Internet Agency ",
+        "subSector": "Internet",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Informatics Center ",
+        "subSector": "Internet",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Telecommunication Study and Research Center ",
+        "subSector": "Internet",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Center for Information, Training, Documentation and Studies in Communications Technologies ",
+        "subSector": "Internet",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Computer Security Agency ",
+        "subSector": "Internet",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Electronic Certification Agency ",
+        "subSector": "Internet",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Elghazala Pole of Communication Technologies ",
+        "subSector": "Internet",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Industry, Mines and Energy ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Central Analysis and Testing Laboratory ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Metrology Agency ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Institute of Standardization and Industrial Property  ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Accreditation Council ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Investment and Innovation Promotion Agency ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Industry Upgrading Office  ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Industrial Land Agency ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": " National Agency for Energy Management ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisia Engineering and Industrial Construction ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Electricity and Gas Company ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "The ALKIMIA Chemical Company ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Chemical Group ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Company Les Ciments d’Oum El Kélil ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Bizerte Cement Companies ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Steel Company El Fouledh ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Society of Cellulose and Alfa Paper ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Sugar Company ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Company EL LOUHOUM ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Technical Center for Building Materials, Ceramics and Glass ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Technical Center for the Wood and Furniture Industry ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Agri-Food Technical Center ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Textile Technical Center ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Technical Center for Mechanical and Electrical Industries ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Technical Center for Packaging and Packaging ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Leather and Footwear Center ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Technical Center of Chemistry  ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Gafsa competitiveness cluster ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": " National Mining Office ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Petroleum Research and Exploitation Company in Tunisia  ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Italian-Tunisian Oil Exploitation Company ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Southern Permit Development and Exploitation Company ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Drilling Company ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Franco Tunisian Petroleum Company  ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Petroleum Activities Company ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Pipeline Transport Company in the Sahara ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Transport and Hydrocarbons Company by Pipe Line in the Sahara ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Trans-Tunisian Gas Pipeline Company ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Company of Refining Industries ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Oil Distribution Company ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Lubricants Company ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Gafsa Phosphate Company ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Djebel Djérissa Company (iron mine in Kef) ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Crafts ",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Office of Crafts",
+        "subSector": "Industry",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of Finance ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Bank of Housing ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Bank Company ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Agricultural Bank ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Solidarity Bank ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Financing Bank for Small and Medium Enterprises ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Deposit box and consignment ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Solidarity Agency ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "General Financial Control Committee ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "General Committee of State Budget Administration ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Public Accounts Standards Council  ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Customs ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National Authority of Tobacco and Matches ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Kairouan Tobacco Factory ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Alcohol Board ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "EL Bouiane ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Computer Center of the Ministry of Finance ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "National School of Finance ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Arab Maghreb Development Financing Institute",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Housing Office of the Ministry of Finance ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Central Bank of Tunisia ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Financial Market Council ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Tunisian Council for Financial Analysis ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Financial Inclusion Observatory ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Mint Museum ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": "Ministry of State Property and Land Affairs ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    },
+    {
+        "name": " State Land Office ",
+        "subSector": "Banking",
+        "address": {
+            "country": {
+                "isoCode": "TN"
+            },
+            "governorate": {
+                "id": ""
+            },
+            "delegation": {
+                "id": ""
+            }
+        }
+    }
+]

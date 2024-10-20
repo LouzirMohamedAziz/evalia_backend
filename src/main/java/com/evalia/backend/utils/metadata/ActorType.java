@@ -29,7 +29,12 @@ public enum ActorType implements Enumeration{
 	/**
 	 * A professional Enterprise
 	 */
-	PROFESSIONAL("Professional");
+	PROFESSIONAL("Professional"),
+
+	/**
+	 * A not verified legalEntities
+	 */
+	LEGAL_ENTITY("LegalEntity");
 	
 	
 	private final String alias;
