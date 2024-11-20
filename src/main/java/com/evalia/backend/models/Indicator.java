@@ -1,6 +1,8 @@
 package com.evalia.backend.models;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 import com.evalia.backend.utils.metadata.Performance;
@@ -17,13 +19,12 @@ import lombok.Setter;
 @Getter
 @Setter
 
-
 @Entity
 public class Indicator {
 
     @EqualsAndHashCode.Include
     @Id
     private String name;
-    
+
     private Performance performance;
 }

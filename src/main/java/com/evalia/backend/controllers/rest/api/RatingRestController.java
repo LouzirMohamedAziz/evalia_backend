@@ -35,30 +35,28 @@ import com.evalia.backend.utils.Constants;
 @RestController
 @RequestMapping("/api/ratings")
 public class RatingRestController {
-	
+
 	private RatingController ratingController;
-	
-	
+
 	public RatingRestController(RatingController ratingController) {
 		this.ratingController = ratingController;
 	}
-	
-	
-	public static Map<String, String> multiToSingleValuedMap(MultiValueMap<String, String> map){
-		if(Objects.isNull(map)) {
+
+	public static Map<String, String> multiToSingleValuedMap(MultiValueMap<String, String> map) {
+		if (Objects.isNull(map)) {
 			return Collections.emptyMap();
 		}
 
-		if(map.containsKey("avg")){
+		if (map.containsKey("avg")) {
 			map.remove("avg");
 		}
 
 		return map.entrySet().stream()
 				.collect(Collectors.groupingBy(Entry::getKey,
-						Collectors.flatMapping(entry -> entry.getValue().stream(), 
+						Collectors.flatMapping(entry -> entry.getValue().stream(),
 								Collectors.joining())));
 	}
-	
+
 	@PostMapping("/search")
 	public ResponseEntity<Object> search(@RequestParam(name = "size", defaultValue = "3") int size,
 			@RequestParam(name = "page", defaultValue = "0") int page,
@@ -66,45 +64,43 @@ public class RatingRestController {
 			@RequestParam(name = "direction", defaultValue = "DESC") Direction direction,
 			@RequestParam(name = "avg", defaultValue = "false") boolean avg,
 			@RequestBody(required = false) MultiValueMap<String, String> parameters,
-			Authentication authentication){
-		
-		
+			Authentication authentication) {
+
 		Map<String, String> params = multiToSingleValuedMap(parameters);
-		if(Objects.nonNull(authentication) && avg) {
+		if (Objects.nonNull(authentication) && avg) {
 			Optional<Double> ratingAvg = Optional.ofNullable(ratingController.avg(params));
 			return ResponseEntity.ok(Map.entry(Constants.AVG_FIELD, ratingAvg.orElse(0D)));
 		}
-		
+
 		Pageable pageable = PageRequest.of(page, size);
 		Order order = (Direction.DESC.equals(direction) ? Order.desc(key) : Order.asc(key));
 		List<Rating> ratings = ratingController.search(pageable, order, params);
 		return ResponseEntity.ok(ratings);
 	}
-	
-	
+
 	@PostMapping
 	public ResponseEntity<Rating> add(@RequestBody Rating rating) {
 		rating = ratingController.add(rating);
 		return ResponseEntity.ok(rating);
 	}
-	
+
 	@PutMapping
 	public void edit(@RequestBody Rating rating) {
 		ratingController.edit(rating);
 	}
-	
+
 	@PostMapping("/{id}/attachment")
 	public void attach(@PathVariable("id") Long id,
 			@RequestParam("attachment") MultipartFile file) {
 		ratingController.attach(id, file);
 	}
-	
+
 	@GetMapping("/{id}/attachment")
 	public ResponseEntity<Resource> getAttachment(@PathVariable("id") Long id) {
 		Resource resource = ratingController.getAttachment(id);
 		return ResponseEntity.ok()
 				.contentType(MediaType.APPLICATION_OCTET_STREAM)
-				.header(HttpHeaders.CONTENT_DISPOSITION, 
+				.header(HttpHeaders.CONTENT_DISPOSITION,
 						"attachment; filename=" + resource.getFilename())
 				.body(resource);
 	}

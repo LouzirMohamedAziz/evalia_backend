@@ -27,16 +27,16 @@ import com.evalia.backend.models.Rating;
 import com.evalia.backend.repositories.AccountRepository;
 import com.evalia.backend.repositories.RatingRepository;
 import com.evalia.backend.utils.dsl.query.QslRatingFetcher;
+import com.evalia.backend.utils.metadata.Unit;
 
 @Controller
 public class RatingControllerImpl implements RatingController {
-	
+
 	private StorageService storageService;
 	private AccountRepository accountRepository;
 	private RatingRepository ratingRepository;
 	private QslRatingFetcher ratingFetcher;
-	
-	
+
 	public RatingControllerImpl(StorageService storageService,
 			QslRatingFetcher ratingFetcher,
 			AccountRepository accountRepository,
@@ -46,13 +46,12 @@ public class RatingControllerImpl implements RatingController {
 		this.accountRepository = accountRepository;
 		this.ratingRepository = ratingRepository;
 	}
-	
 
 	@Override
 	public Double avg(Map<String, String> criterions) {
 		return ratingFetcher.avg(criterions);
 	}
-	
+
 	@Override
 	public List<Rating> search(Pageable pageable, Order order, Map<String, String> criterions) {
 		return ratingFetcher.fetch(pageable, order, criterions);
@@ -62,29 +61,32 @@ public class RatingControllerImpl implements RatingController {
 	public Rating add(Rating rating) {
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		Actor evaluater = accountRepository.findById(username).orElseThrow().getActor();
-		if(evaluater instanceof Professional) {
+		if (evaluater instanceof Professional) {
 			throw InvalidEvaluaterException.build(Professional.class.getTypeName());
 		}
 		rating.setDate(new Date());
-		rating.setEvaluater((Civil)evaluater);
+		rating.setEvaluater((Civil) evaluater);
+
+		if (rating.getUnit() != Unit.STARS) {
+			var ratio = rating.getCurrentValue() / rating.getPotentialValue();
+			rating.setRate(5 * ratio);
+		}
 		if (rating.getRate() == null) {
-            throw new IllegalArgumentException("Rate must not be null");
-        }
+			throw new IllegalArgumentException("Rate must not be null");
+		}
+
 		return ratingRepository.save(rating);
 	}
-
 
 	@Override
 	public void edit(Rating rating) {
 		add(rating);
 	}
 
-
 	@Override
 	public void delete(Long id) {
 		ratingRepository.deleteById(id);
 	}
-
 
 	@Override
 	public void attach(Long id, MultipartFile file) {
@@ -97,14 +99,13 @@ public class RatingControllerImpl implements RatingController {
 		ratingRepository.save(rating);
 	}
 
-
 	@Override
 	public Resource getAttachment(Long id) {
 		Rating rating = ratingRepository.findById(id)
 				.orElseThrow(() -> ResourceNotFoundException
 						.build(Rating.class.getName(), String.valueOf(id)));
 		String uri = rating.getAttachement();
-		if(StringUtils.isBlank(uri)) {
+		if (StringUtils.isBlank(uri)) {
 			throw new StorageFileNotFoundException("Rating does not have an attachment");
 		}
 		Path file = Paths.get(URI.create(uri));
