@@ -47,7 +47,6 @@ public class LegalEntityController implements LegalEntityService {
 
 	@Override
 	public LegalEntity edit(LegalEntity legalEntity) {
-		// TODO Auto-generated method stub
 		return this.add(legalEntity);
 	}
 

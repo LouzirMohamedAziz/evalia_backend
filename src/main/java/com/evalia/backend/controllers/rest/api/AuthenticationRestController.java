@@ -1,8 +1,6 @@
 package com.evalia.backend.controllers.rest.api;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -17,7 +15,6 @@ import com.evalia.backend.controllers.impl.AuthenticationController;
 import com.evalia.backend.dto.TotpResponse;
 import com.evalia.backend.exceptions.ApiException;
 import com.evalia.backend.models.Account;
-import com.evalia.backend.models.Image;
 import com.evalia.backend.models.VerificationToken;
 
 @RestController
@@ -92,7 +89,7 @@ public class AuthenticationRestController {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
-    
+
     @PostMapping("/mfalogin")
     public String mfaLogin(@RequestParam(name = "token") String token,
             @RequestParam(name = "mfaCode") String mfaCode) {
@@ -102,17 +99,17 @@ public class AuthenticationRestController {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
-    
+
     @PostMapping("/enable2fa")
-    public  ResponseEntity<TotpResponse> enable2FA(Authentication authentication) {
-    	Account account = authController.getAccountFromUsername(authentication.getName());
-    	try {
-			TotpResponse totpResponse = authController.enable2FA(account);
-			return ResponseEntity.ok()
-					.body(totpResponse);
-		} catch (SecurityException e) {
-			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
-		}
+    public ResponseEntity<TotpResponse> enable2FA(Authentication authentication) {
+        Account account = authController.getAccountFromUsername(authentication.getName());
+        try {
+            TotpResponse totpResponse = authController.enable2FA(account);
+            return ResponseEntity.ok()
+                    .body(totpResponse);
+        } catch (SecurityException e) {
+            throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
     }
-    
+
 }

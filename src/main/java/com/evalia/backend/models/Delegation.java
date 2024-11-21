@@ -9,7 +9,6 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.EqualsAndHashCode;
@@ -33,7 +32,7 @@ public class Delegation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotBlank
 	@Column(name = "delegation_name")
 	private String name;
@@ -43,7 +42,6 @@ public class Delegation {
 	@JsonIgnore
 	private Governorate governorate;
 
-	
 	public String toString() {
 		return String.valueOf(id);
 	}

@@ -16,9 +16,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.EqualsAndHashCode;
@@ -42,40 +40,36 @@ public class Governorate {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotBlank
 	@Column(name = "governorate_name")
 	private String name;
-	
+
 	@NotNull
 	@ManyToOne(optional = false)
 	@JsonIgnore
 	private Country country;
 
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-	@OneToMany(mappedBy = "governorate", cascade = CascadeType.ALL,
-			fetch = FetchType.LAZY, orphanRemoval = true)
+	@OneToMany(mappedBy = "governorate", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	private List<Delegation> delegations = new ArrayList<>();
 
-
 	public void addDelegation(Delegation delegation) {
-		
+
 		Objects.requireNonNull(delegation)
-			.setGovernorate(this);
-		
+				.setGovernorate(this);
+
 		delegations.add(delegation);
 	}
 
-	
 	public void setDelegations(List<Delegation> delegations) {
-		
+
 		Objects.requireNonNull(delegations);
-		
+
 		this.delegations.clear();
 		delegations.forEach(this::addDelegation);
 	}
-	
-	
+
 	public String toString() {
 		return String.valueOf(id);
 	}

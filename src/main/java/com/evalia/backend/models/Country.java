@@ -12,10 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonIgnoreType;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.EqualsAndHashCode;
@@ -45,23 +41,21 @@ public class Country {
 	private String name;
 
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-	@OneToMany(mappedBy = "country", cascade = CascadeType.ALL,
-			fetch = FetchType.LAZY, orphanRemoval = true)
+	@OneToMany(mappedBy = "country", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	private List<Governorate> governorates = new ArrayList<>();
 
-	
 	public void addGovernorate(Governorate governorate) {
 		governorate.setCountry(this);
 		governorates.add(governorate);
 	}
 
 	public void setGovernorates(List<Governorate> governorates) {
-		if(Objects.isNull(governorates))
+		if (Objects.isNull(governorates))
 			return;
 		this.governorates.clear();
 		governorates.forEach(this::addGovernorate);
 	}
-	
+
 	public String toString() {
 		return this.isoCode;
 	}

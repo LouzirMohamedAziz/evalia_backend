@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 public class SectorInitializer implements Initializer {
-	private static final Logger LOGGER = LoggerFactory.getLogger(IndicatorsInitializer.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(SectorInitializer.class);
 
 	private static final String JSON_FILE = "com/evalia/backend/sectors.json";
 
