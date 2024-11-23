@@ -32,7 +32,7 @@ public class LegalEntityController implements LegalEntityService {
 		
 		Address addr = legalEntity.getAddress();
 		if(Objects.isNull(legalEntity.getAddress()) || Objects.isNull(legalEntity.getAddress().getCountry()) ||
-			Object.isNull(legalEntity.getAddress().getGovernorate())) {
+			Objects.isNull(legalEntity.getAddress().getGovernorate())) {
 			throw new IllegalArgumentException();
 		}
 		sb.append('_')
