@@ -1,4 +1,4 @@
 set "DATABASE_USERNAME=ev_app"
 set "DATABASE_PASSWORD=eVaLia@pfe_esprit.2024"
 set "DATABASE_HOST=51.254.32.151"
-set "DATABASE_NAME=evalia_db"
+set "DATABASE_NAME=evalia_prod"

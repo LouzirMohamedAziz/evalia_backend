@@ -74,9 +74,9 @@
 		<security:intercept-url pattern="/auth/**" access="permitAll" />
 		
 		<security:intercept-url pattern="/api/sectors/**" access="permitAll" method="GET"/>
-		<security:intercept-url pattern="/api/ratings/search" access="permitAll" method="POST"/>
-		<security:intercept-url pattern="/api/ratings" access="authenticated" method="POST"/>
-		<security:intercept-url pattern="/api/ratings/**" access="hasRole('ADMIN')"/>
+		<security:intercept-url pattern="/api/ratings" access="hasRole('ADMIN')" method="PUT"/>
+		<security:intercept-url pattern="/api/ratings/**" access="authenticated" method="POST"/>
+		<security:intercept-url pattern="/api/ratings/**" access="authenticated" method="GET"/>
 		<security:intercept-url pattern="/api/countries/**" access="permitAll" method="GET"/>
 		<security:intercept-url pattern="/api/governorates/**" access="permitAll" method="GET"/>
 		<security:intercept-url pattern="/api/delegations/**" access="permitAll" method="GET"/>

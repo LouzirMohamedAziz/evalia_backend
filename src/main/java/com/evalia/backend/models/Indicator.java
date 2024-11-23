@@ -26,5 +26,6 @@ public class Indicator {
     @Id
     private String name;
 
+    @Enumerated(EnumType.STRING)
     private Performance performance;
 }

@@ -3,6 +3,8 @@ package com.evalia.backend.models;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -37,6 +39,7 @@ public class VerificationToken {
     @OneToOne(targetEntity = Account.class, fetch = FetchType.LAZY)
     private Account account;
     
+    @Enumerated(EnumType.STRING)
     private TokenType tokenType;
 
 }
