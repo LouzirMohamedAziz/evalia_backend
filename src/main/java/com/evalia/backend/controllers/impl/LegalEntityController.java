@@ -31,6 +31,10 @@ public class LegalEntityController implements LegalEntityService {
 		sb.append(legalEntity.getName().toLowerCase().replace(" ", ""));
 		
 		Address addr = legalEntity.getAddress();
+		if(Objects.isNull(legalEntity.getAddress()) || Objects.isNull(legalEntity.getAddress().getCountry()) ||
+			Object.isNull(legalEntity.getAddress().getGovernorate())) {
+			throw new IllegalArgumentException();
+		}
 		sb.append('_')
 		.append(addr.getCountry().getIsoCode())
 		.append('_')
