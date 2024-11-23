@@ -1,6 +1,5 @@
 package com.evalia.backend.utils.initializers;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -18,7 +17,7 @@ import com.evalia.backend.repositories.RatableRepository;
 import com.evalia.backend.utils.ResourceUtils;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-@Component
+//@Component
 public class RatableEntitiesInitializer implements Initializer{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthorityInitializer.class);
