@@ -1,3 +1,4 @@
+
 [
     {
         "name": "Assemblée des Représentants du Peuple",
@@ -2353,7 +2354,7 @@
                 "id": 19
             },
             "postalCode": 2059,
-            "street": "Route de Nâassen"
+            "street" : "Route de Nâassen"
         }
     },
     {
@@ -2369,12 +2370,12 @@
             "delegation": {
                 "id": 168
             },
-            "postalCode": 8000,
-            "street": "4 avenue habib bourguiba"
+            "postalCode" : 8000,
+            "street" : "4 avenue habib bourguiba"
         }
     },
     {
-        "name": "Ministère des Finances (stock exchange)",
+        "name": "Ministère des Finances",
         "subSector": "Stock exchange",
         "address": {
             "country": {
@@ -2386,8 +2387,8 @@
             "delegation": {
                 "id": 251
             },
-            "postalCode": 1053,
-            "street": "Zaouiet Avenue Lac Houran"
+            "postalCode" : 1053,
+            "street" : "Zaouiet Avenue Lac Houran"
         }
     },
     {
@@ -2403,8 +2404,8 @@
             "delegation": {
                 "id": 251
             },
-            "postalCode": 1053,
-            "street": "Immeuble El Khalij, Rue du Lac Malaren"
+            "postalCode" : 1053,
+            "street" : "Immeuble El Khalij, Rue du Lac Malaren"
         }
     },
     {
@@ -2420,8 +2421,8 @@
             "delegation": {
                 "id": 240
             },
-            "postalCode": 1003,
-            "street": "1080 Avenue Hedi Karray"
+            "postalCode" : 1003,
+            "street" : "1080 Avenue Hedi Karray"
         }
     },
     {
@@ -2437,26 +2438,27 @@
             "delegation": {
                 "id": 251
             },
-            "postalCode": 1053,
-            "street": "Rue du Lac d'Annecy"
+            "postalCode" : 1053,
+            "street" : "Rue du Lac d'Annecy"
         }
     },
     {
-        "name": "Ministère des Finances (Insurance) ",
-        "subSector": "Insurance",
-        "address": {
-            "country": {
-                "isoCode": "TN"
-            },
-            "governorate": {
-                "id": 23
-            },
-            "delegation": {
-                "id": 251
-            },
-            "postalCode": 1053,
-            "street": "Zaouiet Avenue Lac Houran"
-        }
+        
+            "name": "Ministère des Finances",
+            "subSector": "Insurance",
+            "address": {
+                "country": {
+                    "isoCode": "TN"
+                },
+                "governorate": {
+                    "id": 23
+                },
+                "delegation": {
+                    "id": 251
+                },
+                "postalCode" : 1053,
+                "street" : "Zaouiet Avenue Lac Houran"
+            }
     },
     {
         "name": "Société Tunisienne d'Assurances et de Réassurances (STAR)",
@@ -2472,7 +2474,7 @@
                 "id": ""
             },
             "postalCode": 1080,
-            "street": "Avenue de Paris 1080"
+            "street" : "Avenue de Paris 1080"
         }
     },
     {
@@ -4066,20 +4068,18 @@
         }
     },
     {
-        "name": "Ministère des Finances (Banking)",
+        "name": "Ministère des Finances ",
         "subSector": "Banking",
         "address": {
             "country": {
                 "isoCode": "TN"
             },
             "governorate": {
-                "id": 23
+                "id": ""
             },
             "delegation": {
-                "id": 251
-            },
-            "postalCode": 1053,
-            "street": "Zaouiet Avenue Lac Houran"
+                "id": ""
+            }
         }
     },
     {

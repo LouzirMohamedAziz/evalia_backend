@@ -3,9 +3,9 @@ package com.evalia.backend.utils.metadata;
 public enum Performance implements Enumeration{
     
 	/**
-	 * The Economic Performance.
+	 * The Economical Performance.
 	 */
-	ECONOMIC("Economic"),
+	ECONOMICAL("Economical"),
 	
 	/**
 	 * The Social Performance.
