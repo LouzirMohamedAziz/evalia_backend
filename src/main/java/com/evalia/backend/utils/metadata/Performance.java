@@ -5,7 +5,7 @@ public enum Performance implements Enumeration{
 	/**
 	 * The Economic Performance.
 	 */
-	Economic("Economic"),
+	ECONOMIC("Economic"),
 	
 	/**
 	 * The Social Performance.
