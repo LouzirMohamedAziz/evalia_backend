@@ -91,6 +91,14 @@ public interface AuthenticationService {
 	 * @return
 	 */
 	public TotpResponse enable2FA(Account account);
+
+	/**
+	 * 
+	 * @param token
+	 * @param tokenType
+	 * @return
+	 */
+	public void disable2FA(Account account);
 	
 	/**
 	 * Verify Token for the passed TokenType.

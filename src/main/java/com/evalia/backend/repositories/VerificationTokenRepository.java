@@ -14,7 +14,7 @@ public interface VerificationTokenRepository extends CrudRepository<Verification
 	
     Optional<VerificationToken> findByTokenAndTokenType(String token, TokenType tokenType);
 
-    Optional<VerificationToken> findByAccount_Email(String email);
+    VerificationToken findByAccount_Email(String email);
     
     Long deleteByAccount_Email(String email);
 

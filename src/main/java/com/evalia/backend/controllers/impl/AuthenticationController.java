@@ -2,6 +2,7 @@ package com.evalia.backend.controllers.impl;
 
 import java.util.Date;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
@@ -282,6 +283,20 @@ public class AuthenticationController implements AuthenticationService {
 		accountRepository.save(account);
 
 		return totpResponse;
+	}
+
+	@Override
+	public void disable2FA(Account account) {
+
+		if (!account.isMfaEnabled()) {
+			throw new SecurityException("Account has already 2FA disabled!");
+		}
+		account.setMfaEnabled(false);
+		account.setSecret(null);
+		VerificationToken verificationToken = verificationTokenRepository.findByAccount_Email(account.getEmail());
+		verificationTokenRepository.delete(verificationToken);
+		
+		accountRepository.save(account);
 	}
 
 	@Override

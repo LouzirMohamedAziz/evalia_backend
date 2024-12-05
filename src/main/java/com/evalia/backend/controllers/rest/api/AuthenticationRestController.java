@@ -1,5 +1,7 @@
 package com.evalia.backend.controllers.rest.api;
 
+import java.util.Optional;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -16,6 +18,7 @@ import com.evalia.backend.dto.TotpResponse;
 import com.evalia.backend.exceptions.ApiException;
 import com.evalia.backend.models.Account;
 import com.evalia.backend.models.VerificationToken;
+import com.evalia.backend.repositories.VerificationTokenRepository;
 
 @RestController
 @RequestMapping("/auth")
@@ -107,6 +110,16 @@ public class AuthenticationRestController {
             TotpResponse totpResponse = authController.enable2FA(account);
             return ResponseEntity.ok()
                     .body(totpResponse);
+        } catch (SecurityException e) {
+            throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+    }
+    @PostMapping("/disable2fa")
+    public String disable2FA(Authentication authentication) {
+        Account account = authController.getAccountFromUsername(authentication.getName());
+        try {
+            authController.disable2FA(account);
+            return "2 factor authentication is now disabled";
         } catch (SecurityException e) {
             throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
