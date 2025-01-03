@@ -1,6 +1,6 @@
 [
     {
-        "name": "Governance",
+        "name": "01_Governance",
         "subSectors": [
             {
                 "name": "Development"
@@ -23,7 +23,7 @@
         ]
     },
     {
-        "name": "Security",
+        "name": "02_Security|Defence",
         "subSectors": [
             {
                 "name": "Police"
@@ -33,12 +33,7 @@
             },
             {
                 "name": "Civil_Protection"
-            }
-        ]
-    },
-    {
-        "name": "Defence",
-        "subSectors": [
+            },
             {
                 "name": "Ground_Infantry"
             },
@@ -51,7 +46,7 @@
         ]
     },
     {
-        "name": "Health",
+        "name": "03_Health|Hygene",
         "subSectors": [
             {
                 "name": "Medecine"
@@ -61,12 +56,7 @@
             },
             {
                 "name": "Biology"
-            }
-        ]
-    },
-    {
-        "name": "Hygene",
-        "subSectors": [
+            },
             {
                 "name": "Waste"
             },
@@ -79,7 +69,7 @@
         ]
     },
     {
-        "name": "Instruction",
+        "name": "04_Instruction|Culture",
         "subSectors": [
             {
                 "name": "Education"
@@ -89,12 +79,7 @@
             },
             {
                 "name": "Training"
-            }
-        ]
-    },
-    {
-        "name": "Culture",
-        "subSectors": [
+            },
             {
                 "name": "Arts"
             },
@@ -107,7 +92,7 @@
         ]
     },
     {
-        "name": "Food",
+        "name": "05_Food|Finance",
         "subSectors": [
             {
                 "name": "Agriculture"
@@ -117,12 +102,7 @@
             },
             {
                 "name": "Trade"
-            }
-        ]
-    },
-    {
-        "name": "Finance",
-        "subSectors": [
+            },
             {
                 "name": "Banking"
             },
@@ -135,7 +115,7 @@
         ]
     },
     {
-        "name": "Housing",
+        "name": "06_Housing|Tourism",
         "subSectors": [
             {
                 "name": "Equipment"
@@ -145,12 +125,7 @@
             },
             {
                 "name": "Construction"
-            }
-        ]
-    },
-    {
-        "name": "Tourism",
-        "subSectors": [
+            },
             {
                 "name": "Sea Side"
             },
@@ -163,21 +138,7 @@
         ]
     },
     {
-        "name": "Transport",
-        "subSectors": [
-            {
-                "name": "Aerial"
-            },
-            {
-                "name": "Maritime"
-            },
-            {
-                "name": "Land"
-            }
-        ]
-    },
-    {
-        "name": "Telecoms",
+        "name": "07_Transport|Telecoms",
         "subSectors": [
             {
                 "name": "Internet"
@@ -187,6 +148,15 @@
             },
             {
                 "name": "Postal"
+            },
+            {
+                "name": "Aerial"
+            },
+            {
+                "name": "Maritime"
+            },
+            {
+                "name": "Land"
             }
         ]
     }
