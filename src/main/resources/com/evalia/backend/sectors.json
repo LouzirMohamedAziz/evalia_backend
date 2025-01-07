@@ -46,7 +46,7 @@
         ]
     },
     {
-        "name": "03_Health|Hygene",
+        "name": "03_Health|Hygiene",
         "subSectors": [
             {
                 "name": "Medecine"
@@ -138,7 +138,7 @@
         ]
     },
     {
-        "name": "07_Transport|Telecoms",
+        "name": "07_Transport|Telecom",
         "subSectors": [
             {
                 "name": "Internet"
